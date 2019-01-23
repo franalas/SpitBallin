@@ -17,6 +17,8 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        crownSequencer.delegate = self
+        
         // Configure interface objects here.
         
         // Load the SKScene from 'GameScene.sks'
@@ -36,6 +38,8 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        crownSequencer.focus()
     }
     
     override func didDeactivate() {
@@ -43,4 +47,14 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+}
+
+extension InterfaceController: WKCrownDelegate {
+    
+    func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
+        
+        
+        
+    }
+    
 }
