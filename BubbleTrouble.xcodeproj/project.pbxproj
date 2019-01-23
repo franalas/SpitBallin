@@ -19,7 +19,6 @@
 		984BB7FD21F8395C001536A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984BB7FC21F8395C001536A1 /* Assets.xcassets */; };
 		984BB80421F8395C001536A1 /* Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 984BB80321F8395C001536A1 /* Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		984BB80921F8395C001536A1 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB80821F8395C001536A1 /* InterfaceController.swift */; };
-		984BB80B21F8395C001536A1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 984BB80A21F8395C001536A1 /* GameScene.sks */; };
 		984BB80D21F8395C001536A1 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB80C21F8395C001536A1 /* GameScene.swift */; };
 		984BB80F21F8395C001536A1 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB80E21F8395C001536A1 /* ExtensionDelegate.swift */; };
 		984BB81121F8395C001536A1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB81021F8395C001536A1 /* NotificationController.swift */; };
@@ -86,7 +85,6 @@
 		984BB7FE21F8395C001536A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984BB80321F8395C001536A1 /* Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		984BB80821F8395C001536A1 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		984BB80A21F8395C001536A1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		984BB80C21F8395C001536A1 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		984BB80E21F8395C001536A1 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		984BB81021F8395C001536A1 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				984BB80821F8395C001536A1 /* InterfaceController.swift */,
-				984BB80A21F8395C001536A1 /* GameScene.sks */,
 				984BB80C21F8395C001536A1 /* GameScene.swift */,
 				984BB80E21F8395C001536A1 /* ExtensionDelegate.swift */,
 				984BB81021F8395C001536A1 /* NotificationController.swift */,
@@ -298,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				984BB81321F8395D001536A1 /* Assets.xcassets in Resources */,
-				984BB80B21F8395C001536A1 /* GameScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
