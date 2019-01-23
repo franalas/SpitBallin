@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98013F3221F90CCD00309841 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98013F3121F90CCD00309841 /* Player.swift */; };
+		98013F3621F916E400309841 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98013F3521F916E400309841 /* Person.swift */; };
 		984BB7DE21F8392C001536A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB7DD21F8392C001536A1 /* AppDelegate.swift */; };
 		984BB7E021F8392C001536A1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 984BB7DF21F8392C001536A1 /* GameScene.sks */; };
 		984BB7E221F8392C001536A1 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 984BB7E121F8392C001536A1 /* Actions.sks */; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		98013F3121F90CCD00309841 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		98013F3521F916E400309841 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		984BB7DA21F8392C001536A1 /* BubbleTrouble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleTrouble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984BB7DD21F8392C001536A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		984BB7DF21F8392C001536A1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				984BB81221F8395D001536A1 /* Assets.xcassets */,
 				984BB81421F8395D001536A1 /* Info.plist */,
 				984BB81521F8395D001536A1 /* PushNotificationPayload.apns */,
+				98013F3121F90CCD00309841 /* Player.swift */,
+				98013F3521F916E400309841 /* Person.swift */,
 			);
 			path = "Watch Extension";
 			sourceTree = "<group>";
@@ -315,9 +321,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98013F3621F916E400309841 /* Person.swift in Sources */,
 				984BB80D21F8395C001536A1 /* GameScene.swift in Sources */,
 				984BB80921F8395C001536A1 /* InterfaceController.swift in Sources */,
 				984BB81121F8395C001536A1 /* NotificationController.swift in Sources */,
+				98013F3221F90CCD00309841 /* Player.swift in Sources */,
 				984BB80F21F8395C001536A1 /* ExtensionDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
