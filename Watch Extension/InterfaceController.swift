@@ -47,13 +47,19 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    @IBAction func tapAction(_ sender: Any) {
+        
+        //tap occured
+        
+    }
+    
 }
 
 extension InterfaceController: WKCrownDelegate {
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        
+        //scroll occurred
         
     }
     
