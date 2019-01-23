@@ -13,6 +13,7 @@ import Foundation
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
+    var scene: GameScene?
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -22,13 +23,13 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         
         // Create the SKScene
-        let scene = GameScene()
+        scene = GameScene()
         
         // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
+        scene!.scaleMode = .fill
         
         // Present the scene
-        self.skInterface.presentScene(scene)
+        self.skInterface.presentScene(scene!)
         
         // Use a value that will maintain a consistent frame rate
         self.skInterface.preferredFramesPerSecond = 30
@@ -45,6 +46,7 @@ class InterfaceController: WKInterfaceController {
     @IBAction func tapAction(_ sender: Any) {
         
         //tap occured
+        scene?.shoot()
         
     }
     
@@ -55,6 +57,7 @@ extension InterfaceController: WKCrownDelegate {
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
         //scroll occurred
+        scene?.movePlayer(rotationalDelta)
         
     }
     

@@ -18,18 +18,24 @@ class Player: SKSpriteNode {
     private var shootTexture: SKTexture?
     
     /**
-    Initializes a Player as a given Person with a given size
+    Initializes a Player as a given Person with a given height and x position. The width will be made to keep the texture's aspect ratio.
+    The player's y will be 0.
      - Parameters:
-        - size: the size of the player in the scene
+        - height: the height of the player in the scene
+        - x: the x position of the player
         - person: which character the player is
     */
-    convenience init(size: CGSize, person: Person) {
+    convenience init(height: CGFloat, x: CGFloat, person: Person) {
         
         let standardTexture = SKTexture(imageNamed: person.normalImage())
         let shootTexture = SKTexture(imageNamed: person.shootImage())
-        self.init(texture: standardTexture, color: .clear, size: size)
+        let width = height * standardTexture.size().width / standardTexture.size().height
+        
+        self.init(texture: standardTexture, color: .clear, size: CGSize(width: width, height: height))
         self.standardTexture = standardTexture
         self.shootTexture = shootTexture
+        self.anchorPoint = CGPoint(x: 0.5, y: 0)
+        self.position = CGPoint(x: x, y: 0)
         
     }
     
