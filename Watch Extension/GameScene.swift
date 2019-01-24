@@ -72,9 +72,18 @@ class GameScene: SKScene {
     /**
      Makes Ball input disappear and creates 2 Balls with one size smaller or none if minimum size
      */
-    private func split(givenBall: Ball) {
+    private func split(ball: Ball) {
         
-        
+        balls = balls.filter { $0 !== ball }
+        ball.removeFromParent()
+        if let (ball1, ball2) = ball.split() {
+            
+            balls.append(ball1)
+            balls.append(ball2)
+            self.addChild(ball1)
+            self.addChild(ball2)
+            
+        }
         
     }
     
