@@ -77,6 +77,15 @@ class GameScene: SKScene {
     // MARK: Game logic
     
     /**
+     Makes Ball input disappear and creates 2 Balls with one size smaller or none if minimum size
+     */
+    private func split(givenBall: Ball) {
+        
+        
+        
+    }
+    
+    /**
     Sets up level (player position, initial balls)
     */
     private func setupLevel() {
