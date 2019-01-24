@@ -23,10 +23,10 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         
         // Create the SKScene
-        scene = GameScene()
         
+        scene = GameScene(size: CGSize(width: 1, height: 1))
         // Set the scale mode to scale to fit the window
-        scene!.scaleMode = .fill
+        scene!.scaleMode = .aspectFit
         
         // Present the scene
         self.skInterface.presentScene(scene!)

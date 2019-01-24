@@ -41,13 +41,6 @@ class GameScene: SKScene {
 
     }
 
-    override init() {
-
-        super.init()
-        setupLevel()
-
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
