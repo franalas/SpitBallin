@@ -24,26 +24,30 @@ class GameScene: SKScene {
     // MARK: Fields
     
     /// The player sprite
-    private let player: Player
+    private var player: Player?
     
     /// The ball sprites
-//    private let balls: [Ball]
+    private var balls: [Ball] = []
     
     /// The bullet sprites
 //    private let bullets: [Bullet]
     
     // MARK: Initializers
     
-    override init() {
-        
-        self.player = Player(height: GameScene.PLAYER_HEIGHT, person: .liam)
-        
-        super.init()
-        
+    override init(size: CGSize) {
+
+        super.init(size: size)
         setupLevel()
-        
+
     }
-    
+
+    override init() {
+
+        super.init()
+        setupLevel()
+
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -57,12 +61,12 @@ class GameScene: SKScene {
     */
     func movePlayer(_ value: Double) {
         
-        player.xPosition += CGFloat(value * GameScene.CROWN_MULTIPLIER)
+        player?.xPosition += CGFloat(value * GameScene.CROWN_MULTIPLIER)
         
     }
     
     /**
-    Shoots shot.
+    Shoots shot
     */
     func shoot() {
         
@@ -77,6 +81,16 @@ class GameScene: SKScene {
     */
     private func setupLevel() {
         
+        if self.player == nil {
+            self.player = Player(height: GameScene.PLAYER_HEIGHT, person: .liam)
+            self.addChild(player!)
+        }
+        player!.xPosition = GameScene.PLAYER_START_X
+        
+        balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5), velocity: CGVector(dx: -0.3, dy: 0)),
+                 Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.6, y: 0.5), velocity: CGVector(dx: 0.3, dy: 0))]
+        for ball in balls { self.addChild(ball) }
+        
     }
     
     /**
@@ -84,6 +98,8 @@ class GameScene: SKScene {
     */
     func resetLevel() {
         
+        self.removeAllChildren()
+        self.balls = []
         setupLevel()
         
     }
