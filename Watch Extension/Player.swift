@@ -32,7 +32,12 @@ class Player: SKSpriteNode {
     var xPosition: CGFloat {
 
         get { return self.position.x }
-        set { self.position = CGPoint(x: newValue, y: self.position.y) }
+        set {
+            var x = newValue
+            if newValue < 0 { x = 0 }
+            else if newValue > 1 { x = 1 }
+            self.position = CGPoint(x: x, y: self.position.y)
+        }
 
     }
     
