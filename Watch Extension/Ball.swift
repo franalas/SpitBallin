@@ -17,9 +17,6 @@ class Ball: SKShapeNode {
     /// Represents size of self
     private var ballSize: BallSize?
     
-    /// Represents color of self
-    private var color: UIColor?
-    
     
     /**
      Initializes Ball with a certain BallSize and color which will be kept constant
@@ -34,10 +31,11 @@ class Ball: SKShapeNode {
        
         self.init(circleOfRadius: ballSize.radius)
         self.ballSize = ballSize
-        self.color = color
+        self.fillColor = color
+        self.strokeColor = .clear
         self.position = position
-        self.physicsBody = SKPhysicsBody(circleOfRadius: ballSize.radius)
-        self.physicsBody!.velocity = velocity
+//        self.physicsBody = SKPhysicsBody(circleOfRadius: ballSize.radius)
+//        self.physicsBody!.velocity = velocity
         
     }
     
