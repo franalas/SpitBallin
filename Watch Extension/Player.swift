@@ -28,17 +28,24 @@ class Player: SKSpriteNode {
     /// The position relative to self where the shot should originate
     let barrelPosition = CGPoint(x: 0, y: 0)
     
+    /// The x position of the player
+    var xPosition: CGFloat {
+
+        get { return self.position.x }
+        set { self.position = CGPoint(x: newValue, y: self.position.y) }
+
+    }
+    
     // MARK: Initializers
     
     /**
-    Initializes a Player as a given Person with a given height and x position. The width will be made to keep the texture's aspect ratio.
+    Initializes a Player as a given Person with a given height. The width will be made to keep the texture's aspect ratio.
     The player's y will be 0.
      - Parameters:
         - height: the height of the player in the scene
-        - x: the x position of the player
         - person: which character the player is
     */
-    convenience init(height: CGFloat, x: CGFloat, person: Person) {
+    convenience init(height: CGFloat, person: Person) {
         
         let standardTexture = SKTexture(imageNamed: person.normalImage())
         let shootTexture = SKTexture(imageNamed: person.shootImage())
@@ -48,7 +55,7 @@ class Player: SKSpriteNode {
         self.standardTexture = standardTexture
         self.shootTexture = shootTexture
         self.anchorPoint = CGPoint(x: 0.5, y: 0)
-        self.position = CGPoint(x: x, y: 0)
+        self.position = CGPoint.zero
         
     }
     
@@ -76,17 +83,6 @@ class Player: SKSpriteNode {
             .wait(forDuration: Player.SHOT_LENGTH),
             .setTexture(standardTexture!)
             ]), completion: completion ?? {})
-        
-    }
-    
-    /**
-    Moves the player left or right the given distance.
-     - Parameters:
-        - distance: how far to move the player
-    */
-    func move(distance: CGFloat) {
-        
-        self.position = CGPoint(x: self.position.x + distance, y: self.position.y)
         
     }
     
