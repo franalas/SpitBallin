@@ -8,30 +8,20 @@
 
 import WatchKit
 import Foundation
-
+import SpriteKit
 
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
+    var game: Game?
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         crownSequencer.delegate = self
         
-        // Configure interface objects here.
-        
-        // Create the SKScene
-        let scene = GameScene()
-        
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
-        
-        // Present the scene
-        self.skInterface.presentScene(scene)
-        
-        // Use a value that will maintain a consistent frame rate
-        self.skInterface.preferredFramesPerSecond = 30
+        self.game = Game(size: CGSize(width: 1, height: 1))
+        self.game!.present(inInterface: self.skInterface)
         
     }
     
@@ -44,28 +34,25 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func tapAction(_ sender: Any) {
         
-        //tap occured
+        self.game?.shoot()
         
     }
     
     @IBAction func playAction() {
         
-        //play button hit
-        print("play")
+        self.game?.paused = false
         
     }
     
     @IBAction func pauseAction() {
         
-        //pause button hit
-        print("pause")
+        self.game?.paused = true
         
     }
     
     @IBAction func restartAction() {
         
-        //restart button hit
-        print("restart")
+        self.game?.restart()
         
     }
     
@@ -75,7 +62,7 @@ extension InterfaceController: WKCrownDelegate {
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        //scroll occurred
+        
         
     }
     
