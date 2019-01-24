@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+///Represents a Ball, there could be many in a scene
 class Ball: SKShapeNode {
     
     /// Value added to y-velocity when ball is split in 2
@@ -37,16 +38,6 @@ class Ball: SKShapeNode {
         self.physicsBody = SKPhysicsBody(circleOfRadius: ballSize.radius)
         self.physicsBody!.velocity = velocity
         
-    }
-    
-    override private init() {
-        
-        super.init()
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     /// Changes velocity when self hits a Border of type wall
