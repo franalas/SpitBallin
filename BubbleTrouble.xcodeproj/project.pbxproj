@@ -39,6 +39,7 @@
 		CD03C4F921F97D08008C6B1E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD03C4F821F97D08008C6B1E /* Ball.swift */; };
 		CD03C4FB21F97D21008C6B1E /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD03C4FA21F97D21008C6B1E /* Border.swift */; };
 		CD03C4FD21F97D45008C6B1E /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD03C4FC21F97D45008C6B1E /* Bullet.swift */; };
+		CDD9C60821FA5F3A0061FF85 /* spit.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD9C60721FA5F3A0061FF85 /* spit.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		CD03C4F821F97D08008C6B1E /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		CD03C4FA21F97D21008C6B1E /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 		CD03C4FC21F97D45008C6B1E /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		CDD9C60721FA5F3A0061FF85 /* spit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spit.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 		984BB80721F8395C001536A1 /* Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CDD9C60721FA5F3A0061FF85 /* spit.png */,
 				98013F3921F91ECB00309841 /* fran_normal.png */,
 				98013F3821F91ECB00309841 /* fran_shoot.png */,
 				98013F3A21F91ECB00309841 /* liam_normal.png */,
@@ -340,6 +343,7 @@
 				98013F3E21F91ECB00309841 /* fran_shoot.png in Resources */,
 				98013F4221F91ECB00309841 /* liam_normal.png in Resources */,
 				984BB81321F8395D001536A1 /* Assets.xcassets in Resources */,
+				CDD9C60821FA5F3A0061FF85 /* spit.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
