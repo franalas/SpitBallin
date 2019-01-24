@@ -35,6 +35,7 @@
 		984BB81321F8395D001536A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984BB81221F8395D001536A1 /* Assets.xcassets */; };
 		984BB81821F8395D001536A1 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 984BB7F721F8395B001536A1 /* Watch.app */; };
 		989C03F921F96DF6000F5463 /* BallSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989C03F821F96DF6000F5463 /* BallSize.swift */; };
+		989C03FB21F96EEB000F5463 /* BorderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989C03FA21F96EEB000F5463 /* BorderType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		984BB81421F8395D001536A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984BB81521F8395D001536A1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		989C03F821F96DF6000F5463 /* BallSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallSize.swift; sourceTree = "<group>"; };
+		989C03FA21F96EEB000F5463 /* BorderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				98013F3121F90CCD00309841 /* Player.swift */,
 				98013F3521F916E400309841 /* Person.swift */,
 				989C03F821F96DF6000F5463 /* BallSize.swift */,
+				989C03FA21F96EEB000F5463 /* BorderType.swift */,
 			);
 			path = "Watch Extension";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				98013F3621F916E400309841 /* Person.swift in Sources */,
 				984BB80D21F8395C001536A1 /* GameScene.swift in Sources */,
 				984BB80921F8395C001536A1 /* InterfaceController.swift in Sources */,
+				989C03FB21F96EEB000F5463 /* BorderType.swift in Sources */,
 				989C03F921F96DF6000F5463 /* BallSize.swift in Sources */,
 				984BB81121F8395C001536A1 /* NotificationController.swift in Sources */,
 				98013F3221F90CCD00309841 /* Player.swift in Sources */,
