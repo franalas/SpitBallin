@@ -23,15 +23,24 @@ class GameScene: SKScene {
     
     // MARK: Fields
     
+    /// The player sprite
     private let player: Player
+    
+    /// The ball sprites
+//    private let balls: [Ball]
+    
+    /// The bullet sprites
+//    private let bullets: [Bullet]
     
     // MARK: Initializers
     
     override init() {
         
-        self.player = Player(height: GameScene.PLAYER_HEIGHT, x: GameScene.PLAYER_START_X, person: .liam)
+        self.player = Player(height: GameScene.PLAYER_HEIGHT, person: .liam)
         
         super.init()
+        
+        setupLevel()
         
     }
     
@@ -48,7 +57,7 @@ class GameScene: SKScene {
     */
     func movePlayer(_ value: Double) {
         
-        player.move(distance: CGFloat(value * GameScene.CROWN_MULTIPLIER))
+        player.xPosition += CGFloat(value * GameScene.CROWN_MULTIPLIER)
         
     }
     
@@ -64,12 +73,29 @@ class GameScene: SKScene {
     // MARK: Game logic
     
     /**
+    Sets up level (player position, initial balls)
+    */
+    private func setupLevel() {
+        
+    }
+    
+    /**
     Resets to the start of the level
     */
     func resetLevel() {
         
+        setupLevel()
+        
+    }
+    
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
         
         
+
     }
     
 }
