@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9831A90221FA77730090A21F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831A90121FA77730090A21F /* Game.swift */; };
+		9831A90521FA7CD20090A21F /* CircularObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831A90421FA7CD20090A21F /* CircularObject.swift */; };
 		984BB7DE21F8392C001536A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB7DD21F8392C001536A1 /* AppDelegate.swift */; };
 		984BB7E021F8392C001536A1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 984BB7DF21F8392C001536A1 /* GameScene.sks */; };
 		984BB7E221F8392C001536A1 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 984BB7E121F8392C001536A1 /* Actions.sks */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		9831A90121FA77730090A21F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		9831A90421FA7CD20090A21F /* CircularObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularObject.swift; sourceTree = "<group>"; };
 		984BB7DA21F8392C001536A1 /* BubbleTrouble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleTrouble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984BB7DD21F8392C001536A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		984BB7DF21F8392C001536A1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9831A90121FA77730090A21F /* Game.swift */,
+				9831A90421FA7CD20090A21F /* CircularObject.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				984BB80921F8395C001536A1 /* InterfaceController.swift in Sources */,
 				984BB81121F8395C001536A1 /* NotificationController.swift in Sources */,
 				984BB80F21F8395C001536A1 /* ExtensionDelegate.swift in Sources */,
+				9831A90521FA7CD20090A21F /* CircularObject.swift in Sources */,
 				9831A90221FA77730090A21F /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
