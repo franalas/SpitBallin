@@ -62,6 +62,9 @@ class Player: SKSpriteNode {
         self.anchorPoint = CGPoint(x: 0.5, y: 0)
         self.position = CGPoint.zero
         
+        self.physicsBody = SKPhysicsBody(texture: standardTexture, size: self.size)
+        self.physicsBody?.isDynamic = false
+        
     }
     
     override private init(texture: SKTexture?, color: UIColor, size: CGSize) {
