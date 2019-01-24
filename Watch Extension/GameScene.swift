@@ -29,6 +29,9 @@ class GameScene: SKScene {
     /// The ball sprites
     private var balls: [Ball] = []
     
+    /// Nodes to represent the borders of the screen for objects to bounce
+    private var borders: (leftWall: Border, rightWall: Border, floor: Border)?
+    
     /// The bullet sprites
 //    private let bullets: [Bullet]
     
@@ -92,14 +95,30 @@ class GameScene: SKScene {
     */
     private func setupLevel() {
         
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -0.001)
+        self.physicsWorld.contactDelegate = self
+        
         if self.player == nil {
+            
             self.player = Player(height: GameScene.PLAYER_HEIGHT, person: .liam)
             self.addChild(player!)
+            
         }
         player!.xPosition = GameScene.PLAYER_START_X
         
-        balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5), velocity: CGVector(dx: -0.3, dy: 0)),
-                 Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.6, y: 0.5), velocity: CGVector(dx: 0.3, dy: 0))]
+        if self.borders == nil {
+            let leftWall = Border(borderType: .wall, position: CGPoint(x: -0.05, y: 0.5), size: CGSize(width: 0.1, height: 1))
+            let rightWall = Border(borderType: .wall, position: CGPoint(x: 1.05, y: 0.5), size: CGSize(width: 0.1, height: 1))
+            let floor = Border(borderType: .floor, position: CGPoint(x: 0.5, y: -0.05), size: CGSize(width: 1, height: 0.1))
+            
+            self.borders = (leftWall: leftWall, rightWall: rightWall, floor: floor)
+            self.addChild(leftWall)
+            self.addChild(rightWall)
+            self.addChild(floor)
+        }
+        
+        balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5), velocity: CGVector(dx: 0.3, dy: 0)),
+                 Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.6, y: 0.5), velocity: CGVector(dx: -0.3, dy: 0))]
         for ball in balls { self.addChild(ball) }
         
     }
