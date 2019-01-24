@@ -17,6 +17,9 @@ class Player: SKSpriteNode {
     /// The texture of the player when shooting
     private var shootTexture: SKTexture?
     
+    /// The position relative to self where the shot should originate
+    let barrelPosition = CGPoint(x: 0, y: 0)
+    
     /**
     Initializes a Player as a given Person with a given height and x position. The width will be made to keep the texture's aspect ratio.
     The player's y will be 0.
@@ -50,9 +53,13 @@ class Player: SKSpriteNode {
     }
     
     /**
-    Will animate the player sprite shooting.
+    Animates the player sprite shooting.
+     - Parameters:
+        - completion: called when animation finishes
     */
-    func animateShot() {
+    func animateShot(_ completion: (() -> Void)?) {
+        
+        
         
     }
     
