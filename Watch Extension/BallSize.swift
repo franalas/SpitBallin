@@ -10,10 +10,10 @@ import Foundation
 import SpriteKit
 
 /// Represents the size of a ball
-enum BallSize {
+enum BallSize: Int {
     
     /// Does not split; disappears when shot
-    case one
+    case one = 1
     
     /// Splits into two ones
     case two
@@ -60,6 +60,14 @@ enum BallSize {
         case .five:
             return 0.3
         }
+        
+    }
+    
+    /// The size of the next ball after a split; nil if it splits to nothing
+    var nextBall: BallSize? {
+        
+        if self == .one { return nil }
+        else { return BallSize(rawValue: self.rawValue - 1)! }
         
     }
     
