@@ -42,7 +42,7 @@ class Ball: SKShapeNode {
         
     }
     
-    /// Changes velocity when self hits a Border of type wall
+    /// Changes velocity when self hits a Border of type wall, negates velocity.dy
     func bounceOffWall() {
         
         if self.physicsBody?.velocity.dx != nil {
@@ -51,6 +51,7 @@ class Ball: SKShapeNode {
         
     }
     
+    /// Changes velocity when self hits wall of type floor, sets velocity.dx to bounceSpeed
     func bounceOffFloor() {
         
         if self.physicsBody?.velocity.dy != nil {
@@ -59,9 +60,7 @@ class Ball: SKShapeNode {
         
     }
     
-    /**
-     Splits a ball into 2 smaller balls when called
-     */
+     /// Splits a ball into 2 smaller balls when called
     func split() -> (Ball, Ball)? {
         if let ballSize = self.ballSize, let velocity = self.physicsBody?.velocity {
             if let nextBall = ballSize.nextBall {
