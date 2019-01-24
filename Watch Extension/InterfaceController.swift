@@ -48,6 +48,27 @@ class InterfaceController: WKInterfaceController {
         
     }
     
+    @IBAction func playAction() {
+        
+        //play button hit
+        print("play")
+        
+    }
+    
+    @IBAction func pauseAction() {
+        
+        //pause button hit
+        print("pause")
+        
+    }
+    
+    @IBAction func restartAction() {
+        
+        //restart button hit
+        print("restart")
+        
+    }
+    
 }
 
 extension InterfaceController: WKCrownDelegate {

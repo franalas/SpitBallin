@@ -24,6 +24,25 @@
                             </gestureRecognizers>
                         </spriteKitScene>
                     </items>
+                    <menu key="menu" id="h0M-wI-Cde">
+                        <items>
+                            <menuItem title="Play" icon="resume" id="k60-RP-TGI">
+                                <connections>
+                                    <action selector="playAction" destination="AgC-eL-Hgc" id="GG8-Hz-gxf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Pause" icon="pause" id="W3J-TG-j1g">
+                                <connections>
+                                    <action selector="pauseAction" destination="AgC-eL-Hgc" id="Yw7-qC-JI6"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Restart" icon="repeat" id="1EP-O2-h4m">
+                                <connections>
+                                    <action selector="restartAction" destination="AgC-eL-Hgc" id="zBS-yO-ggo"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="skInterface" destination="eh2-bW-rMT" id="Wme-JX-I9n"/>
                     </connections>
