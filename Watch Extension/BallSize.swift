@@ -16,16 +16,16 @@ enum BallSize: Int {
     case one = 1
     
     /// Splits into two ones
-    case two
+    case two = 2
     
     /// Splits into two twos
-    case three
+    case three = 3
     
     /// Splits into two fours
-    case four
+    case four = 4
     
     /// Splits into two fives
-    case five
+    case five = 5
     
     /// The y velocity at which the ball bounces off the floor
     var bounceSpeed: CGFloat {

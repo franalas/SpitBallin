@@ -11,11 +11,15 @@ import SpriteKit
 
 class Ball: SKShapeNode {
     
+    /// Value added to y-velocity when ball is split in 2
+    private let YSPLIT = 0.1
+    
     /// Represents size of self
     private var ballSize: BallSize?
     
     /// Represents color of self
     private var color: UIColor?
+    
     
     /**
      Initializes Ball with a certain BallSize and color which will be kept constant
@@ -28,11 +32,11 @@ class Ball: SKShapeNode {
      */
     convenience init(ballSize: BallSize, color: UIColor, position: CGPoint, velocity: CGVector) {
        
-        self.init(circleOfRadius: ballSize.rawValue)
+        self.init(circleOfRadius: ballSize.radius)
         self.ballSize = ballSize
         self.color = color
         self.position = position
-        self.physicsBody = SKPhysicsBody(circleOfRadius: ballSize.rawValue)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: ballSize.radius)
         self.physicsBody!.velocity = velocity
         
     }
@@ -59,15 +63,20 @@ class Ball: SKShapeNode {
     func bounceOffFloor() {
         
         
+        
     }
     
     /**
      Splits a ball into 2 smaller balls when called
      */
-    func split() -> (Ball, Ball) {
+    func split() -> (Ball, Ball)? {
         
-        return (self, self)
-        
+//        if let color = self.color, let ballSize = self.ballSize, case let physicsBody.velocity = self.physicsBody?.velocity {
+//
+//            var ball1 = Ball.init(ballSize: self.ballSize.nextBall, color: self.color, position: self.position, velocity: CGVector(dx: -1 * self.physicsBody.velocity.dx, dy: self.physicsBody.velocity.dy + CGFloat(YSPLIT)))
+//
+//        }
+        return(self, self)
     }
     
 }
