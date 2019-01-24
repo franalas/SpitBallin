@@ -34,8 +34,8 @@ class Ball: SKShapeNode {
         self.fillColor = color
         self.strokeColor = .clear
         self.position = position
-//        self.physicsBody = SKPhysicsBody(circleOfRadius: ballSize.radius)
-//        self.physicsBody!.velocity = velocity
+        self.physicsBody = SKPhysicsBody(circleOfRadius: ballSize.radius)
+        self.physicsBody!.velocity = velocity
         
     }
     
@@ -60,7 +60,9 @@ class Ball: SKShapeNode {
     
     func bounceOffFloor() {
         
-        
+        if self.physicsBody?.velocity.dy != nil {
+            self.physicsBody?.velocity.dy = self.ballSize!.bounceSpeed
+        }
         
     }
     
@@ -68,13 +70,15 @@ class Ball: SKShapeNode {
      Splits a ball into 2 smaller balls when called
      */
     func split() -> (Ball, Ball)? {
-        
-//        if let color = self.color, let ballSize = self.ballSize, case let physicsBody.velocity = self.physicsBody?.velocity {
-//
-//            var ball1 = Ball.init(ballSize: self.ballSize.nextBall, color: self.color, position: self.position, velocity: CGVector(dx: -1 * self.physicsBody.velocity.dx, dy: self.physicsBody.velocity.dy + CGFloat(YSPLIT)))
-//
-//        }
-        return(self, self)
+        if let ballSize = self.ballSize, let velocity = self.physicsBody?.velocity {
+            if let nextBall = ballSize.nextBall {
+                let ball1 = Ball.init(ballSize: nextBall, color: self.strokeColor, position: position, velocity: CGVector(dx: -1 * velocity.dx, dy: velocity.dy + CGFloat(YSPLIT)))
+                let ball2 = Ball.init(ballSize: nextBall, color: self.strokeColor, position: position, velocity: CGVector(dx: velocity.dx, dy: velocity.dy + CGFloat(YSPLIT)))
+                return (ball1, ball2)
+            }
+
+        }
+        return nil
     }
     
 }
