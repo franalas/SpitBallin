@@ -117,8 +117,8 @@ class GameScene: SKScene {
             self.addChild(floor)
         }
         
-        balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5), velocity: CGVector(dx: 0.3, dy: 0)),
-                 Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.6, y: 0.5), velocity: CGVector(dx: -0.3, dy: 0))]
+        balls = [Ball(ballSize: .one, strokeColor: .red, position: CGPoint(x: 0.4, y: 0.5), velocity: CGVector(dx: 0.3, dy: 0)),
+                 Ball(ballSize: .one, strokeColor: .red, position: CGPoint(x: 0.6, y: 0.5), velocity: CGVector(dx: -0.3, dy: 0))]
         for ball in balls { self.addChild(ball) }
         
     }
