@@ -12,13 +12,23 @@ import SpriteKit
 /// Represents a player sprite in the game
 class Player: SKSpriteNode {
     
+    // MARK: Settings
+    
+    /// How long the shot animation should last
+    private static let SHOT_LENGTH: TimeInterval = 0.5
+    
+    // MARK: Fields
+    
     /// The texture of the player when not shooting
     private var standardTexture: SKTexture?
+    
     /// The texture of the player when shooting
     private var shootTexture: SKTexture?
     
     /// The position relative to self where the shot should originate
     let barrelPosition = CGPoint(x: 0, y: 0)
+    
+    // MARK: Initializers
     
     /**
     Initializes a Player as a given Person with a given height and x position. The width will be made to keep the texture's aspect ratio.
@@ -52,6 +62,8 @@ class Player: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Player actions
+    
     /**
     Animates the player sprite shooting.
      - Parameters:
@@ -59,7 +71,11 @@ class Player: SKSpriteNode {
     */
     func animateShot(_ completion: (() -> Void)?) {
         
-        
+        self.run(.sequence([
+            .setTexture(shootTexture!),
+            .wait(forDuration: Player.SHOT_LENGTH),
+            .setTexture(standardTexture!)
+            ]), completion: completion ?? {})
         
     }
     
@@ -70,7 +86,7 @@ class Player: SKSpriteNode {
     */
     func move(distance: CGFloat) {
         
-        
+        self.position = CGPoint(x: self.position.x + distance, y: self.position.y)
         
     }
     
