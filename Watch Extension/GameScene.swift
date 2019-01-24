@@ -10,6 +10,37 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    // MARK: Settings
+    
+    /// The value by which the crown rotational delta is multiplied to determine movement distance
+    private static let CROWN_MULTIPLIER = 0.1
+    
+    /// The height of the player sprite
+    private static let PLAYER_HEIGHT: CGFloat = 0.2
+    
+    /// The starting x position of the player
+    private static let PLAYER_START_X: CGFloat = 0.5
+    
+    // MARK: Fields
+    
+    private let player: Player
+    
+    // MARK: Initializers
+    
+    override init() {
+        
+        self.player = Player(height: GameScene.PLAYER_HEIGHT, x: GameScene.PLAYER_START_X, person: .liam)
+        
+        super.init()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Control inputs
+    
     /**
     Moves the player left or right. Will stop at a wall.
     - Parameters:
@@ -17,7 +48,7 @@ class GameScene: SKScene {
     */
     func movePlayer(_ value: Double) {
         
-        movePlayerSprite(distance: CGFloat(value))
+        player.move(distance: CGFloat(value * GameScene.CROWN_MULTIPLIER))
         
     }
     
@@ -26,25 +57,16 @@ class GameScene: SKScene {
     */
     func shoot() {
         
-        shootFromPlayer()
-        
-    }
-    
-    /**
-    Moves the player the given distance. Stops at a wall.
-    - Parameters:
-      - distance: how far to move the player
-    */
-    private func movePlayerSprite(distance: CGFloat) {
-        
         
         
     }
     
+    // MARK: Game logic
+    
     /**
-    Shoots a shot upwards out of the player object.
+    Resets to the start of the level
     */
-    private func shootFromPlayer() {
+    func resetLevel() {
         
         
         
