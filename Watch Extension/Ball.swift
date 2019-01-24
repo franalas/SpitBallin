@@ -51,7 +51,7 @@ class Ball: SKShapeNode {
         
     }
     
-    /// Changes velocity when self hits wall of type floor, sets velocity.dx to bounceSpeed
+    /// Changes velocity when self hits Border of type floor, sets velocity.dx to bounceSpeed
     func bounceOffFloor() {
         
         if self.physicsBody?.velocity.dy != nil {

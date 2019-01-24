@@ -29,6 +29,7 @@ class Border: SKNode {
         
     }
     
+    /// Returns function call to Ball dependent of inpact being wall or floor
     func bounce(ball: Ball) {
         if let borderType = self.borderType {
             
