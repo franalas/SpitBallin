@@ -145,7 +145,7 @@ class Game {
             
         let frame = self.scene.frame
         var ballI = (balls?.count ?? 0) - 1
-        while ballI >= 0 {
+        while ballI >= 0 { //check if ball collides with player or any bullets
             
             if balls![ballI].floorCollision(rect: frame) { balls![ballI].bounceFloor(rect: frame) }
             else if balls![ballI].wallCollision(rect: frame) { balls![ballI].bounceWall(rect: frame) }
@@ -158,19 +158,14 @@ class Game {
                 } else {
                     
                     var bulletI = (bullets?.count ?? 0) - 1
-//                    print("start: \(bulletI), count: \(bullets.count)")
                     while bulletI >= 0 {
                         
-//                        print("i: \(bulletI)")
-//                        print("before2: \(bullets.count)")
                         if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
                             self.split(ballAtIndex: ballI)
-//                            print("middle: \(bullets.count)")
                             remove(bulletAtIndex: bulletI)
                             
                         }
-//                        print("after2: \(bullets.count)")
                         bulletI -= 1
                         
                     }
@@ -183,7 +178,7 @@ class Game {
         }
         
         var bulletI = (bullets?.count ?? 0) - 1
-        while bulletI >= 0 {
+        while bulletI >= 0 { //check if any bullets hit the floor
             
             if bullets![bulletI].floorCollision(rect: frame) {
                 
@@ -199,7 +194,7 @@ class Game {
     /**
      Updates balls and bullets with game tick
      - Parameters:
-     - timeInterval: the amount of time since last frame
+        - timeInterval: the amount of time since last frame
     */
     private func tickObjects(_ timeInterval: TimeInterval) {
         
@@ -233,10 +228,8 @@ class Game {
      */
     private func remove(bulletAtIndex i: Int) {
         
-        print("before: \(self.bullets?.count)")
         self.bullets?[i].sprite.removeFromParent()
         self.bullets?.remove(at: i)
-        print("after: \(self.bullets?.count)")
         
     }
     
