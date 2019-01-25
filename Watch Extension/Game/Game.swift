@@ -193,15 +193,11 @@ class Game {
                 var bulletI = (bullets?.count ?? 0) - 1
                 while bulletI >= 0 {
                     
-                    if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
-                        
-                        if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
+                    if ballI < balls!.count && bulletI < bullets!.count
+                        && DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
-                            self.split(ballAtIndex: ballI)
-                            remove(bulletAtIndex: bulletI)
-                            
-                        }
-                        bulletI -= 1
+                        self.split(ballAtIndex: ballI)
+                        remove(bulletAtIndex: bulletI)
                         
                     }
                     bulletI -= 1
