@@ -27,7 +27,12 @@ class Player: CircularObject {
     /// The x-position of `self` in the scene
     var xPosition: CGFloat {
         get { return self.sprite.position.x }
-        set { self.sprite.position = CGPoint(x: newValue, y: self.sprite.position.y) }
+        set {
+            if newValue < minX { self.sprite.position = CGPoint(x: minX, y: self.sprite.position.y) }
+            if newValue > maxX { self.sprite.position = CGPoint(x: maxX, y: self.sprite.position.y) }
+            self.sprite.position = CGPoint(x: newValue, y: self.sprite.position.y)
+            
+        }
     }
     
     /// The character used for `self`
@@ -44,6 +49,12 @@ class Player: CircularObject {
     
     /// The texture of the sprite when shooting
     private var shootTexture: SKTexture
+    
+    /// The farthest right the player can move
+    private let maxX: CGFloat
+    
+    /// The farthest left the player can move
+    private let minX: CGFloat
     
     /**
      Initializes a `Player` object with a given character and screen bounds
@@ -66,6 +77,9 @@ class Player: CircularObject {
         self.radius = sprite.size.height / 2
         
         self.sprite.position = CGPoint(x: frame.midX, y: frame.minY + self.radius)
+        
+        self.minX = frame.minX
+        self.maxX = frame.maxX
         
     }
     

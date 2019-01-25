@@ -15,6 +15,9 @@ import WatchKit
  */
 class Game {
     
+    /// How much the digital crown rotational delta is multiplier by to determine amount of player movement
+    private static let CROWN_MULTIPLIER: CGFloat = 0.5
+    
     /// Pauses the game when set to `true`; defaults to `true`
     var paused: Bool = true {
         didSet { }
@@ -83,7 +86,11 @@ class Game {
         - value: A measurement of how far to move the player.
         This value is scaled to a value, and the player's x position changes by that much
     */
-    func movePlayer(_ value: Double) { }
+    func movePlayer(_ value: Double) {
+        
+        player.xPosition += CGFloat(value) * Game.CROWN_MULTIPLIER
+        
+    }
     
     /**
      Presents the game in a `WKInterfaceSKScene`
@@ -126,6 +133,104 @@ class Game {
      - Parameters:
         - timeInterval: how much time has passed since last frame
     */
-    func update(_ timeInterval: TimeInterval) {  }
+    func update(_ timeInterval: TimeInterval) {
+        
+        checkCollisions()
+        tickObjects(timeInterval)
+        
+    }
+    
+    /// Handles collision detection
+    private func checkCollisions() {
+        
+        if let bullets = self.bullets, let balls = self.balls, let player = self.player {
+            
+            let frame = self.scene.frame
+            var ballI = self.balls.count - 1
+            while ballI >= 0 {
+                
+                if balls[ballI].floorCollision(rect: frame) { balls[ballI].bounceFloor(rect: frame) }
+                else if balls[ballI].wallCollision(rect: frame) { balls[ballI].bounceWall(rect: frame) }
+                else {
+                    
+                    if Player.checkCollision(player, balls[ballI]) {
+                        
+                        handleDeath(fromBall: balls[ballI])
+                        
+                    } else {
+                        
+                        var bulletI = self.bullets.count - 1
+                        while bulletI >= 0 {
+                            
+                            if DynamicCircularObject.checkCollision(balls[ballI], bullets[bulletI]) {
+                                
+                                self.split(ballAtIndex: ballI)
+                                remove(bulletAtIndex: bulletI)
+                                
+                            }
+                            bulletI -= 1
+                            
+                        }
+                        
+                    }
+                    
+                }
+                ballI -= 1
+                
+            }
+            
+            var bulletI = self.bullets.count - 1
+            while bulletI >= 0 {
+                
+                if bullets[bulletI].floorCollision(rect: frame) {
+                    
+                    remove(bulletAtIndex: bulletI)
+                    
+                }
+                bulletI -= 1
+                
+            }
+            
+        }
+        
+    }
+    
+    /**
+     Updates balls and bullets with game tick
+     - Parameters:
+     - timeInterval: the amount of time since last frame
+    */
+    private func tickObjects(_ timeInterval: TimeInterval) {
+        
+        for ball in balls ?? [] { ball.tick(time: CGFloat(timeInterval)) }
+        for bullet in bullets ?? [] { bullet.tick(time: CGFloat(timeInterval)) }
+        
+    }
+    
+    /**
+     Splits the ball at the given index
+     - Parameters:
+        - i: the index in `balls` of the ball to be split
+    */
+    private func split(ballAtIndex i: Int) { }
+    
+    /**
+     Removes the bullet at the given index from game
+     - Parameters:
+        - i: the index in `bullets` of the bullet to be removed
+     */
+    private func remove(bulletAtIndex i: Int) {
+        
+        self.bullets[i].sprite.removeFromParent()
+        self.bullets.remove(at: i)
+        
+    }
+    
+    /**
+     Handles a player death
+     - Parameters:
+        - fromBall: the ball the player was hit by
+    */
+    private func handleDeath(fromBall: Ball) { }
     
 }
