@@ -15,6 +15,9 @@ class Player: CircularObject {
     var radius: CGFloat
     var position: CGPoint { return CGPoint.zero }
     
+    /// Returns the position of the mouth
+    var mouth: CGFloat { return position.y + radius/2 }
+    
     /// The x-position of `self` in the scene
     var xPosition: CGFloat {
         get { return 0 }
@@ -34,4 +37,6 @@ class Player: CircularObject {
     */
     init(person: Person, frame: CGRect) { self.character = person; self.sprite = SKNode(); self.radius = 0 }
     
+    
 }
+

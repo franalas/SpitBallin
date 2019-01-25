@@ -20,10 +20,11 @@ class Bullet: DynamicCircularObject {
         - velocity: Represents the velocity of the object relative to scene
         - acceleration: Represents the acceleration of the object relative to scene
     */
-    init(radius: CGFloat = 0, position:CGPoint = CGPoint.zero, velocity: CGVector = CGVector.zero, acceleration: CGVector = CGVector.zero) {
+    init(position:CGPoint = CGPoint.zero, velocity: CGVector = CGVector.zero, acceleration: CGVector = CGVector.zero) {
         
         let spitTexture = SKTexture(imageNamed: "spit")
         let sprite = SKSpriteNode(texture: spitTexture)
+        let radius = spitTexture.size().height/2
         
         super.init(sprite: sprite, radius: radius, position: position, velocity: velocity, acceleration: acceleration)
         
