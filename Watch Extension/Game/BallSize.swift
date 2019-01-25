@@ -28,19 +28,19 @@ enum BallSize: Int {
     case five = 5
     
     /// The y velocity at which the ball bounces off the floor
-    var bounceSpeed: CGFloat {
+    var bounceHeight: CGFloat {
         
         switch self {
         case .one:
-            return 0.1
-        case .two:
-            return 0.15
-        case .three:
-            return 0.2
-        case .four:
-            return 0.25
-        case .five:
             return 0.3
+        case .two:
+            return 0.4
+        case .three:
+            return 0.5
+        case .four:
+            return 0.6
+        case .five:
+            return 0.7
         }
         
     }

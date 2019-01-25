@@ -12,7 +12,7 @@ import SpriteKit
 class Player: CircularObject {
     
     /// How tall the player is by default
-    private static let HEIGHT: CGFloat = 0.2
+    private static let HEIGHT: CGFloat = 0.225
     
     /// How long the shoot animation lasts
     private static let SHOT_LENGTH = 0.5

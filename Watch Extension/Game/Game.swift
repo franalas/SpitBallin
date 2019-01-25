@@ -65,7 +65,9 @@ class Game {
         
         self.bullets = []
         
-        self.balls = [Ball(ballSize: .two, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
+        self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5)),
+        Ball(ballSize: .two, color: .red, position: CGPoint(x: 0.4, y: 0.5)),
+        Ball(ballSize: .three, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
         for ball in balls ?? [] { self.scene.addChild(ball.sprite) }
         
     }
@@ -160,7 +162,7 @@ class Game {
                     var bulletI = (bullets?.count ?? 0) - 1
                     while bulletI >= 0 {
                         
-                        if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
+                        if ballI >= 0 && ballI < balls!.count && bulletI >= 0 && bulletI < bullets!.count && DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
                             self.split(ballAtIndex: ballI)
                             remove(bulletAtIndex: bulletI)

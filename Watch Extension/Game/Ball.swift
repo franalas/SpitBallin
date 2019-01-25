@@ -13,13 +13,13 @@ import SpriteKit
 class Ball: DynamicCircularObject {
     
     /// Represents initial velocity of any Ball
-    private static let SPEED: CGFloat = 0.1
+    private static let SPEED: CGFloat = 0.2
     
     /// Represents initial gravity of any Ball
-    private static let GRAVITY: CGFloat = -0.1
+    private static let GRAVITY: CGFloat = -0.2
     
     /// Represents velocity added to any Ball activated by split
-    private static let YSPLIT: CGFloat = 0.1
+    private static let YSPLIT: CGFloat = 0.11
     
     /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
     let ballSize: BallSize?
@@ -65,7 +65,7 @@ class Ball: DynamicCircularObject {
         
         if floorCollision(rect: rect) {
             
-            self.velocity.dy = ballSize!.bounceSpeed
+            self.velocity.dy = sqrt(ballSize!.bounceHeight * -2 * self.acceleration.dy)
             
         }
         
@@ -75,8 +75,12 @@ class Ball: DynamicCircularObject {
     func bounceWall(rect: CGRect) {
         
         if wallCollision(rect: rect) {
-            
-            self.velocity.dx *= -1
+            let positionHolder = position.x > rect.midX
+            if positionHolder {
+                self.velocity.dx = -abs(velocity.dx)
+            } else{
+                self.velocity.dx = abs(velocity.dx)
+            }
             
         }
         
