@@ -69,6 +69,7 @@ class Game {
         let bullet = Bullet(position: CGPoint(x: player.mouth, y: 0))
         self.scene.addChild(bullet.sprite)
         self.bullets.append(bullet)
+        self.player.animateShot()
         
     }
     

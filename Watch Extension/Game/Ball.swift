@@ -12,8 +12,14 @@ import SpriteKit
 /// Represents a Ball, purpose is to bounce around screen and interact with Player and Bullet
 class Ball: DynamicCircularObject {
     
+    /// Represents initial velocity of any Ball
     private static let SPEED: CGFloat = 0.1
+    
+    /// Represents initial gravity of any Ball
     private static let GRAVITY: CGFloat = -0.1
+    
+    /// Represents velocity added to any Ball activated by split
+    private static let YSPLIT: CGFloat = 0.1
     
     /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
     let ballSize: BallSize?
@@ -73,6 +79,21 @@ class Ball: DynamicCircularObject {
             
         }
         
+    }
+    
+    /// Removes self and adds 2 Balls to scene or just removes self
+    func split() -> (Ball, Ball)? {
+        if let ballSize = self.ballSize {
+            if let nextBall = ballSize.nextBall {
+                let ball1 = Ball.init(ballSize: nextBall, color: self.color, position: position, speed:(-1 * self.velocity.dy + Ball.YSPLIT), gravity: acceleration.dy)
+                let ball2 = Ball.init(ballSize: nextBall, color: self.color, position: position, gravity: acceleration.dy)
+                ball1.velocity = CGVector(dx: self.velocity.dx, dy: -1 * self.velocity.dy + Ball.YSPLIT)
+                ball2.velocity = CGVector(dx: self.velocity.dx, dy: self.velocity.dy + Ball.YSPLIT)
+                return (ball1, ball2)
+            }
+            
+        }
+        return nil
     }
     
 }
