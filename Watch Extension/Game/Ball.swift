@@ -20,15 +20,18 @@ class Ball: DynamicCircularObject {
     /**
      Initializes a Ball, child of DynamicCircularObject. Represents the bouncing balls in game.
      - Parameters:
-        - ballSize: Represents all characteristics of the ball
-        - color: Represents color of the Ball
-    */
-    init(ballSize: BallSize, color: UIColor) {
+     - ballSize: Represents all characteristics of the ball
+     - color: Represents color of the Ball
+     */
+    init(ballSize: BallSize, color: UIColor, position: CGPoint = CGPoint.zero, velocity: CGVector = CGVector.zero, acceleration: CGVector = CGVector.zero) {
         
         self.ballSize = ballSize
         self.color = color
-
-        super.init(sprite: SKNode.init(), radius: ballSize.radius, position: CGPoint.zero, velocity: CGVector.zero, acceleration: CGVector.zero)
+        let sprite = SKShapeNode(circleOfRadius: ballSize.radius)
+        sprite.fillColor = color
+        sprite.position = position
+        
+        super.init(sprite: sprite, radius: ballSize.radius, position: position, velocity: velocity, acceleration: acceleration)
         
     }
     
