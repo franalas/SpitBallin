@@ -13,10 +13,7 @@ import SpriteKit
 class Bullet: DynamicCircularObject {
     
     /// The default initial speed
-    private static let SPEED: CGFloat = 0.5
-    
-    /// The default initial gravity
-    private static let GRAVITY: CGFloat = -0.5
+    private static let SPEED: CGFloat = 2
     
     /// The default radius
     private static let RADIUS: CGFloat = 0.1
@@ -35,10 +32,10 @@ class Bullet: DynamicCircularObject {
      Initializes Bullet. Represents the shot taken by Player to destroy a Ball
      - Parameters:
         - position: The location of `self` in the scene
+        - speed: The height of the screen
         - speed: The initial upwards velocity of `self`
-        - gravity: The acceleration of gravity acting on `self`
     */
-    init(position: CGPoint = CGPoint.zero, speed: CGFloat = Bullet.SPEED, gravity: CGFloat = Bullet.GRAVITY) {
+    init(position: CGPoint = CGPoint.zero, distanceToTop: CGFloat, speed: CGFloat = Bullet.SPEED) {
         
         let spitTexture = SKTexture(imageNamed: Bullet.SPRITE_IMAGE)
         let height = Bullet.RADIUS
@@ -46,6 +43,7 @@ class Bullet: DynamicCircularObject {
         let sprite = SKSpriteNode(texture: spitTexture, size: CGSize(width: width, height: height))
         let radius = height / 2
         
+        let gravity = -speed*speed / (2 * (distanceToTop - radius))
         super.init(sprite: sprite, radius: radius, position: position,
                    velocity: CGVector(dx: 0, dy: speed), acceleration: CGVector(dx: 0, dy: gravity))
         
@@ -62,3 +60,5 @@ class Bullet: DynamicCircularObject {
     }
     
 }
+
+// -s^2 / 2d = a

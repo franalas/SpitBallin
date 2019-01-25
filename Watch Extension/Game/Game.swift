@@ -73,7 +73,7 @@ class Game {
     /// Shoots a bullet out of the player
     func shoot() {
         
-        let bullet = Bullet(position: player.mouth)
+        let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
         self.scene.addChild(bullet.sprite)
         self.bullets?.append(bullet)
         self.player.animateShot()
