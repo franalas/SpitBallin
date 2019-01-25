@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9831A90221FA77730090A21F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831A90121FA77730090A21F /* Game.swift */; };
 		9831A90521FA7CD20090A21F /* CircularObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831A90421FA7CD20090A21F /* CircularObject.swift */; };
+		983A62E621FAF2DF0009C4BF /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A62E521FAF2DF0009C4BF /* Level.swift */; };
 		984BB7DE21F8392C001536A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB7DD21F8392C001536A1 /* AppDelegate.swift */; };
 		984BB7E021F8392C001536A1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 984BB7DF21F8392C001536A1 /* GameScene.sks */; };
 		984BB7E221F8392C001536A1 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 984BB7E121F8392C001536A1 /* Actions.sks */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		9831A90121FA77730090A21F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		9831A90421FA7CD20090A21F /* CircularObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularObject.swift; sourceTree = "<group>"; };
+		983A62E521FAF2DF0009C4BF /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		984BB7DA21F8392C001536A1 /* BubbleTrouble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleTrouble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984BB7DD21F8392C001536A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		984BB7DF21F8392C001536A1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				CDD9C60B21FA8B150061FF85 /* Ball.swift */,
 				CDD9C60F21FA94BA0061FF85 /* Bullet.swift */,
 				98E529B121FAC202009830FA /* GameScene.swift */,
+				983A62E521FAF2DF0009C4BF /* Level.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				983A62E621FAF2DF0009C4BF /* Level.swift in Sources */,
 				984BB80921F8395C001536A1 /* InterfaceController.swift in Sources */,
 				CDD9C60A21FA83050061FF85 /* DynamicCircularObject.swift in Sources */,
 				984BB81121F8395C001536A1 /* NotificationController.swift in Sources */,
