@@ -56,6 +56,19 @@ class InterfaceController: WKInterfaceController {
         
     }
     
+    @IBAction func switchAction() {
+        
+        if let game = self.game {
+            switch game.character {
+            case .liam:
+                game.character = .fran
+            case .fran:
+                game.character = .liam
+            }
+        }
+        
+    }
+    
 }
 
 extension InterfaceController: WKCrownDelegate {

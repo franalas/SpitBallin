@@ -41,6 +41,11 @@
                                     <action selector="restartAction" destination="AgC-eL-Hgc" id="zBS-yO-ggo"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Switch Character" icon="shuffle" id="JR2-x4-jtr" userLabel="Switch Character">
+                                <connections>
+                                    <action selector="switchAction" destination="AgC-eL-Hgc" id="3c4-QT-X3w"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
