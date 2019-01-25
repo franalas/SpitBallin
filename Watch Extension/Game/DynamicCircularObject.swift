@@ -16,7 +16,14 @@ class DynamicCircularObject: CircularObject {
     
     let radius: CGFloat
     
-    var position: CGPoint
+    var position: CGPoint {
+        get {
+            return sprite.position
+        }
+        set {
+            sprite.position = newValue
+        }
+    }
     
     /// Represents velocity of self in scene
     var velocity: CGVector
@@ -37,7 +44,7 @@ class DynamicCircularObject: CircularObject {
         
         self.sprite = sprite
         self.radius = radius
-        self.position = position
+        self.sprite.position = position
         self.velocity = velocity
         self.acceleration = acceleration
         
