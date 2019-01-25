@@ -12,6 +12,9 @@ import SpriteKit
 /// Represents a Ball, purpose is to bounce around screen and interact with Player and Bullet
 class Ball: DynamicCircularObject {
     
+    private static let SPEED: CGFloat = 0.1
+    private static let GRAVITY: CGFloat = -0.1
+    
     /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
     let ballSize: BallSize?
     
@@ -25,11 +28,11 @@ class Ball: DynamicCircularObject {
         - color: Represents color of the Ball
         - radius: Represents the radius of the object relative to scene
         - position: Represents the (x,y) position of object relative to scene
-        - velocity: Represents the velocity of the object relative to scene
-        - acceleration: Represents the acceleration of the object relative to scene
+        - speed: How fast the ball moves left and right
+        - gravity: The acceleration of gravity that acts on the ball
      */
-    init(ballSize: BallSize, color: UIColor, position: CGPoint = CGPoint.zero, velocity: CGVector = CGVector.zero,
-         acceleration: CGVector = CGVector.zero) {
+    init(ballSize: BallSize, color: UIColor, position: CGPoint = CGPoint.zero,
+         speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY) {
         
         self.ballSize = ballSize
         self.color = color
@@ -37,7 +40,8 @@ class Ball: DynamicCircularObject {
         sprite.fillColor = color
         sprite.position = position
         
-        super.init(sprite: sprite, radius: ballSize.radius, position: position, velocity: velocity, acceleration: acceleration)
+        super.init(sprite: sprite, radius: ballSize.radius, position: position,
+                   velocity: CGVector(dx: speed, dy: 0), acceleration: CGVector(dx: 0, dy: gravity))
         
     }
     

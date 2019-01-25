@@ -58,7 +58,7 @@ class Game {
         self.scene.addChild(self.player.sprite)
         self.bullets = []
         
-        self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5), velocity: CGVector(dx: -0.1, dy: 0.0), acceleration: CGVector(dx: 0.0, dy: -0.1))]
+        self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
         for ball in balls { self.scene.addChild(ball.sprite) }
         
     }
