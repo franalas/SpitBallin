@@ -26,6 +26,9 @@
 		984BB81321F8395D001536A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984BB81221F8395D001536A1 /* Assets.xcassets */; };
 		984BB81821F8395D001536A1 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 984BB7F721F8395B001536A1 /* Watch.app */; };
 		CDD9C60A21FA83050061FF85 /* DynamicCircularObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */; };
+		CDD9C60C21FA8B150061FF85 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60B21FA8B150061FF85 /* Ball.swift */; };
+		CDD9C60E21FA8C4E0061FF85 /* BallSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60D21FA8C4E0061FF85 /* BallSize.swift */; };
+		CDD9C61021FA94BA0061FF85 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60F21FA94BA0061FF85 /* Bullet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		984BB81421F8395D001536A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984BB81521F8395D001536A1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCircularObject.swift; sourceTree = "<group>"; };
+		CDD9C60B21FA8B150061FF85 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		CDD9C60D21FA8C4E0061FF85 /* BallSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BallSize.swift; path = ../../../../BallSize.swift; sourceTree = "<group>"; };
+		CDD9C60F21FA94BA0061FF85 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,9 @@
 				9831A90121FA77730090A21F /* Game.swift */,
 				9831A90421FA7CD20090A21F /* CircularObject.swift */,
 				CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */,
+				CDD9C60D21FA8C4E0061FF85 /* BallSize.swift */,
+				CDD9C60B21FA8B150061FF85 /* Ball.swift */,
+				CDD9C60F21FA94BA0061FF85 /* Bullet.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -334,7 +343,10 @@
 				984BB81121F8395C001536A1 /* NotificationController.swift in Sources */,
 				984BB80F21F8395C001536A1 /* ExtensionDelegate.swift in Sources */,
 				9831A90521FA7CD20090A21F /* CircularObject.swift in Sources */,
+				CDD9C60C21FA8B150061FF85 /* Ball.swift in Sources */,
 				9831A90221FA77730090A21F /* Game.swift in Sources */,
+				CDD9C60E21FA8C4E0061FF85 /* BallSize.swift in Sources */,
+				CDD9C61021FA94BA0061FF85 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

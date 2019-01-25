@@ -1,0 +1,65 @@
+//
+//  Ball.swift
+//  Watch Extension
+//
+//  Created by Francisco Turdera on 1/24/19.
+//  Copyright © 2019 William Stevenson. All rights reserved.
+//
+
+import Foundation
+import SpriteKit
+
+class Ball: DynamicCircularObject {
+    
+    /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
+    let ballSize: BallSize?
+    
+    /// Represent the color of the Ball
+    let color: UIColor
+    
+    /**
+     Initializes a Ball, child of DynamicCircularObject. Represents the bouncing balls in game.
+     - Parameters:
+        - ballSize: Represents all characteristics of the ball
+        - color: Represents color of the Ball
+    */
+    init(ballSize: BallSize, color: UIColor) {
+        
+        self.ballSize = ballSize
+        self.color = color
+
+        super.init(sprite: SKNode.init(), radius: ballSize.radius, position: CGPoint.zero, velocity: CGVector.zero, acceleration: CGVector.zero)
+        
+    }
+    
+    /// Returns true if the ball is making contact with either side (left or right) of the screen, false otherwise
+    func wallCollision(rect: CGRect) -> Bool {
+        if position.x <= rect.minX + self.radius || position.x >= rect.maxX - self.radius {
+            return true
+        }
+        return false
+    }
+    
+    /// Changes velocity.dy if Ball is in contact with floor
+    func bounceFloor(rect: CGRect) {
+        
+        if floorCollision(rect: rect) {
+            
+            self.velocity.dy = ballSize!.bounceSpeed
+            
+        }
+        
+    }
+    
+    /// Changes velocity.dx if Ball is in contact with wall
+    func bounceWall(rect: CGRect) {
+        
+        if wallCollision(rect: rect) {
+            
+            self.velocity.dx *= -1
+            
+        }
+        
+    }
+    
+}

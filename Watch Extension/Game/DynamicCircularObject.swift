@@ -27,11 +27,11 @@ class DynamicCircularObject: CircularObject {
     /**
      Initializes a Dynamic Circular Object, this serves as parent class for Ball and Bullet
      - Parameters:
-     - sprite: Represents the image associated with the object
-     - radius: Represents the radius of the object relative to scene
-     - position: Represents the (x,y) position of object relative to scene
-     - velocity: Represents the velocity of the object relative to scene
-     - acceleration: Represents the acceleration of the object relative to scene
+        - sprite: Represents the image associated with the object
+        - radius: Represents the radius of the object relative to scene
+        - position: Represents the (x,y) position of object relative to scene
+        - velocity: Represents the velocity of the object relative to scene
+        - acceleration: Represents the acceleration of the object relative to scene
      */
     init(sprite: SKNode, radius: CGFloat, position: CGPoint, velocity: CGVector, acceleration: CGVector) {
         
