@@ -25,6 +25,7 @@
 		984BB81121F8395C001536A1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984BB81021F8395C001536A1 /* NotificationController.swift */; };
 		984BB81321F8395D001536A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984BB81221F8395D001536A1 /* Assets.xcassets */; };
 		984BB81821F8395D001536A1 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 984BB7F721F8395B001536A1 /* Watch.app */; };
+		CDD9C60A21FA83050061FF85 /* DynamicCircularObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		984BB81221F8395D001536A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		984BB81421F8395D001536A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984BB81521F8395D001536A1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCircularObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				9831A90121FA77730090A21F /* Game.swift */,
 				9831A90421FA7CD20090A21F /* CircularObject.swift */,
+				CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				984BB80921F8395C001536A1 /* InterfaceController.swift in Sources */,
+				CDD9C60A21FA83050061FF85 /* DynamicCircularObject.swift in Sources */,
 				984BB81121F8395C001536A1 /* NotificationController.swift in Sources */,
 				984BB80F21F8395C001536A1 /* ExtensionDelegate.swift in Sources */,
 				9831A90521FA7CD20090A21F /* CircularObject.swift in Sources */,
