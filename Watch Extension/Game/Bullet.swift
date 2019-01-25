@@ -9,14 +9,23 @@
 import Foundation
 import SpriteKit
 
+/// Represents a shot fired from the Player. Interacts with Ball
 class Bullet: DynamicCircularObject {
     
     /**
      Initializes Bullet. Represents the shot taken by Player to destroy a Ball
+     - Parameters:
+        - radius: Represents the radius of the object relative to scene
+        - position: Represents the (x,y) position of object relative to scene
+        - velocity: Represents the velocity of the object relative to scene
+        - acceleration: Represents the acceleration of the object relative to scene
     */
-    init() {
+    init(radius: CGFloat = 0, position:CGPoint = CGPoint.zero, velocity: CGVector = CGVector.zero, acceleration: CGVector = CGVector.zero) {
         
-        super.init(sprite: SKNode.init(), radius: 0, position: CGPoint.zero, velocity: CGVector.zero, acceleration: CGVector.zero)
+        let spitTexture = SKTexture(imageNamed: "spit")
+        let sprite = SKSpriteNode(texture: spitTexture)
+        
+        super.init(sprite: sprite, radius: radius, position: position, velocity: velocity, acceleration: acceleration)
         
     }
     

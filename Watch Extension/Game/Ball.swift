@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+/// Represents a Ball, purpose is to bounce around screen and interact with Player and Bullet
 class Ball: DynamicCircularObject {
     
     /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
@@ -20,8 +21,12 @@ class Ball: DynamicCircularObject {
     /**
      Initializes a Ball, child of DynamicCircularObject. Represents the bouncing balls in game.
      - Parameters:
-     - ballSize: Represents all characteristics of the ball
-     - color: Represents color of the Ball
+        - ballSize: Represents all characteristics of the ball
+        - color: Represents color of the Ball
+        - radius: Represents the radius of the object relative to scene
+        - position: Represents the (x,y) position of object relative to scene
+        - velocity: Represents the velocity of the object relative to scene
+        - acceleration: Represents the acceleration of the object relative to scene
      */
     init(ballSize: BallSize, color: UIColor, position: CGPoint = CGPoint.zero, velocity: CGVector = CGVector.zero,
          acceleration: CGVector = CGVector.zero) {

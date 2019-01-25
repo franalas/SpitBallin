@@ -12,10 +12,17 @@ import SpriteKit
 /// Parent dynamic object, extended onto Ball and Bullet
 class DynamicCircularObject: CircularObject {
     
+    /// Represents the image associated with the object
     var sprite: SKNode
     
+    /// Represents the radius of the object relative to scene
     let radius: CGFloat
     
+    /**
+     Represents the (x,y) position of object relative to scene
+     - get: returns the position of the sprite
+     - set: sets the position of sprite to given value
+    */
     var position: CGPoint {
         get {
             return sprite.position
