@@ -16,7 +16,7 @@ class Bullet: DynamicCircularObject {
     private static let SPEED: CGFloat = 0.5
     
     /// The default initial gravity
-    private static let GRAVITY: CGFloat = -0.1
+    private static let GRAVITY: CGFloat = -0.5
     
     /// The default radius
     private static let RADIUS: CGFloat = 0.1
@@ -37,7 +37,7 @@ class Bullet: DynamicCircularObject {
         let height = Bullet.RADIUS
         let width = height * spitTexture.size().width / spitTexture.size().height
         let sprite = SKSpriteNode(texture: spitTexture, size: CGSize(width: width, height: height))
-        let radius = spitTexture.size().height / 2
+        let radius = height / 2
         
         super.init(sprite: sprite, radius: radius, position: position,
                    velocity: CGVector(dx: 0, dy: speed), acceleration: CGVector(dx: 0, dy: gravity))

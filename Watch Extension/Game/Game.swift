@@ -35,10 +35,10 @@ class Game {
     private var player: Player!
     
     /// All bullets in the scene
-    private var bullets: [Bullet]!
+    private var bullets: [Bullet]?
     
     /// All bullets in the scene
-    private var balls: [Ball]!
+    private var balls: [Ball]?
     
     /**
      Initializes a game with a given scene size and starting character
@@ -66,7 +66,7 @@ class Game {
         self.bullets = []
         
         self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
-        for ball in balls { self.scene.addChild(ball.sprite) }
+        for ball in balls ?? [] { self.scene.addChild(ball.sprite) }
         
     }
     
@@ -75,7 +75,7 @@ class Game {
         
         let bullet = Bullet(position: player.mouth)
         self.scene.addChild(bullet.sprite)
-        self.bullets.append(bullet)
+        self.bullets?.append(bullet)
         self.player.animateShot()
         
     }
@@ -146,7 +146,7 @@ class Game {
         if let bullets = self.bullets, let balls = self.balls, let player = self.player {
             
             let frame = self.scene.frame
-            var ballI = self.balls.count - 1
+            var ballI = balls.count - 1
             while ballI >= 0 {
                 
                 if balls[ballI].floorCollision(rect: frame) { balls[ballI].bounceFloor(rect: frame) }
@@ -159,7 +159,7 @@ class Game {
                         
                     } else {
                         
-                        var bulletI = self.bullets.count - 1
+                        var bulletI = bullets.count - 1
                         while bulletI >= 0 {
                             
                             if DynamicCircularObject.checkCollision(balls[ballI], bullets[bulletI]) {
@@ -179,7 +179,7 @@ class Game {
                 
             }
             
-            var bulletI = self.bullets.count - 1
+            var bulletI = bullets.count - 1
             while bulletI >= 0 {
                 
                 if bullets[bulletI].floorCollision(rect: frame) {
@@ -212,7 +212,18 @@ class Game {
      - Parameters:
         - i: the index in `balls` of the ball to be split
     */
-    private func split(ballAtIndex i: Int) { }
+    private func split(ballAtIndex i: Int) {
+        
+        if let (nextA, nextB) = balls?[i].split() {
+            self.balls?.append(nextA)
+            self.balls?.append(nextB)
+            self.scene.addChild(nextA.sprite)
+            self.scene.addChild(nextB.sprite)
+        }
+        balls?[i].sprite.removeFromParent()
+        balls?.remove(at: i)
+        
+    }
     
     /**
      Removes the bullet at the given index from game
@@ -221,8 +232,8 @@ class Game {
      */
     private func remove(bulletAtIndex i: Int) {
         
-        self.bullets[i].sprite.removeFromParent()
-        self.bullets.remove(at: i)
+        self.bullets?[i].sprite.removeFromParent()
+        self.bullets?.remove(at: i)
         
     }
     
