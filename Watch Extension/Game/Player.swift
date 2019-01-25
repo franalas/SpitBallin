@@ -47,7 +47,7 @@ class Player: CircularObject {
         - person: The character that the player should be
         - frame: The bounds of the screen
     */
-    init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
+    public init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
         
         self.character = person
         
@@ -65,6 +65,8 @@ class Player: CircularObject {
         
     }
     
+    /// Animates the player shooting
+    public func animateShot() { }
     
 }
 
