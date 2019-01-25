@@ -75,7 +75,7 @@ extension InterfaceController: WKCrownDelegate {
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        
+        game?.movePlayer(rotationalDelta)
         
     }
     

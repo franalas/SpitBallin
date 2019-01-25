@@ -29,8 +29,8 @@ class Player: CircularObject {
         get { return self.sprite.position.x }
         set {
             if newValue < minX { self.sprite.position = CGPoint(x: minX, y: self.sprite.position.y) }
-            if newValue > maxX { self.sprite.position = CGPoint(x: maxX, y: self.sprite.position.y) }
-            self.sprite.position = CGPoint(x: newValue, y: self.sprite.position.y)
+            else if newValue > maxX { self.sprite.position = CGPoint(x: maxX, y: self.sprite.position.y) }
+            else { self.sprite.position = CGPoint(x: newValue, y: self.sprite.position.y) }
             
         }
     }
@@ -78,8 +78,8 @@ class Player: CircularObject {
         
         self.sprite.position = CGPoint(x: frame.midX, y: frame.minY + self.radius)
         
-        self.minX = frame.minX
-        self.maxX = frame.maxX
+        self.minX = frame.minX + radius
+        self.maxX = frame.maxX - radius
         
     }
     
