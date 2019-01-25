@@ -22,16 +22,46 @@ class Game {
     
     /// The character of the player
     var character: Person {
-        get { return Person.liam }
-        set { }
+        get { return player.character }
+        set { player.character = newValue }
     }
     
+    /// The SKScene that the game is in
+    private var scene: SKScene
+    
+    /// The player on the bottom of the screen
+    private var player: Player!
+    
+    /// All bullets in the scene
+    private var bullets: [Bullet]!
+    
+    /// All bullets in the scene
+    private var balls: [Ball]!
+    
     /**
-     Initializes a game with a given scene size
+     Initializes a game with a given scene size and starting character
      - Parameters:
         - size: the size of the game scene
+        - person: the player's starting character
     */
-    init(size: CGSize) { }
+    init(size: CGSize, person: Person) {
+        
+        self.scene = SKScene(size: size)
+        self.setupGame()
+        
+    }
+    
+    /// Sets up game with its initial state
+    private func setupGame() {
+        
+        self.player = Player(person: self.character, frame: self.scene.frame)
+        self.scene.addChild(self.player.sprite)
+        self.bullets = []
+        
+        self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5), velocity: CGVector(dx: -0.1, dy: 0.0), acceleration: CGVector(dx: 0.0, dy: -0.1))]
+        for ball in balls { self.scene.addChild(ball.sprite) }
+        
+    }
     
     /// Shoots a bullet out of the player
     public func shoot() { }
@@ -58,6 +88,25 @@ class Game {
     /**
      Resets the game back to its initial state
     */
-    func restart() { }
+    func restart() {
+        
+        self.player?.sprite.removeFromParent()
+        self.player = nil
+        
+        if let bullets = bullets {
+            for bullet in bullets {
+                bullet.sprite.removeFromParent()
+            }
+            self.bullets = nil
+        }
+        
+        if let balls = balls {
+            for ball in balls {
+                ball.sprite.removeFromParent()
+            }
+            self.balls = nil
+        }
+        
+    }
     
 }

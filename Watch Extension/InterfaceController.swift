@@ -20,7 +20,7 @@ class InterfaceController: WKInterfaceController {
         
         crownSequencer.delegate = self
         
-        self.game = Game(size: CGSize(width: 1, height: 1))
+        self.game = Game(size: CGSize(width: 1, height: 1), person: .liam)
         self.game!.present(inInterface: self.skInterface)
         
     }
