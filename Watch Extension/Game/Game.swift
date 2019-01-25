@@ -40,6 +40,9 @@ class Game {
     /// All bullets in the scene
     private var balls: [Ball]?
     
+    /// The current level of the game
+    private(set) var currentLevel: LevelNumber?
+    
     /**
      Initializes a game with a given scene size and starting character
      - Parameters:
@@ -50,6 +53,7 @@ class Game {
         
         let gameScene = GameScene(size: size)
         self.scene = gameScene
+        gameScene.backgroundColor = .black
         self.scene.scaleMode = .aspectFit
         self.character = person
         gameScene.game = self
@@ -65,9 +69,8 @@ class Game {
         
         self.bullets = []
         
-        self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5)),
-        Ball(ballSize: .two, color: .red, position: CGPoint(x: 0.4, y: 0.5)),
-        Ball(ballSize: .three, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
+        self.currentLevel = .one
+        self.balls = currentLevel!.makeLevel()
         for ball in balls ?? [] { self.scene.addChild(ball.sprite) }
         
     }
@@ -136,6 +139,22 @@ class Game {
         
     }
     
+    /// Loads the next level of the game; assumes all balls have been removed
+    func loadNextLevel() {
+        
+        for bullet in bullets ?? [] {
+            bullet.sprite.removeFromParent()
+        }
+        self.bullets = []
+        
+        self.player.xPosition = 0.5
+        
+        self.currentLevel = (self.currentLevel ?? .one).nextLevel
+        self.balls = self.currentLevel!.makeLevel()
+        for ball in self.balls! { self.scene.addChild(ball.sprite) }
+        
+    }
+    
     /**
      Handles frame updates
      - Parameters:
@@ -173,7 +192,7 @@ class Game {
                     
                     if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                         
-                        if ballI >= 0 && ballI < balls!.count && bulletI >= 0 && bulletI < bullets!.count && DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
+                        if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
                             self.split(ballAtIndex: ballI)
                             remove(bulletAtIndex: bulletI)
@@ -234,6 +253,8 @@ class Game {
         balls?[i].sprite.removeFromParent()
         balls?.remove(at: i)
         
+        if (self.balls?.count ?? 1) == 0 { loadNextLevel() }
+        
     }
     
     /**
@@ -243,6 +264,7 @@ class Game {
      */
     private func remove(bulletAtIndex i: Int) {
         
+        guard i >= 0 && i < (self.bullets?.count ?? 0) else { return }
         self.bullets?[i].sprite.removeFromParent()
         self.bullets?.remove(at: i)
         
@@ -253,6 +275,10 @@ class Game {
      - Parameters:
         - fromBall: the ball the player was hit by
     */
-    private func handleDeath(fromBall: Ball) { }
+    private func handleDeath(fromBall: Ball) {
+        
+        self.restart()
+        
+    }
     
 }
