@@ -19,9 +19,7 @@ class Game {
     private static let CROWN_MULTIPLIER: CGFloat = 0.5
     
     /// Pauses the game when set to `true`; defaults to `true`
-    var paused: Bool = true {
-        didSet { }
-    }
+    var paused: Bool = true
     
     /// The character of the player
     var character: Person {
@@ -44,7 +42,7 @@ class Game {
     private(set) var currentLevel: LevelNumber?
     
     /// The maximum number of shots allowed on the screen at a time
-    private let MAXSHOTS = 3
+    private static let MAXSHOTS = 3
     
     /**
      Initializes a game with a given scene size and starting character
@@ -81,11 +79,12 @@ class Game {
     /// Shoots a bullet out of the player
     func shoot() {
         
-        if !paused && self.bullets!.count < MAXSHOTS {
-            
+        if !paused && self.bullets!.count < Game.MAXSHOTS {
+                
             let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
             self.scene.addChild(bullet.sprite)
             self.bullets?.append(bullet)
+            self.player.currentlyShut = self.bullets!.count >= Game.MAXSHOTS
             self.player.animateShot()
             
         }
@@ -181,6 +180,7 @@ class Game {
         var ballI = (balls?.count ?? 0) - 1
         while ballI >= 0 { //check if ball collides with player or any bullets
             
+            if ballI < 0 || ballI >= balls!.count { break }
             balls![ballI].bounceFloor(rect: frame)
             balls![ballI].bounceWall(rect: frame)
                 
@@ -193,8 +193,8 @@ class Game {
                 var bulletI = (bullets?.count ?? 0) - 1
                 while bulletI >= 0 {
                     
-                    if ballI < balls!.count && bulletI < bullets!.count
-                        && DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
+                    if bulletI < 0 || bulletI >= bullets!.count { break }
+                    if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
                         self.split(ballAtIndex: ballI)
                         remove(bulletAtIndex: bulletI)
@@ -266,6 +266,8 @@ class Game {
         guard i >= 0 && i < (self.bullets?.count ?? 0) else { return }
         self.bullets?[i].sprite.removeFromParent()
         self.bullets?.remove(at: i)
+        
+        if (self.bullets?.count ?? 0) < Game.MAXSHOTS { self.player.currentlyShut = false }
         
     }
     

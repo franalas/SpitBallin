@@ -40,6 +40,7 @@ class Player: CircularObject {
         didSet {
             self.standardTexture = SKTexture(imageNamed: character.normalImage())
             self.shootTexture = SKTexture(imageNamed: character.shootImage())
+            self.shutTexture = SKTexture(imageNamed: character.shutImage())
             (self.sprite as! SKSpriteNode).texture = self.standardTexture
         }
     }
@@ -49,6 +50,16 @@ class Player: CircularObject {
     
     /// The texture of the sprite when shooting
     private var shootTexture: SKTexture
+    
+    /// The texture of the sprite when max bullets are in the air
+    private var shutTexture: SKTexture
+    
+    /// Tracks whether the current texture is shut or unshut
+    var currentlyShut: Bool {
+        didSet {
+            if oldValue && !currentlyShut { (self.sprite as? SKSpriteNode)?.run(.setTexture(self.standardTexture)) }
+        }
+    }
     
     /// The farthest right the player can move
     private let maxX: CGFloat
@@ -68,15 +79,17 @@ class Player: CircularObject {
         
         self.standardTexture = SKTexture(imageNamed: person.normalImage())
         self.shootTexture = SKTexture(imageNamed: person.shootImage())
+        self.shutTexture = SKTexture(imageNamed: person.shutImage())
+        currentlyShut = false
         
         let width = height * standardTexture.size().width / standardTexture.size().height
         
         let sprite = SKSpriteNode(texture: self.standardTexture, size: CGSize(width: width, height: height))
         self.sprite = sprite
         
-        self.radius = sprite.size.height / 2
+        self.radius = sprite.size.height / 4
         
-        self.sprite.position = CGPoint(x: frame.midX, y: frame.minY + self.radius)
+        self.sprite.position = CGPoint(x: frame.midX, y: frame.minY + sprite.size.height / 2)
         
         self.minX = frame.minX + radius
         self.maxX = frame.maxX - radius
@@ -88,13 +101,14 @@ class Player: CircularObject {
      - Parameters:
      - completion: called when animation finishes
      */
-    func animateShot(_ completion: (() -> Void)? = nil) {
+    func animateShot() {
         
         (self.sprite as! SKSpriteNode).run(.sequence([
             .setTexture(self.shootTexture),
             .wait(forDuration: Player.SHOT_LENGTH),
-            .setTexture(standardTexture)
-            ]), completion: completion ?? {})
+            .run {
+                (self.sprite as! SKSpriteNode).run(.setTexture(self.currentlyShut ? self.shutTexture : self.standardTexture))
+            }]))
         
     }
     
