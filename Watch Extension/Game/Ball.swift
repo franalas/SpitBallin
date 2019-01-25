@@ -88,7 +88,7 @@ class Ball: DynamicCircularObject {
             if let nextBall = ballSize.nextBall {
                 let ball1 = Ball.init(ballSize: nextBall, color: self.color, position: position, speed:(-1 * self.velocity.dy + Ball.YSPLIT), gravity: acceleration.dy)
                 let ball2 = Ball.init(ballSize: nextBall, color: self.color, position: position, gravity: acceleration.dy)
-                ball1.velocity = CGVector(dx: self.velocity.dx, dy: -1 * self.velocity.dy + Ball.YSPLIT)
+                ball1.velocity = CGVector(dx: -self.velocity.dx, dy: self.velocity.dy + Ball.YSPLIT)
                 ball2.velocity = CGVector(dx: self.velocity.dx, dy: self.velocity.dy + Ball.YSPLIT)
                 return (ball1, ball2)
             }

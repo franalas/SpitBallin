@@ -65,7 +65,7 @@ class Game {
         
         self.bullets = []
         
-        self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
+        self.balls = [Ball(ballSize: .two, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
         for ball in balls ?? [] { self.scene.addChild(ball.sprite) }
         
     }
@@ -142,54 +142,55 @@ class Game {
     
     /// Handles collision detection
     private func checkCollisions() {
-        
-        if let bullets = self.bullets, let balls = self.balls, let player = self.player {
             
-            let frame = self.scene.frame
-            var ballI = balls.count - 1
-            while ballI >= 0 {
+        let frame = self.scene.frame
+        var ballI = (balls?.count ?? 0) - 1
+        while ballI >= 0 {
+            
+            if balls![ballI].floorCollision(rect: frame) { balls![ballI].bounceFloor(rect: frame) }
+            else if balls![ballI].wallCollision(rect: frame) { balls![ballI].bounceWall(rect: frame) }
+            else {
                 
-                if balls[ballI].floorCollision(rect: frame) { balls[ballI].bounceFloor(rect: frame) }
-                else if balls[ballI].wallCollision(rect: frame) { balls[ballI].bounceWall(rect: frame) }
-                else {
+                if Player.checkCollision(player, balls![ballI]) {
                     
-                    if Player.checkCollision(player, balls[ballI]) {
+                    handleDeath(fromBall: balls![ballI])
+                    
+                } else {
+                    
+                    var bulletI = (bullets?.count ?? 0) - 1
+//                    print("start: \(bulletI), count: \(bullets.count)")
+                    while bulletI >= 0 {
                         
-                        handleDeath(fromBall: balls[ballI])
-                        
-                    } else {
-                        
-                        var bulletI = bullets.count - 1
-                        while bulletI >= 0 {
+//                        print("i: \(bulletI)")
+//                        print("before2: \(bullets.count)")
+                        if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
-                            if DynamicCircularObject.checkCollision(balls[ballI], bullets[bulletI]) {
-                                
-                                self.split(ballAtIndex: ballI)
-                                remove(bulletAtIndex: bulletI)
-                                
-                            }
-                            bulletI -= 1
+                            self.split(ballAtIndex: ballI)
+//                            print("middle: \(bullets.count)")
+                            remove(bulletAtIndex: bulletI)
                             
                         }
+//                        print("after2: \(bullets.count)")
+                        bulletI -= 1
                         
                     }
                     
                 }
-                ballI -= 1
                 
             }
+            ballI -= 1
             
-            var bulletI = bullets.count - 1
-            while bulletI >= 0 {
+        }
+        
+        var bulletI = (bullets?.count ?? 0) - 1
+        while bulletI >= 0 {
+            
+            if bullets![bulletI].floorCollision(rect: frame) {
                 
-                if bullets[bulletI].floorCollision(rect: frame) {
-                    
-                    remove(bulletAtIndex: bulletI)
-                    
-                }
-                bulletI -= 1
+                remove(bulletAtIndex: bulletI)
                 
             }
+            bulletI -= 1
             
         }
         
@@ -232,8 +233,10 @@ class Game {
      */
     private func remove(bulletAtIndex i: Int) {
         
+        print("before: \(self.bullets?.count)")
         self.bullets?[i].sprite.removeFromParent()
         self.bullets?.remove(at: i)
+        print("after: \(self.bullets?.count)")
         
     }
     

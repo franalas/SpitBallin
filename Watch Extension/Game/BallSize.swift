@@ -50,15 +50,15 @@ enum BallSize: Int {
         
         switch self {
         case .one:
-            return 0.1
+            return 0.03
         case .two:
-            return 0.15
+            return 0.06
         case .three:
-            return 0.2
+            return 0.09
         case .four:
-            return 0.25
+            return 0.12
         case .five:
-            return 0.3
+            return 0.15
         }
         
     }
