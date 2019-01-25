@@ -57,10 +57,13 @@ class DynamicCircularObject: CircularObject {
     /// Updates the position and its derivatives
     func tick(time: CGFloat) {
         
+        let accComponentPosX = (1/2) * self.acceleration.dx * time * time
+        let accComponentPosY = (1/2) * self.acceleration.dy * time * time
+        
         self.velocity.dx += self.acceleration.dx * time
         self.velocity.dy += self.acceleration.dy * time
-        self.position.x += self.velocity.dx * time + (1/2) * self.acceleration.dx * time^2
-        self.position.y += self.velocity.dy * time + (1/2) * self.acceleration.dy * time^2
+        self.position.x += self.velocity.dx * time + accComponentPosX
+        self.position.y += self.velocity.dy * time + accComponentPosY
         
     }
     
