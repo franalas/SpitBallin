@@ -24,6 +24,13 @@ class Bullet: DynamicCircularObject {
     /// The image file name of the sprite
     private static let SPRITE_IMAGE = "spit"
     
+    override var velocity: CGVector {
+        didSet {
+            if velocity.dy < 0 { self.sprite.zRotation = 0 }
+            else { self.sprite.zRotation = CGFloat.pi }
+        }
+    }
+    
     /**
      Initializes Bullet. Represents the shot taken by Player to destroy a Ball
      - Parameters:
