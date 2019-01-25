@@ -37,9 +37,9 @@ enum LevelNumber: Int {
         
         switch self {
         case .one:
-            return [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.5, y: 0.5))]
+            return [Ball(ballSize: .three, color: .red, position: CGPoint(x: 0.5, y: 0.5))]
         case .two:
-            return [Ball(ballSize: .two, color: .red, position: CGPoint(x: 0.5, y: 0.5))]
+            return [Ball(ballSize: .five, color: .red, position: CGPoint(x: 0.5, y: 0.5))]
         case .three:
             return [Ball(ballSize: .three, color: .red, position: CGPoint(x: 0.5, y: 0.5))]
         case .four:
