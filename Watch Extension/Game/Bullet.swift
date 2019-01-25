@@ -19,10 +19,9 @@ class Bullet: DynamicCircularObject {
     /**
      Initializes Bullet. Represents the shot taken by Player to destroy a Ball
      - Parameters:
-        - radius: Represents the radius of the object relative to scene
-        - position: Represents the (x,y) position of object relative to scene
-        - velocity: Represents the velocity of the object relative to scene
-        - acceleration: Represents the acceleration of the object relative to scene
+        - position: The location of `self` in the scene
+        - speed: The initial upwards velocity of `self`
+        - gravity: The acceleration of gravity acting on `self`
     */
     init(position: CGPoint = CGPoint.zero, speed: CGFloat = Bullet.SPEED, gravity: CGFloat = Bullet.GRAVITY) {
         

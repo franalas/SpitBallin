@@ -74,7 +74,7 @@ class Player: CircularObject {
      - Parameters:
      - completion: called when animation finishes
      */
-    public func animateShot(_ completion: (() -> Void)?) {
+    public func animateShot(_ completion: (() -> Void)? = nil) {
         
         (self.sprite as! SKSpriteNode).run(.sequence([
             .setTexture(self.shootTexture),
