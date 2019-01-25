@@ -13,6 +13,10 @@ enum Person {
     
     case liam, fran
     
+    /**
+     Gets the path to the image of each character normally
+     - Returns: The file name, as a String
+    */
     func normalImage() -> String {
         
         switch self {
@@ -24,6 +28,10 @@ enum Person {
         
     }
     
+    /**
+     Gets the path to the image of each character while shooting
+     - Returns: The file name, as a String
+     */
     func shootImage() -> String {
         
         switch self {
@@ -31,6 +39,21 @@ enum Person {
             return "liam_shoot"
         case .fran:
             return "fran_shoot"
+        }
+        
+    }
+    
+    /**
+     Gets the path to the image of each character while max bullets are shot
+     - Returns: The file name, as a String
+     */
+    func shutImage() -> String {
+        
+        switch self {
+        case .liam:
+            return "liam_shut"
+        case .fran:
+            return "fran_shut"
         }
         
     }
