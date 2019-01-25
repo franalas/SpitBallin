@@ -12,7 +12,7 @@ import SpriteKit
 class Player: CircularObject {
     
     /// How tall the player is by default
-    private static let HEIGHT: CGFloat = 0.1
+    private static let HEIGHT: CGFloat = 0.2
     
     /// How long the shoot animation lasts
     private static let SHOT_LENGTH = 0.5
@@ -22,7 +22,7 @@ class Player: CircularObject {
     var position: CGPoint { return self.sprite.position }
     
     /// Returns the position of the mouth
-    var mouth: CGFloat { return position.y + radius/2 }
+    var mouth: CGPoint { return CGPoint(x: self.xPosition, y: position.y + radius/2) }
     
     /// The x-position of `self` in the scene
     var xPosition: CGFloat {

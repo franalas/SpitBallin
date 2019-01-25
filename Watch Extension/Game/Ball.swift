@@ -38,6 +38,7 @@ class Ball: DynamicCircularObject {
         self.color = color
         let sprite = SKShapeNode(circleOfRadius: ballSize.radius)
         sprite.fillColor = color
+        sprite.strokeColor = .clear
         sprite.position = position
         
         super.init(sprite: sprite, radius: ballSize.radius, position: position,

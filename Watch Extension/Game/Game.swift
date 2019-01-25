@@ -22,8 +22,7 @@ class Game {
     
     /// The character of the player
     var character: Person {
-        get { return player.character }
-        set { player.character = newValue }
+        didSet { player.character = character }
     }
     
     /// The SKScene that the game is in
@@ -47,6 +46,8 @@ class Game {
     init(size: CGSize, person: Person) {
         
         self.scene = SKScene(size: size)
+        self.scene.scaleMode = .aspectFit
+        self.character = person
         self.setupGame()
         
     }
@@ -56,6 +57,7 @@ class Game {
         
         self.player = Player(person: self.character, frame: self.scene.frame)
         self.scene.addChild(self.player.sprite)
+        
         self.bullets = []
         
         self.balls = [Ball(ballSize: .one, color: .red, position: CGPoint(x: 0.4, y: 0.5))]
@@ -66,7 +68,7 @@ class Game {
     /// Shoots a bullet out of the player
     public func shoot() {
         
-        let bullet = Bullet(position: CGPoint(x: player.mouth, y: 0))
+        let bullet = Bullet(position: player.mouth)
         self.scene.addChild(bullet.sprite)
         self.bullets.append(bullet)
         
@@ -87,7 +89,8 @@ class Game {
     */
     func present(inInterface: WKInterfaceSKScene) {
         
-//        inInterface.preferredFramesPerSecond = 30
+        inInterface.presentScene(self.scene)
+        inInterface.preferredFramesPerSecond = 30
         
     }
     
