@@ -51,7 +51,7 @@ class Player: CircularObject {
         - person: The character that the player should be
         - frame: The bounds of the screen
     */
-    public init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
+    init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
         
         self.character = person
         
@@ -74,7 +74,7 @@ class Player: CircularObject {
      - Parameters:
      - completion: called when animation finishes
      */
-    public func animateShot(_ completion: (() -> Void)? = nil) {
+    func animateShot(_ completion: (() -> Void)? = nil) {
         
         (self.sprite as! SKSpriteNode).run(.sequence([
             .setTexture(self.shootTexture),

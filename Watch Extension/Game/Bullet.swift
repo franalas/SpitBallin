@@ -53,4 +53,5 @@ class Bullet: DynamicCircularObject {
         return self
         
     }
+    
 }

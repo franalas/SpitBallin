@@ -45,9 +45,11 @@ class Game {
     */
     init(size: CGSize, person: Person) {
         
-        self.scene = SKScene(size: size)
+        let gameScene = GameScene(size: size)
+        self.scene = gameScene
         self.scene.scaleMode = .aspectFit
         self.character = person
+        gameScene.game = self
         self.setupGame()
         
     }
@@ -66,7 +68,7 @@ class Game {
     }
     
     /// Shoots a bullet out of the player
-    public func shoot() {
+    func shoot() {
         
         let bullet = Bullet(position: player.mouth)
         self.scene.addChild(bullet.sprite)
@@ -81,7 +83,7 @@ class Game {
         - value: A measurement of how far to move the player.
         This value is scaled to a value, and the player's x position changes by that much
     */
-    public func movePlayer(_ value: Double) { }
+    func movePlayer(_ value: Double) { }
     
     /**
      Presents the game in a `WKInterfaceSKScene`
@@ -118,5 +120,12 @@ class Game {
         }
         
     }
+    
+    /**
+     Handles frame updates
+     - Parameters:
+        - timeInterval: how much time has passed since last frame
+    */
+    func update(_ timeInterval: TimeInterval) {  }
     
 }
