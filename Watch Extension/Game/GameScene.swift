@@ -20,7 +20,12 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         
-        if let lastTime = self.lastTime { game?.update(currentTime - lastTime) }
+        if let lastTime = self.lastTime {
+            
+            let delta = currentTime - lastTime
+            if delta < 0.5 { game?.update(delta) }
+            
+        }
         lastTime = currentTime
         
     }

@@ -26,7 +26,7 @@
                     </items>
                     <menu key="menu" id="h0M-wI-Cde">
                         <items>
-                            <menuItem title="Play" icon="resume" id="k60-RP-TGI">
+                            <menuItem title="Play" icon="play" id="k60-RP-TGI">
                                 <connections>
                                     <action selector="playAction" destination="AgC-eL-Hgc" id="GG8-Hz-gxf"/>
                                 </connections>
@@ -36,7 +36,7 @@
                                     <action selector="pauseAction" destination="AgC-eL-Hgc" id="Yw7-qC-JI6"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Restart" icon="repeat" id="1EP-O2-h4m">
+                            <menuItem title="Restart" icon="resume" id="1EP-O2-h4m">
                                 <connections>
                                     <action selector="restartAction" destination="AgC-eL-Hgc" id="zBS-yO-ggo"/>
                                 </connections>

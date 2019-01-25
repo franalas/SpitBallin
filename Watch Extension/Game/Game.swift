@@ -75,10 +75,14 @@ class Game {
     /// Shoots a bullet out of the player
     func shoot() {
         
-        let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
-        self.scene.addChild(bullet.sprite)
-        self.bullets?.append(bullet)
-        self.player.animateShot()
+        if !paused {
+            
+            let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
+            self.scene.addChild(bullet.sprite)
+            self.bullets?.append(bullet)
+            self.player.animateShot()
+            
+        }
         
     }
     
@@ -90,7 +94,7 @@ class Game {
     */
     func movePlayer(_ value: Double) {
         
-        player.xPosition += CGFloat(value) * Game.CROWN_MULTIPLIER
+        if !paused { player.xPosition += CGFloat(value) * Game.CROWN_MULTIPLIER }
         
     }
     
@@ -128,6 +132,8 @@ class Game {
             self.balls = nil
         }
         
+        setupGame()
+        
     }
     
     /**
@@ -137,8 +143,12 @@ class Game {
     */
     func update(_ timeInterval: TimeInterval) {
         
-        checkCollisions()
-        tickObjects(timeInterval)
+        if !paused {
+            
+            checkCollisions()
+            tickObjects(timeInterval)
+            
+        }
         
     }
     
@@ -149,18 +159,19 @@ class Game {
         var ballI = (balls?.count ?? 0) - 1
         while ballI >= 0 { //check if ball collides with player or any bullets
             
-            if balls![ballI].floorCollision(rect: frame) { balls![ballI].bounceFloor(rect: frame) }
-            else if balls![ballI].wallCollision(rect: frame) { balls![ballI].bounceWall(rect: frame) }
-            else {
+            balls![ballI].bounceFloor(rect: frame)
+            balls![ballI].bounceWall(rect: frame)
                 
-                if Player.checkCollision(player, balls![ballI]) {
+            if Player.checkCollision(player, balls![ballI]) {
+                
+                handleDeath(fromBall: balls![ballI])
+                
+            } else {
+                
+                var bulletI = (bullets?.count ?? 0) - 1
+                while bulletI >= 0 {
                     
-                    handleDeath(fromBall: balls![ballI])
-                    
-                } else {
-                    
-                    var bulletI = (bullets?.count ?? 0) - 1
-                    while bulletI >= 0 {
+                    if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                         
                         if ballI >= 0 && ballI < balls!.count && bulletI >= 0 && bulletI < bullets!.count && DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
@@ -171,10 +182,12 @@ class Game {
                         bulletI -= 1
                         
                     }
+                    bulletI -= 1
                     
                 }
                 
             }
+                
             ballI -= 1
             
         }
