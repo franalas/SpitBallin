@@ -1,5 +1,5 @@
 //
-//  Level.swift
+//  LevelNumber.swift
 //  Watch Extension
 //
 //  Created by Liam Stevenson on 1/25/19.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum Level: Int {
+typealias Level = [Ball]
+enum LevelNumber: Int {
     
     /// Level one
     case one = 1
@@ -23,8 +24,8 @@ enum Level: Int {
     case four
     
     /// The next level after the current one
-    var nextLevel: Level {
-        if let nextLevel = Level(rawValue: self.rawValue + 1) { return nextLevel }
+    var nextLevel: LevelNumber {
+        if let nextLevel = LevelNumber(rawValue: self.rawValue + 1) { return nextLevel }
         else { return .one }
     }
     
