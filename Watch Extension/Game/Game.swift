@@ -64,7 +64,13 @@ class Game {
     }
     
     /// Shoots a bullet out of the player
-    public func shoot() { }
+    public func shoot() {
+        
+        let bullet = Bullet(position: CGPoint(x: player.mouth, y: 0))
+        self.scene.addChild(bullet.sprite)
+        self.bullets.append(bullet)
+        
+    }
     
     /**
      Moves a player right or left a certain distance
