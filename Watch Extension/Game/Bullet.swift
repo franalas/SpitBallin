@@ -12,6 +12,9 @@ import SpriteKit
 /// Represents a shot fired from the Player. Interacts with Ball
 class Bullet: DynamicCircularObject {
     
+    private static let SPEED = 0.5
+    private static let GRAVITY = -0.1
+    
     /**
      Initializes Bullet. Represents the shot taken by Player to destroy a Ball
      - Parameters:
@@ -20,12 +23,13 @@ class Bullet: DynamicCircularObject {
         - velocity: Represents the velocity of the object relative to scene
         - acceleration: Represents the acceleration of the object relative to scene
     */
-    init(radius: CGFloat = 0, position:CGPoint = CGPoint.zero, velocity: CGVector = CGVector.zero, acceleration: CGVector = CGVector.zero) {
+    init(position:CGPoint = CGPoint.zero) {
         
         let spitTexture = SKTexture(imageNamed: "spit")
         let sprite = SKSpriteNode(texture: spitTexture)
+        let radius = spitTexture.size().height/2
         
-        super.init(sprite: sprite, radius: radius, position: position, velocity: velocity, acceleration: acceleration)
+        super.init(sprite: sprite, radius: radius, position: position, velocity: CGVector(dx: 0, dy: Bullet.SPEED), acceleration: CGVector(dx: 0, dy: Bullet.GRAVITY))
         
     }
     

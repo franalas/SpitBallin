@@ -17,6 +17,9 @@ class Player: CircularObject {
     var radius: CGFloat
     var position: CGPoint { return self.sprite.position }
     
+    /// Returns the position of the mouth
+    var mouth: CGFloat { return position.y + radius/2 }
+    
     /// The x-position of `self` in the scene
     var xPosition: CGFloat {
         get { return self.sprite.position.x }
@@ -62,4 +65,6 @@ class Player: CircularObject {
         
     }
     
+    
 }
+
