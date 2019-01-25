@@ -19,7 +19,7 @@ class Ball: DynamicCircularObject {
     private static let GRAVITY: CGFloat = -0.2
     
     /// Represents velocity added to any Ball activated by split
-    private static let YSPLIT: CGFloat = 0.11
+    private static let YSPLIT: CGFloat = 0.15
     
     /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
     let ballSize: BallSize?
@@ -34,10 +34,11 @@ class Ball: DynamicCircularObject {
         - color: Represents color of the Ball
         - radius: Represents the radius of the object relative to scene
         - position: Represents the (x,y) position of object relative to scene
+        - right: Decides wether the Ball initially moves right, left if false
         - speed: How fast the ball moves left and right
         - gravity: The acceleration of gravity that acts on the ball
      */
-    init(ballSize: BallSize, color: UIColor, position: CGPoint = CGPoint.zero,
+    init(ballSize: BallSize, color: UIColor, position: CGPoint = CGPoint.zero, right: Bool = true,
          speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY) {
         
         self.ballSize = ballSize
@@ -47,8 +48,13 @@ class Ball: DynamicCircularObject {
         sprite.strokeColor = .clear
         sprite.position = position
         
-        super.init(sprite: sprite, radius: ballSize.radius, position: position,
-                   velocity: CGVector(dx: speed, dy: 0), acceleration: CGVector(dx: 0, dy: gravity))
+        if right {
+            super.init(sprite: sprite, radius: ballSize.radius, position: position,
+                       velocity: CGVector(dx: speed, dy: 0), acceleration: CGVector(dx: 0, dy: gravity))
+        } else {
+            super.init(sprite: sprite, radius: ballSize.radius, position: position,
+                       velocity: CGVector(dx: -speed, dy: 0), acceleration: CGVector(dx: 0, dy: gravity))
+        }
         
     }
     
@@ -90,10 +96,14 @@ class Ball: DynamicCircularObject {
     func split() -> (Ball, Ball)? {
         if let ballSize = self.ballSize {
             if let nextBall = ballSize.nextBall {
-                let ball1 = Ball.init(ballSize: nextBall, color: self.color, position: position, speed:(-1 * self.velocity.dy + Ball.YSPLIT), gravity: acceleration.dy)
-                let ball2 = Ball.init(ballSize: nextBall, color: self.color, position: position, gravity: acceleration.dy)
-                ball1.velocity = CGVector(dx: -self.velocity.dx, dy: self.velocity.dy + Ball.YSPLIT)
-                ball2.velocity = CGVector(dx: self.velocity.dx, dy: self.velocity.dy + Ball.YSPLIT)
+                let ball1 = Ball.init(ballSize: nextBall, color: self.color,
+                                      position: position, gravity: acceleration.dy)
+                let ball2 = Ball.init(ballSize: nextBall, color: self.color,
+                                      position: position, gravity: acceleration.dy)
+                ball1.velocity = CGVector(dx: -self.velocity.dx,
+                                          dy: max(Ball.YSPLIT, self.velocity.dy + Ball.YSPLIT))
+                ball2.velocity = CGVector(dx: self.velocity.dx,
+                                          dy: max(Ball.YSPLIT, self.velocity.dy + Ball.YSPLIT))
                 return (ball1, ball2)
             }
             
