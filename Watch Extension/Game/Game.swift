@@ -20,6 +20,12 @@ class Game {
         didSet { }
     }
     
+    /// The character of the player
+    var character: Person {
+        get { return Person.liam }
+        set { }
+    }
+    
     /**
      Initializes a game with a given scene size
      - Parameters:
