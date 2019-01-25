@@ -193,7 +193,7 @@ class Game {
                 var bulletI = (bullets?.count ?? 0) - 1
                 while bulletI >= 0 {
                     
-                    if bulletI < 0 || bulletI >= bullets!.count { break }
+                    if bulletI < 0 || bulletI >= bullets!.count || ballI < 0 || ballI >= balls!.count { break }
                     if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
                             
                         self.split(ballAtIndex: ballI)
