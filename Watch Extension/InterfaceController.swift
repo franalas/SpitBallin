@@ -23,7 +23,6 @@ class InterfaceController: WKInterfaceController {
         self.game = Game(size: CGSize(width: 1, height: 1), person: .liam)
         self.game!.present(inInterface: self.skInterface)
         self.game?.paused = false
-        print("awake")
         
     }
     
@@ -32,14 +31,12 @@ class InterfaceController: WKInterfaceController {
         super.didAppear()
         crownSequencer.focus()
         self.game?.paused = false
-        print("appear")
         
     }
     
     override func willDisappear() {
         
         self.game?.paused = true
-        print("disappear")
         
     }
 
