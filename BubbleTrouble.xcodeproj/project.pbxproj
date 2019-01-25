@@ -35,6 +35,7 @@
 		98E529B021FAAB58009830FA /* fran_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E529AB21FAAB58009830FA /* fran_normal.png */; };
 		98E529B221FAC202009830FA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E529B121FAC202009830FA /* GameScene.swift */; };
 		CD06889A21FB97A300911A23 /* fran_shut.png in Resources */ = {isa = PBXBuildFile; fileRef = CD06889921FB97A300911A23 /* fran_shut.png */; };
+		CD4F506A21FB9923004AB8D5 /* liam_shut.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4F506921FB9923004AB8D5 /* liam_shut.png */; };
 		CDD9C60A21FA83050061FF85 /* DynamicCircularObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */; };
 		CDD9C60C21FA8B150061FF85 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60B21FA8B150061FF85 /* Ball.swift */; };
 		CDD9C60E21FA8C4E0061FF85 /* BallSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9C60D21FA8C4E0061FF85 /* BallSize.swift */; };
@@ -116,7 +117,8 @@
 		98E529AA21FAAB58009830FA /* liam_shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_shoot.png; sourceTree = "<group>"; };
 		98E529AB21FAAB58009830FA /* fran_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_normal.png; sourceTree = "<group>"; };
 		98E529B121FAC202009830FA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		CD06889921FB97A300911A23 /* fran_shut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fran_shut.png; path = ../../../../../../Downloads/fran_shut.png; sourceTree = "<group>"; };
+		CD06889921FB97A300911A23 /* fran_shut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_shut.png; sourceTree = "<group>"; };
+		CD4F506921FB9923004AB8D5 /* liam_shut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_shut.png; sourceTree = "<group>"; };
 		CDD9C60921FA83050061FF85 /* DynamicCircularObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCircularObject.swift; sourceTree = "<group>"; };
 		CDD9C60B21FA8B150061FF85 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		CDD9C60D21FA8C4E0061FF85 /* BallSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallSize.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		98E529A621FAAB4D009830FA /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				CD4F506921FB9923004AB8D5 /* liam_shut.png */,
 				98E529AB21FAAB58009830FA /* fran_normal.png */,
 				CD06889921FB97A300911A23 /* fran_shut.png */,
 				98E529A721FAAB58009830FA /* fran_shoot.png */,
@@ -361,6 +364,7 @@
 				98E529AD21FAAB58009830FA /* spit.png in Resources */,
 				CD06889A21FB97A300911A23 /* fran_shut.png in Resources */,
 				98E529AF21FAAB58009830FA /* liam_shoot.png in Resources */,
+				CD4F506A21FB9923004AB8D5 /* liam_shut.png in Resources */,
 				98E529B021FAAB58009830FA /* fran_normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
