@@ -11,7 +11,11 @@ import SpriteKit
 
 class Player: CircularObject {
     
+    /// How tall the player is by default
     private static let HEIGHT: CGFloat = 0.1
+    
+    /// How long the shoot animation lasts
+    private static let SHOT_LENGTH = 0.5
     
     var sprite: SKNode
     var radius: CGFloat
@@ -65,8 +69,20 @@ class Player: CircularObject {
         
     }
     
-    /// Animates the player shooting
-    public func animateShot() { }
+    /**
+     Animates the player sprite shooting.
+     - Parameters:
+     - completion: called when animation finishes
+     */
+    public func animateShot(_ completion: (() -> Void)?) {
+        
+        (self.sprite as! SKSpriteNode).run(.sequence([
+            .setTexture(self.shootTexture),
+            .wait(forDuration: Player.SHOT_LENGTH),
+            .setTexture(standardTexture)
+            ]), completion: completion ?? {})
+        
+    }
     
 }
 
