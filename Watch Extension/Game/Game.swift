@@ -43,6 +43,9 @@ class Game {
     /// The current level of the game
     private(set) var currentLevel: LevelNumber?
     
+    /// The maximum number of shots allowed on the screen at a time
+    private let MAXSHOTS = 3
+    
     /**
      Initializes a game with a given scene size and starting character
      - Parameters:
@@ -78,7 +81,7 @@ class Game {
     /// Shoots a bullet out of the player
     func shoot() {
         
-        if !paused {
+        if !paused && self.bullets!.count < MAXSHOTS {
             
             let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
             self.scene.addChild(bullet.sprite)
