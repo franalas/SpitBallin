@@ -66,10 +66,11 @@ class Game {
      Sets up game with its initial state
      - Parameters:
         - level: Decides what level game is set up to
+        - lives: Decides how many lives the player starts up with
      */
-    private func setupGame(forLevel level: LevelNumber = .one) {
+    private func setupGame(forLevel level: LevelNumber = .one, forLives lives: Int = 3) {
         
-        self.player = Player(person: self.character, frame: self.scene.frame)
+        self.player = Player(person: self.character, frame: self.scene.frame, lives: lives)
         self.scene.addChild(self.player.sprite)
         
         self.bullets = []
@@ -133,7 +134,7 @@ class Game {
     func tearDown() {
         
         self.player?.sprite.removeFromParent()
-        self.player = nil
+//        self.player = nil  //Commented out so player's lives info can be accessed called by setupGame()
         
         if let bullets = bullets {
             for bullet in bullets {
@@ -288,8 +289,18 @@ class Game {
      */
     private func handleDeath(fromBall: Ball) {
         
-        self.tearDown()
-        self.setupGame(forLevel: self.currentLevel!)
+        if(player.lives <= 1) {
+            
+            self.tearDown()
+            self.setupGame()
+            
+        } else {
+            
+            player.removeLife()
+            self.tearDown()
+            self.setupGame(forLevel: self.currentLevel!, forLives: player.lives)
+            
+        }
         
     }
     

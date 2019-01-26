@@ -17,6 +17,9 @@ class Player: CircularObject {
     /// How long the shoot animation lasts
     private static let SHOT_LENGTH = 0.5
     
+    /// Keeps track of how many lives a Player has
+    var lives: Int
+    
     var sprite: SKNode
     var radius: CGFloat
     var position: CGPoint { return self.sprite.position }
@@ -72,8 +75,9 @@ class Player: CircularObject {
      - Parameters:
         - person: The character that the player should be
         - frame: The bounds of the screen
+        - lives: How many lives the player starts with
     */
-    init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
+    init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT, lives: Int = 3) {
         
         self.character = person
         
@@ -94,6 +98,8 @@ class Player: CircularObject {
         self.minX = frame.minX + radius
         self.maxX = frame.maxX - radius
         
+        self.lives = lives
+        
     }
     
     /**
@@ -109,6 +115,13 @@ class Player: CircularObject {
             .run {
                 (self.sprite as! SKSpriteNode).run(.setTexture(self.currentlyShut ? self.shutTexture : self.standardTexture))
             }]))
+        
+    }
+    
+    /// Subtracts 1 from the lives of the player
+    func removeLife() {
+        
+        lives -= 1
         
     }
     
