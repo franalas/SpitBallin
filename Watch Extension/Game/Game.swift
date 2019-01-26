@@ -63,14 +63,14 @@ class Game {
     }
     
     /// Sets up game with its initial state
-    private func setupGame() {
+    private func setupGame(forLevel level: LevelNumber = .one) {
         
         self.player = Player(person: self.character, frame: self.scene.frame)
         self.scene.addChild(self.player.sprite)
         
         self.bullets = []
         
-        self.currentLevel = .one
+        self.currentLevel = level
         self.balls = currentLevel!.makeLevel()
         for ball in balls ?? [] { self.scene.addChild(ball.sprite) }
         
@@ -118,7 +118,14 @@ class Game {
     /**
      Resets the game back to its initial state
     */
-    func restart() {
+    func restart(forLevel level: LevelNumber = .one) {
+        
+        tearDown()
+        setupGame()
+        
+    }
+    
+    func tearDown() {
         
         self.player?.sprite.removeFromParent()
         self.player = nil
@@ -136,8 +143,6 @@ class Game {
             }
             self.balls = nil
         }
-        
-        setupGame()
         
     }
     
@@ -278,7 +283,8 @@ class Game {
     */
     private func handleDeath(fromBall: Ball) {
         
-        self.restart()
+        self.tearDown()
+        self.setupGame(forLevel: self.currentLevel!)
         
     }
     
