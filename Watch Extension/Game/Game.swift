@@ -47,9 +47,9 @@ class Game {
     /**
      Initializes a game with a given scene size and starting character
      - Parameters:
-        - size: the size of the game scene
-        - person: the player's starting character
-    */
+     - size: the size of the game scene
+     - person: the player's starting character
+     */
     init(size: CGSize, person: Person) {
         
         let gameScene = GameScene(size: size)
@@ -62,15 +62,19 @@ class Game {
         
     }
     
-    /// Sets up game with its initial state
-    private func setupGame() {
+    /**
+     Sets up game with its initial state
+     - Parameters:
+        - level: Decides what level game is set up to
+     */
+    private func setupGame(forLevel level: LevelNumber = .one) {
         
         self.player = Player(person: self.character, frame: self.scene.frame)
         self.scene.addChild(self.player.sprite)
         
         self.bullets = []
         
-        self.currentLevel = .one
+        self.currentLevel = level
         self.balls = currentLevel!.makeLevel()
         for ball in balls ?? [] { self.scene.addChild(ball.sprite) }
         
@@ -80,7 +84,7 @@ class Game {
     func shoot() {
         
         if !paused && self.bullets!.count < Game.MAXSHOTS {
-                
+            
             let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
             self.scene.addChild(bullet.sprite)
             self.bullets?.append(bullet)
@@ -94,9 +98,9 @@ class Game {
     /**
      Moves a player right or left a certain distance
      - Parameters:
-        - value: A measurement of how far to move the player.
-        This value is scaled to a value, and the player's x position changes by that much
-    */
+     - value: A measurement of how far to move the player.
+     This value is scaled to a value, and the player's x position changes by that much
+     */
     func movePlayer(_ value: Double) {
         
         if !paused { player.xPosition += CGFloat(value) * Game.CROWN_MULTIPLIER }
@@ -106,8 +110,8 @@ class Game {
     /**
      Presents the game in a `WKInterfaceSKScene`
      - Parameters:
-        - inInterface: the `WKInterfaceSKScene` that the game should be presented in
-    */
+     - inInterface: the `WKInterfaceSKScene` that the game should be presented in
+     */
     func present(inInterface: WKInterfaceSKScene) {
         
         inInterface.presentScene(self.scene)
@@ -117,8 +121,16 @@ class Game {
     
     /**
      Resets the game back to its initial state
-    */
+     */
     func restart() {
+        
+        tearDown()
+        setupGame()
+        
+    }
+    
+    /// Takes away information from current state
+    func tearDown() {
         
         self.player?.sprite.removeFromParent()
         self.player = nil
@@ -136,8 +148,6 @@ class Game {
             }
             self.balls = nil
         }
-        
-        setupGame()
         
     }
     
@@ -160,8 +170,8 @@ class Game {
     /**
      Handles frame updates
      - Parameters:
-        - timeInterval: how much time has passed since last frame
-    */
+     - timeInterval: how much time has passed since last frame
+     */
     func update(_ timeInterval: TimeInterval) {
         
         if !paused {
@@ -175,7 +185,7 @@ class Game {
     
     /// Handles collision detection
     private func checkCollisions() {
-            
+        
         let frame = self.scene.frame
         var ballI = (balls?.count ?? 0) - 1
         while ballI >= 0 { //check if ball collides with player or any bullets
@@ -183,7 +193,7 @@ class Game {
             if ballI < 0 || ballI >= balls!.count { break }
             balls![ballI].bounceFloor(rect: frame)
             balls![ballI].bounceWall(rect: frame)
-                
+            
             if Player.checkCollision(player, balls![ballI]) {
                 
                 handleDeath(fromBall: balls![ballI])
@@ -195,7 +205,7 @@ class Game {
                     
                     if bulletI < 0 || bulletI >= bullets!.count || ballI < 0 || ballI >= balls!.count { break }
                     if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
-                            
+                        
                         self.split(ballAtIndex: ballI)
                         remove(bulletAtIndex: bulletI)
                         
@@ -205,7 +215,7 @@ class Game {
                 }
                 
             }
-                
+            
             ballI -= 1
             
         }
@@ -227,8 +237,8 @@ class Game {
     /**
      Updates balls and bullets with game tick
      - Parameters:
-        - timeInterval: the amount of time since last frame
-    */
+     - timeInterval: the amount of time since last frame
+     */
     private func tickObjects(_ timeInterval: TimeInterval) {
         
         for ball in balls ?? [] { ball.tick(time: CGFloat(timeInterval)) }
@@ -239,8 +249,8 @@ class Game {
     /**
      Splits the ball at the given index
      - Parameters:
-        - i: the index in `balls` of the ball to be split
-    */
+     - i: the index in `balls` of the ball to be split
+     */
     private func split(ballAtIndex i: Int) {
         
         if let (nextA, nextB) = balls?[i].split() {
@@ -259,7 +269,7 @@ class Game {
     /**
      Removes the bullet at the given index from game
      - Parameters:
-        - i: the index in `bullets` of the bullet to be removed
+     - i: the index in `bullets` of the bullet to be removed
      */
     private func remove(bulletAtIndex i: Int) {
         
@@ -274,11 +284,12 @@ class Game {
     /**
      Handles a player death
      - Parameters:
-        - fromBall: the ball the player was hit by
-    */
+     - fromBall: the ball the player was hit by
+     */
     private func handleDeath(fromBall: Ball) {
         
-        self.restart()
+        self.tearDown()
+        self.setupGame(forLevel: self.currentLevel!)
         
     }
     
