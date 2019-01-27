@@ -111,11 +111,7 @@ class Player: CircularObject {
         
     }
     
-    /**
-     Animates the player sprite shooting.
-     - Parameters:
-     - completion: called when animation finishes
-     */
+    /// Animates the player sprite shooting.
     func animateShot() {
         
         (self.sprite as! SKSpriteNode).run(.sequence([
