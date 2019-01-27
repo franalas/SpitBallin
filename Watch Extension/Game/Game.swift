@@ -111,7 +111,7 @@ class Game {
     /**
      Moves a player right or left a certain distance
      - Parameters:
-     - value: A measurement of how far to move the player.
+        - value: A measurement of how far to move the player.
      This value is scaled to a value, and the player's x position changes by that much
      */
     func movePlayer(_ value: Double) {
@@ -123,7 +123,7 @@ class Game {
     /**
      Presents the game in a `WKInterfaceSKScene`
      - Parameters:
-     - inInterface: the `WKInterfaceSKScene` that the game should be presented in
+        - inInterface: the `WKInterfaceSKScene` that the game should be presented in
      */
     func present(inInterface: WKInterfaceSKScene) {
         
@@ -151,7 +151,7 @@ class Game {
     /**
      Handles frame updates
      - Parameters:
-     - timeInterval: how much time has passed since last frame
+        - timeInterval: how much time has passed since last frame
      */
     func update(_ timeInterval: TimeInterval) {
         
@@ -218,7 +218,7 @@ class Game {
     /**
      Updates balls and bullets with game tick
      - Parameters:
-     - timeInterval: the amount of time since last frame
+        - timeInterval: the amount of time since last frame
      */
     private func tickObjects(_ timeInterval: TimeInterval) {
         
@@ -230,7 +230,7 @@ class Game {
     /**
      Splits the ball at the given index
      - Parameters:
-     - i: the index in `balls` of the ball to be split
+        - i: the index in `balls` of the ball to be split
      */
     private func split(ballAtIndex i: Int) {
         
@@ -250,7 +250,7 @@ class Game {
     /**
      Removes the bullet at the given index from game
      - Parameters:
-     - i: the index in `bullets` of the bullet to be removed
+        - i: the index in `bullets` of the bullet to be removed
      */
     private func remove(bulletAtIndex i: Int) {
         
@@ -265,7 +265,7 @@ class Game {
     /**
      Handles a player death
      - Parameters:
-     - fromBall: the ball the player was hit by
+        - fromBall: the ball the player was hit by
      */
     private func handleDeath(fromBall: Ball) {
         
