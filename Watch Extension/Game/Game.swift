@@ -10,9 +10,8 @@ import Foundation
 import SpriteKit
 import WatchKit
 
-/**
- Stores game state, handles game logic, and receives controls
- */
+
+ /// Stores game state, handles game logic, and receives controls
 class Game {
     
     /// How much the digital crown rotational delta is multiplier by to determine amount of player movement
@@ -130,9 +129,7 @@ class Game {
         
     }
     
-    /**
-     Resets the game back to its initial state
-     */
+    /// Resets the game back to its initial state
     func restart() {
         
         tearDown()

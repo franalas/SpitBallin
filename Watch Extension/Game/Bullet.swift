@@ -49,7 +49,11 @@ class Bullet: DynamicCircularObject {
         
     }
     
-    /// If the bullet hits the floor, it disappears, if it does not, nothing changes
+    /**
+     If the bullet hits the floor, it disappears, if it does not, nothing changes
+     - Parameters:
+        - rect: scene where floor exists
+     */
     func hitFloor(rect: CGRect) -> Bullet? {
         
         if floorCollision(rect: rect) {

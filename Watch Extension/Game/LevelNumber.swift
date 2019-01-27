@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+/// Represents the levels of the game
 typealias Level = [Ball]
 enum LevelNumber: Int {
     
@@ -33,6 +34,7 @@ enum LevelNumber: Int {
         else { return .one }
     }
     
+    /// Creates level for each case
     func makeLevel() -> Level {
         
         switch self {
