@@ -9,8 +9,10 @@
 import Foundation
 import SpriteKit
 
+/// Represents the lives the player has
 class Lives {
     
+    /// Value that holds how many lives the player has left. Sets any sprites outside range invisible
     var numberRemaining: Int {
         didSet {
             print("\(numberRemaining)")
@@ -19,24 +21,36 @@ class Lives {
             }
         }
     }
+    
+    /// Represents each individual life sprite
     private var sprites: [SKSpriteNode]
+    /// Parent to sprites, represents what is seen in scene
     private var sprite: SKNode
+    /// Represents the texture the sprite contains
     private var spriteTexture: SKTexture
+    /// Height of sprite
     private static let HEIGHT: CGFloat = 0.1
+    /// Space in between life sprites
     private static let SPACE: CGFloat = 0.05
-    private var width: CGFloat
-    private var height: CGFloat
+    /// Max number of lives a player can have
     private static let MAXLIVES: Int = 7
+    /// Amount of lives a player begins with
     static let STARTINGLIVES: Int = 3
     
+    /**
+     Initializes Lives with given scene and values
+     - Parameters:
+        - frame: represents the scene where self will be located
+        - startingLives: Amount of lives a player begins with
+        - maxLives: Max number of lives a player can have
+        - height: Height of a sprite
+     */
     init(frame: CGRect, startingLives: Int = Lives.STARTINGLIVES, maxLives: Int = Lives.MAXLIVES,
          height: CGFloat = Lives.HEIGHT) {
         
         let spriteTexture = SKTexture(imageNamed: "water_bottle")
         self.spriteTexture = spriteTexture
         let width = height * spriteTexture.size().width / spriteTexture.size().height
-        self.width = width
-        self.height = height
         self.sprites = []
         self.sprite = SKNode()
         self.sprite.position = CGPoint(x: frame.minX + width/2, y: frame.maxY)
@@ -59,20 +73,11 @@ class Lives {
         
     }
     
-//    private func addLife() {
-//        
-//        numberRemaining += 1
-//        self.sprites[numberRemaining - 1].isHidden = false
-//
-//    }
-//
-//    private func removeLife() {
-//
-//        self.sprites[numberRemaining - 1].isHidden = true
-//        numberRemaining -= 1
-//
-//    }
-    
+    /**
+     Adds Lives object to a given scene
+     - Parameters:
+        - scene: scene where self will be located
+     */
     func addLivesToScene(toScene scene: SKScene) {
         
         scene.addChild(sprite)
