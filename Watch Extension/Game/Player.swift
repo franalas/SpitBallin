@@ -127,6 +127,11 @@ class Player: CircularObject {
         
     }
     
+    /**
+     Adds LifeImplementation to the scene
+     - Parameters:
+        - scene: scene where LifeImplementation is added to
+     */
     func addLivesToScene(toScene scene: SKScene) {
         
         lifeImplementation.addLivesToScene(toScene: scene)
