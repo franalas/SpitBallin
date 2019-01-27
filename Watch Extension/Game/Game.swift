@@ -27,19 +27,19 @@ class Game {
     }
     
     /// The SKScene that the game is in
-    private var scene: SKScene
+    private var scene: GameScene
     
     /// The player on the bottom of the screen
-    private var player: Player!
+    private var player: Player
     
     /// All bullets in the scene
-    private var bullets: [Bullet]?
+    private var bullets: [Bullet]
     
     /// All bullets in the scene
-    private var balls: [Ball]?
+    private var balls: [Ball]
     
     /// The current level of the game
-    private(set) var currentLevel: LevelNumber?
+    private(set) var currentLevel: LevelNumber
     
     /// The maximum number of shots allowed on the screen at a time
     private static let MAXSHOTS = 3
@@ -52,54 +52,56 @@ class Game {
      */
     init(size: CGSize, person: Person) {
         
-        let gameScene = GameScene(size: size)
-        self.scene = gameScene
-        gameScene.backgroundColor = .black
+        self.scene = GameScene(size: size)
+        self.scene.backgroundColor = .black
         self.scene.scaleMode = .aspectFit
+        
         self.character = person
-        gameScene.game = self
-        self.setupGame()
-        self.player.addLivesToScene(toScene: gameScene)
+        self.player = Player(person: self.character, frame: self.scene.frame)
+        self.scene.addChild(self.player.sprite)
+        self.player.addLivesToScene(toScene: self.scene)
+        
+        self.bullets = []
+        self.balls = []
+        
+        self.currentLevel = .one
+        
+        self.scene.game = self
+        
+        self.setup()
         
     }
     
     /**
-     Sets up game with its initial state
+     Sets up game on a given level
      - Parameters:
         - level: Decides what level game is set up to
-        - lives: Decides how many lives the player starts up with
+        - lives: Decides how many lives the player has
      */
-    private func setupGame(forLevel level: LevelNumber = .one) {
+    private func setup(level: LevelNumber = .one, withLives lives: Int = Lives.STARTINGLIVES) {
         
-        if self.player != nil {
-            
-            self.player.xPosition = self.scene.frame.midX
-            
-        } else {
-            
-            self.player = Player(person: self.character, frame: self.scene.frame)
-            
-        }
+        self.player.xPosition = self.scene.frame.midX
+        self.player.lives = lives
         
-        self.scene.addChild(self.player.sprite)
-        
+        for bullet in bullets { bullet.sprite.removeFromParent() }
         self.bullets = []
         
+        for ball in balls { ball.sprite.removeFromParent() }
         self.currentLevel = level
-        self.balls = currentLevel!.makeLevel()
-        for ball in balls ?? [] { self.scene.addChild(ball.sprite) }
+        self.balls = currentLevel.makeLevel()
+        for ball in balls { self.scene.addChild(ball.sprite) }
         
     }
     
     /// Shoots a bullet out of the player
     func shoot() {
         
-        if !paused && self.bullets!.count < Game.MAXSHOTS {
+        if !paused && self.bullets.count < Game.MAXSHOTS {
             
             let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
             self.scene.addChild(bullet.sprite)
-            self.bullets?.append(bullet)
-            self.player.currentlyShut = self.bullets!.count >= Game.MAXSHOTS
+            self.bullets.append(bullet)
+            self.player.currentlyShut = self.bullets.count >= Game.MAXSHOTS
             self.player.animateShot()
             
         }
@@ -135,46 +137,14 @@ class Game {
      */
     func restart() {
         
-        tearDown()
-        setupGame()
-        
-    }
-    
-    /// Takes away information from current state
-    func tearDown() {
-        
-        self.player?.sprite.removeFromParent()
-//        self.player = nil  //Commented out so player's lives info can be accessed called by setupGame()
-        
-        if let bullets = bullets {
-            for bullet in bullets {
-                bullet.sprite.removeFromParent()
-            }
-            self.bullets = nil
-        }
-        
-        if let balls = balls {
-            for ball in balls {
-                ball.sprite.removeFromParent()
-            }
-            self.balls = nil
-        }
+        setup()
         
     }
     
     /// Loads the next level of the game; assumes all balls have been removed
     func loadNextLevel() {
         
-        for bullet in bullets ?? [] {
-            bullet.sprite.removeFromParent()
-        }
-        self.bullets = []
-        
-        self.player.xPosition = 0.5
-        
-        self.currentLevel = (self.currentLevel ?? .one).nextLevel
-        self.balls = self.currentLevel!.makeLevel()
-        for ball in self.balls! { self.scene.addChild(ball.sprite) }
+        self.setup(level: self.currentLevel.nextLevel, withLives: self.player.lives)
         
     }
     
@@ -198,24 +168,24 @@ class Game {
     private func checkCollisions() {
         
         let frame = self.scene.frame
-        var ballI = (balls?.count ?? 0) - 1
+        var ballI = balls.count - 1
         while ballI >= 0 { //check if ball collides with player or any bullets
             
-            if ballI < 0 || ballI >= balls!.count { break }
-            balls![ballI].bounceFloor(rect: frame)
-            balls![ballI].bounceWall(rect: frame)
+            if ballI < 0 || ballI >= balls.count { break }
+            balls[ballI].bounceFloor(rect: frame)
+            balls[ballI].bounceWall(rect: frame)
             
-            if Player.checkCollision(player, balls![ballI]) {
+            if Player.checkCollision(player, balls[ballI]) {
                 
-                handleDeath(fromBall: balls![ballI])
+                handleDeath(fromBall: balls[ballI])
                 
             } else {
                 
-                var bulletI = (bullets?.count ?? 0) - 1
+                var bulletI = bullets.count - 1
                 while bulletI >= 0 {
                     
-                    if bulletI < 0 || bulletI >= bullets!.count || ballI < 0 || ballI >= balls!.count { break }
-                    if DynamicCircularObject.checkCollision(balls![ballI], bullets![bulletI]) {
+                    if bulletI < 0 || bulletI >= bullets.count || ballI < 0 || ballI >= balls.count { break }
+                    if DynamicCircularObject.checkCollision(balls[ballI], bullets[bulletI]) {
                         
                         self.split(ballAtIndex: ballI)
                         remove(bulletAtIndex: bulletI)
@@ -231,10 +201,10 @@ class Game {
             
         }
         
-        var bulletI = (bullets?.count ?? 0) - 1
+        var bulletI = bullets.count - 1
         while bulletI >= 0 { //check if any bullets hit the floor
             
-            if bullets![bulletI].floorCollision(rect: frame) {
+            if bullets[bulletI].floorCollision(rect: frame) {
                 
                 remove(bulletAtIndex: bulletI)
                 
@@ -252,8 +222,8 @@ class Game {
      */
     private func tickObjects(_ timeInterval: TimeInterval) {
         
-        for ball in balls ?? [] { ball.tick(time: CGFloat(timeInterval)) }
-        for bullet in bullets ?? [] { bullet.tick(time: CGFloat(timeInterval)) }
+        for ball in balls { ball.tick(time: CGFloat(timeInterval)) }
+        for bullet in bullets { bullet.tick(time: CGFloat(timeInterval)) }
         
     }
     
@@ -264,16 +234,16 @@ class Game {
      */
     private func split(ballAtIndex i: Int) {
         
-        if let (nextA, nextB) = balls?[i].split() {
-            self.balls?.append(nextA)
-            self.balls?.append(nextB)
+        if let (nextA, nextB) = balls[i].split() {
+            self.balls.append(nextA)
+            self.balls.append(nextB)
             self.scene.addChild(nextA.sprite)
             self.scene.addChild(nextB.sprite)
         }
-        balls?[i].sprite.removeFromParent()
-        balls?.remove(at: i)
+        balls[i].sprite.removeFromParent()
+        balls.remove(at: i)
         
-        if (self.balls?.count ?? 1) == 0 { loadNextLevel() }
+        if self.balls.count == 0 { loadNextLevel() }
         
     }
     
@@ -284,11 +254,11 @@ class Game {
      */
     private func remove(bulletAtIndex i: Int) {
         
-        guard i >= 0 && i < (self.bullets?.count ?? 0) else { return }
-        self.bullets?[i].sprite.removeFromParent()
-        self.bullets?.remove(at: i)
+        guard i >= 0 && i < self.bullets.count else { return }
+        self.bullets[i].sprite.removeFromParent()
+        self.bullets.remove(at: i)
         
-        if (self.bullets?.count ?? 0) < Game.MAXSHOTS { self.player.currentlyShut = false }
+        if self.bullets.count < Game.MAXSHOTS { self.player.currentlyShut = false }
         
     }
     
@@ -301,18 +271,12 @@ class Game {
         
         if(player.lives <= 1) {
             
-            self.tearDown()
-            self.player = nil
-            self.setupGame()
+            self.restart()
             
         } else {
-            print("Lives: \(player.lives)")
-            print("Life Imp: \(player.lifeImplementation.numberRemaining)")
+            
             player.lives -= 1
-            print("Lives: \(player.lives)")
-            print("Life Imp: \(player.lifeImplementation.numberRemaining)")
-            self.tearDown()
-            self.setupGame(forLevel: self.currentLevel!)
+            self.setup(level: self.currentLevel, withLives: self.player.lives)
             
         }
         
