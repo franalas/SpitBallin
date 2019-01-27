@@ -15,7 +15,6 @@ class Lives {
     /// Value that holds how many lives the player has left. Sets any sprites outside range invisible
     var numberRemaining: Int {
         didSet {
-            print("\(numberRemaining)")
             for i in 0..<sprites.count {
                 sprites[i].isHidden = i >= numberRemaining
             }
@@ -81,10 +80,6 @@ class Lives {
     func addLivesToScene(toScene scene: SKScene) {
         
         scene.addChild(sprite)
-        
-        for s in self.sprites {
-            print(self.sprite.convert(s.position, to: scene))
-        }
         
     }
 }
