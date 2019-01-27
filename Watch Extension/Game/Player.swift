@@ -18,7 +18,16 @@ class Player: CircularObject {
     private static let SHOT_LENGTH = 0.5
     
     /// Keeps track of how many lives a Player has
-    var lives: Int
+    var lifeImplementation: Lives
+    
+    /// Represents how many lives the a Player has left
+    var lives: Int {
+        
+        get { return lifeImplementation.numberRemaining }
+        
+        set { lifeImplementation.numberRemaining = newValue }
+        
+    }
     
     var sprite: SKNode
     var radius: CGFloat
@@ -75,9 +84,9 @@ class Player: CircularObject {
      - Parameters:
         - person: The character that the player should be
         - frame: The bounds of the screen
-        - lives: How many lives the player starts with
+        - lives: Lives associated with Player
     */
-    init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT, lives: Int = 3) {
+    init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
         
         self.character = person
         
@@ -85,6 +94,8 @@ class Player: CircularObject {
         self.shootTexture = SKTexture(imageNamed: person.shootImage())
         self.shutTexture = SKTexture(imageNamed: person.shutImage())
         currentlyShut = false
+        
+        self.lifeImplementation = Lives(frame: frame)
         
         let width = height * standardTexture.size().width / standardTexture.size().height
         
@@ -97,8 +108,6 @@ class Player: CircularObject {
         
         self.minX = frame.minX + radius
         self.maxX = frame.maxX - radius
-        
-        self.lives = lives
         
     }
     
@@ -118,12 +127,10 @@ class Player: CircularObject {
         
     }
     
-    /// Subtracts 1 from the lives of the player
-    func removeLife() {
+    func addLivesToScene(toScene scene: SKScene) {
         
-        lives -= 1
+        lifeImplementation.addLivesToScene(toScene: scene)
         
     }
-    
 }
 

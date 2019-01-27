@@ -68,9 +68,18 @@ class Game {
         - level: Decides what level game is set up to
         - lives: Decides how many lives the player starts up with
      */
-    private func setupGame(forLevel level: LevelNumber = .one, forLives lives: Int = 3) {
+    private func setupGame(forLevel level: LevelNumber = .one) {
         
-        self.player = Player(person: self.character, frame: self.scene.frame, lives: lives)
+        if self.player != nil {
+            
+            self.player.xPosition = self.scene.frame.midX
+            
+        } else {
+            
+            self.player = Player(person: self.character, frame: self.scene.frame)
+            
+        }
+        
         self.scene.addChild(self.player.sprite)
         
         self.bullets = []
@@ -292,13 +301,17 @@ class Game {
         if(player.lives <= 1) {
             
             self.tearDown()
+            self.player = nil
             self.setupGame()
             
         } else {
-            
-            player.removeLife()
+            print("Lives: \(player.lives)")
+            print("Life Imp: \(player.lifeImplementation.numberRemaining)")
+            player.lives -= 1
+            print("Lives: \(player.lives)")
+            print("Life Imp: \(player.lifeImplementation.numberRemaining)")
             self.tearDown()
-            self.setupGame(forLevel: self.currentLevel!, forLives: player.lives)
+            self.setupGame(forLevel: self.currentLevel!)
             
         }
         
