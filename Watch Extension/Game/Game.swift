@@ -59,6 +59,7 @@ class Game {
         self.character = person
         gameScene.game = self
         self.setupGame()
+        self.player.addLivesToScene(toScene: gameScene)
         
     }
     

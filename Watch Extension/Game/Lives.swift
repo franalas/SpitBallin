@@ -11,7 +11,14 @@ import SpriteKit
 
 class Lives {
     
-    var numberRemaining: Int
+    var numberRemaining: Int {
+        didSet {
+            print("\(numberRemaining)")
+            for i in 0..<sprites.count {
+                sprites[i].isHidden = i >= numberRemaining
+            }
+        }
+    }
     private var sprites: [SKSpriteNode]
     private var sprite: SKNode
     private var spriteTexture: SKTexture
@@ -19,8 +26,11 @@ class Lives {
     private static let SPACE: CGFloat = 0.05
     private var width: CGFloat
     private var height: CGFloat
+    private static let MAXLIVES: Int = 7
+    static let STARTINGLIVES: Int = 3
     
-    init(numberRemaining: Int = 3, height: CGFloat = Lives.HEIGHT, frame: CGRect) {
+    init(frame: CGRect, startingLives: Int = Lives.STARTINGLIVES, maxLives: Int = Lives.MAXLIVES,
+         height: CGFloat = Lives.HEIGHT) {
         
         let spriteTexture = SKTexture(imageNamed: "water_bottle")
         self.spriteTexture = spriteTexture
@@ -29,46 +39,47 @@ class Lives {
         self.height = height
         self.sprites = []
         self.sprite = SKNode()
-        self.sprite.position = CGPoint(x: frame.minX, y: frame.maxY)
+        self.sprite.position = CGPoint(x: frame.minX + width/2, y: frame.maxY)
         
-        for i in 0..<numberRemaining {
+        for i in 0..<maxLives {
             
             let waterSprite = SKSpriteNode(texture: self.spriteTexture,
                                            size: CGSize(width: width, height: height))
             self.sprites.append(waterSprite)
-            waterSprite.position = CGPoint(x: sprite.position.x + CGFloat(integerLiteral: i) * Lives.SPACE,
-                                               y: sprite.position.y - waterSprite.size.height / 2)
+            waterSprite.position = CGPoint(x: (CGFloat(i) + 0.5)*width + (CGFloat(i) + 0.5)*Lives.SPACE,
+                                           y: -waterSprite.size.height / 2)
+            if i > startingLives - 1 {
+                waterSprite.isHidden = true
+            }
             self.sprite.addChild(waterSprite)
             
         }
         
-        
-        self.numberRemaining = numberRemaining
-        
-    }
-    
-    private func addLife() {
-        
-        
-        let waterSprite = SKSpriteNode(texture: self.spriteTexture,
-                                       size: CGSize(width: width, height: height))
-        self.sprites.append(waterSprite)
-        waterSprite.position = CGPoint(x: sprite.position.x +
-            CGFloat(integerLiteral: (numberRemaining - 1)) * Lives.SPACE,
-                                       y: sprite.position.y - waterSprite.size.height / 2)
-        self.sprite.addChild(waterSprite)
+        self.numberRemaining = startingLives
         
     }
     
-    private func removeLife() {
-        
-        
-        
-    }
+//    private func addLife() {
+//        
+//        numberRemaining += 1
+//        self.sprites[numberRemaining - 1].isHidden = false
+//
+//    }
+//
+//    private func removeLife() {
+//
+//        self.sprites[numberRemaining - 1].isHidden = true
+//        numberRemaining -= 1
+//
+//    }
     
     func addLivesToScene(toScene scene: SKScene) {
         
         scene.addChild(sprite)
+        
+        for s in self.sprites {
+            print(self.sprite.convert(s.position, to: scene))
+        }
         
     }
 }
