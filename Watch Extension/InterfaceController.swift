@@ -13,7 +13,7 @@ import SpriteKit
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
-    var game: Game?
+    var game: Game!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -21,8 +21,8 @@ class InterfaceController: WKInterfaceController {
         crownSequencer.delegate = self
         
         self.game = Game(size: CGSize(width: 1, height: 1), person: .liam)
-        self.game!.present(inInterface: self.skInterface)
-        self.game?.paused = false
+        self.game.present(inInterface: self.skInterface)
+        self.game.paused = false
         
     }
     
@@ -30,37 +30,37 @@ class InterfaceController: WKInterfaceController {
         
         super.didAppear()
         crownSequencer.focus()
-        self.game?.paused = false
+        self.game.paused = false
         
     }
     
     override func willDisappear() {
         
-        self.game?.paused = true
+        self.game.paused = true
         
     }
 
     @IBAction func tapAction(_ sender: Any) {
         
-        self.game?.shoot()
+        self.game.shoot()
         
     }
     
     @IBAction func playAction() {
         
-        self.game?.paused = false
+        self.game.paused = false
         
     }
     
     @IBAction func pauseAction() {
         
-        self.game?.paused = true
+        self.game.paused = true
         
     }
     
     @IBAction func restartAction() {
         
-        self.game?.restart()
+        self.game.restart()
         
     }
     
@@ -83,7 +83,7 @@ extension InterfaceController: WKCrownDelegate {
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        game?.movePlayer(rotationalDelta)
+        game.movePlayer(rotationalDelta)
         
     }
     
