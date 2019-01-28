@@ -58,7 +58,12 @@ class Ball: DynamicCircularObject {
         
     }
     
-    /// Returns true if the ball is making contact with either side (left or right) of the screen, false otherwise
+    /**
+     Is the ball making contact with the wall?
+     - Parameters:
+        - rect: scene where wall exists
+     - Returns: true if the ball is making contact with either side (left or right) of the screen, false otherwise
+     */
     func wallCollision(rect: CGRect) -> Bool {
         if position.x <= rect.minX + self.radius || position.x >= rect.maxX - self.radius {
             return true
@@ -66,7 +71,11 @@ class Ball: DynamicCircularObject {
         return false
     }
     
-    /// Changes velocity.dy if Ball is in contact with floor
+    /**
+    Changes velocity.dy if Ball is in contact with floor
+     - Parameters:
+        - rect: scene where floor exists
+     */
     func bounceFloor(rect: CGRect) {
         
         if floorCollision(rect: rect) {
@@ -77,7 +86,11 @@ class Ball: DynamicCircularObject {
         
     }
     
-    /// Changes velocity.dx if Ball is in contact with wall
+    /**
+     Changes velocity.dx if Ball is in contact with wall
+     - Parameters:
+        - rect: scene where wall exists
+     */
     func bounceWall(rect: CGRect) {
         
         if wallCollision(rect: rect) {
@@ -92,7 +105,11 @@ class Ball: DynamicCircularObject {
         
     }
     
-    /// Removes self and adds 2 Balls to scene or just removes self
+    /**
+    Removes self and returns 2 Balls or just removes self
+     - Returns: 2 Balls
+     
+     */
     func split() -> (Ball, Ball)? {
         if let ballSize = self.ballSize {
             if let nextBall = ballSize.nextBall {

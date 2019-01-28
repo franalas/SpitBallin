@@ -17,6 +17,18 @@ class Player: CircularObject {
     /// How long the shoot animation lasts
     private static let SHOT_LENGTH = 0.5
     
+    /// Keeps track of how many lives a Player has
+    var lifeImplementation: Lives
+    
+    /// Represents how many lives the a Player has left
+    var lives: Int {
+        
+        get { return lifeImplementation.numberRemaining }
+        
+        set { lifeImplementation.numberRemaining = newValue }
+        
+    }
+    
     var sprite: SKNode
     var radius: CGFloat
     var position: CGPoint { return self.sprite.position }
@@ -72,6 +84,7 @@ class Player: CircularObject {
      - Parameters:
         - person: The character that the player should be
         - frame: The bounds of the screen
+        - lives: Lives associated with Player
     */
     init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
         
@@ -81,6 +94,8 @@ class Player: CircularObject {
         self.shootTexture = SKTexture(imageNamed: person.shootImage())
         self.shutTexture = SKTexture(imageNamed: person.shutImage())
         currentlyShut = false
+        
+        self.lifeImplementation = Lives(frame: frame)
         
         let width = height * standardTexture.size().width / standardTexture.size().height
         
@@ -96,11 +111,7 @@ class Player: CircularObject {
         
     }
     
-    /**
-     Animates the player sprite shooting.
-     - Parameters:
-     - completion: called when animation finishes
-     */
+    /// Animates the player sprite shooting.
     func animateShot() {
         
         (self.sprite as! SKSpriteNode).run(.sequence([
@@ -112,5 +123,15 @@ class Player: CircularObject {
         
     }
     
+    /**
+     Adds LifeImplementation to the scene
+     - Parameters:
+        - scene: scene where LifeImplementation is added to
+     */
+    func addLivesToScene(toScene scene: SKScene) {
+        
+        lifeImplementation.addLivesToScene(toScene: scene)
+        
+    }
 }
 

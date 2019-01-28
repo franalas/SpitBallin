@@ -57,7 +57,11 @@ class DynamicCircularObject: CircularObject {
         
     }
     
-    /// Returns true if self is in contact with bottom of screen, false otherwise
+    /**
+    Returns true if self is in contact with bottom of screen, false otherwise
+     - Parameters:
+        - rect: scene where floor exists
+     */
     func floorCollision(rect: CGRect) -> Bool {
         
         if self.position.y <= rect.minY + self.radius {
@@ -68,7 +72,11 @@ class DynamicCircularObject: CircularObject {
         return false
     }
     
-    /// Updates the position and its derivatives
+    /**
+    Updates the position and its derivatives
+     - Parameters:
+        - time: time of game
+     */
     func tick(time: CGFloat) {
         
         let accComponentPosX = (1/2) * self.acceleration.dx * time * time
