@@ -24,6 +24,8 @@ class InterfaceController: WKInterfaceController {
         self.game.present(inInterface: self.skInterface)
         self.game.paused = false
         
+        (WKExtension.shared().delegate! as! ExtensionDelegate).interfaceController = self
+        
     }
     
     override func didAppear() {

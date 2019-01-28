@@ -15,6 +15,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     // which will be used later for sending / receiving data
     private let session = WCSession.default
     
+    var interfaceController: InterfaceController?
+    
     // Instantiate the Singleton
     private override init() {
         super.init()
@@ -77,7 +79,12 @@ extension ExtensionDelegate: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         
-        
+        let str = message["message"]! as! String
+        if str == "tap" {
+            interfaceController?.tapAction(self)
+        } else {
+            interfaceController?.crownDidRotate(nil, rotationalDelta: Double(str)!)
+        }
         
     }
     
