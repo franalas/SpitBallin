@@ -64,6 +64,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
+    
+    func send(message: String) {
+        
+        session.sendMessage(["message":message], replyHandler: nil, errorHandler: nil)
+        
+    }
 
 }
 

@@ -21,7 +21,7 @@ class InterfaceController: WKInterfaceController {
         crownSequencer.delegate = self
         
         self.game = Game(size: CGSize(width: 1, height: 1), person: .liam)
-        self.game.present(inInterface: self.skInterface)
+//        self.game.present(inInterface: self.skInterface)
         self.game.paused = false
         
     }
@@ -42,7 +42,8 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func tapAction(_ sender: Any) {
         
-        self.game.shoot()
+//        self.game.shoot()
+        (WKExtension.shared().delegate! as! ExtensionDelegate).send(message: "tap")
         
     }
     
@@ -83,7 +84,8 @@ extension InterfaceController: WKCrownDelegate {
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        game.movePlayer(rotationalDelta)
+//        game.movePlayer(rotationalDelta)
+        (WKExtension.shared().delegate! as! ExtensionDelegate).send(message: "\(rotationalDelta)")
         
     }
     

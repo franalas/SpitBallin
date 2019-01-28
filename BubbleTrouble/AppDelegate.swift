@@ -11,6 +11,8 @@ import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var gameService: GameService?
 
     var window: UIWindow?
 
@@ -67,7 +69,7 @@ extension AppDelegate: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         
-        
+        gameService?.send(message: message["message"]! as! String)
         
     }
     
