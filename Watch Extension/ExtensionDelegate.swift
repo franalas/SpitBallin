@@ -7,8 +7,20 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
+    
+    // Keep a reference for the session,
+    // which will be used later for sending / receiving data
+    private let session = WCSession.default
+    
+    // Instantiate the Singleton
+    private override init() {
+        super.init()
+        session.delegate = self
+        session.activate()
+    }
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
@@ -53,4 +65,20 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
 
+}
+
+extension ExtensionDelegate: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
+        
+        
+    }
+    
 }
