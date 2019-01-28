@@ -81,6 +81,7 @@ class Game {
         
         self.player.xPosition = self.scene.frame.midX
         self.player.lives = lives
+        self.player.currentlyShut = false
         
         for bullet in bullets { bullet.sprite.removeFromParent() }
         self.bullets = []
@@ -141,7 +142,6 @@ class Game {
     /// Loads the next level of the game; assumes all balls have been removed
     func loadNextLevel() {
         
-        self.player.currentlyShut = false
         self.setup(level: self.currentLevel.nextLevel, withLives: self.player.lives)
         
     }
