@@ -60,7 +60,25 @@ enum BallSize: Int {
         case .five:
             return 0.15
         }
+    }
+    
+    /// Color of the ball
+    var color: UIColor {
         
+        let turquoise = UIColor(red: 64/255, green: 224/255, blue: 208/255, alpha: 1)
+        
+        switch self {
+        case .one:
+            return .magenta
+        case .two:
+            return .red
+        case .three:
+            return turquoise
+        case .four:
+            return .purple
+        case .five:
+            return .yellow
+        }
     }
     
     /// The size of the next ball after a split; nil if it splits to nothing
