@@ -43,23 +43,21 @@ enum LevelNumber: Int {
         switch self {
             
         case .one:
-             return [Ball(ballSize: .two, position: CGPoint(x: 0.5, y: BallSize.two.bounceHeight))]
+             return [Ball(ballSize: .two, positionX: 0.5)]
         case .two:
-            return [Ball(ballSize: .three, position: CGPoint(x: 0.5, y: BallSize.three.bounceHeight))]
+            return [Ball(ballSize: .three, positionX: 0.5)]
         case .three:
-            return [Ball(ballSize: .three, position: CGPoint(x: 0.3, y: BallSize.three.bounceHeight),
-                         right: false),
-                    Ball(ballSize: .two, position: CGPoint(x: 0.7, y: BallSize.two.bounceHeight))]
+            return [Ball(ballSize: .three, positionX: 0.3, right: false),
+                    Ball(ballSize: .two, positionX: 0.7)]
         case .four:
-            return [Ball(ballSize: .two, position: CGPoint(x: 0.2, y: BallSize.two.bounceHeight)),
-                    Ball(ballSize: .two, position: CGPoint(x: 0.5, y: BallSize.two.bounceHeight)),
-                    Ball(ballSize: .three, position: CGPoint(x: 0.7, y: BallSize.three.bounceHeight))]
+            return [Ball(ballSize: .two, positionX: 0.2),
+                    Ball(ballSize: .two, positionX: 0.5),
+                    Ball(ballSize: .three, positionX: 0.7)]
         case .five:
-            return [Ball(ballSize: .five, position: CGPoint(x: 0.5, y: BallSize.five.bounceHeight))]
+            return [Ball(ballSize: .four, positionX: 0.5)]
         case .six:
-            return [Ball(ballSize: .five, position: CGPoint(x: 0.2, y: BallSize.five.bounceHeight)),
-                    Ball(ballSize: .three, position: CGPoint(x: 0.8, y: BallSize.three.bounceHeight),
-                         right: false)]
+            return [Ball(ballSize: .four, positionX: 0.2),
+                    Ball(ballSize: .two, positionX: 0.8, right: false)]
         }
         
     }

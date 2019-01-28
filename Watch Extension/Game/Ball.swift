@@ -38,7 +38,7 @@ class Ball: DynamicCircularObject {
      - speed: How fast the ball moves left and right
      - gravity: The acceleration of gravity that acts on the ball
      */
-    init(ballSize: BallSize, position: CGPoint = CGPoint.zero, right: Bool = true,
+    init(ballSize: BallSize, positionX: CGFloat = 0.5, right: Bool = true,
          speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY, color: UIColor? = nil) {
         
         self.ballSize = ballSize
@@ -46,6 +46,7 @@ class Ball: DynamicCircularObject {
         let sprite = SKShapeNode(circleOfRadius: ballSize.radius)
         sprite.fillColor = self.color
         sprite.strokeColor = .clear
+        let position = CGPoint(x: positionX, y: ballSize.bounceHeight)
         sprite.position = position
         sprite.zPosition = -CGFloat(ballSize.rawValue)
         
@@ -114,9 +115,9 @@ class Ball: DynamicCircularObject {
         
         if let nextBall = ballSize.nextBall {
             let ball1 = Ball.init(ballSize: nextBall,
-                                  position: position, gravity: acceleration.dy, color: self.color)
+                                  positionX: position.x, gravity: acceleration.dy, color: self.color)
             let ball2 = Ball.init(ballSize: nextBall,
-                                  position: position, gravity: acceleration.dy, color: self.color)
+                                  positionX: position.x, gravity: acceleration.dy, color: self.color)
             ball1.velocity = CGVector(dx: -self.velocity.dx,
                                       dy: max(Ball.YSPLIT, self.velocity.dy + Ball.YSPLIT))
             ball2.velocity = CGVector(dx: self.velocity.dx,
