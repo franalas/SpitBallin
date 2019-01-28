@@ -38,7 +38,7 @@ class Ball: DynamicCircularObject {
      - speed: How fast the ball moves left and right
      - gravity: The acceleration of gravity that acts on the ball
      */
-    init(ballSize: BallSize, positionX: CGFloat = 0.5, right: Bool = true,
+    init(ballSize: BallSize, positionX: CGFloat? = nil, right: Bool = true, position: CGPoint? = nil,
          speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY, color: UIColor? = nil) {
         
         self.ballSize = ballSize
@@ -48,7 +48,7 @@ class Ball: DynamicCircularObject {
         sprite.fillColor = self.color
         sprite.strokeColor = .clear
         
-        let position = CGPoint(x: positionX, y: ballSize.bounceHeight)
+        let position = position ?? CGPoint(x: positionX ?? 0.5, y: ballSize.bounceHeight)
         sprite.position = position
         sprite.zPosition = -CGFloat(ballSize.rawValue)
         
@@ -116,10 +116,8 @@ class Ball: DynamicCircularObject {
     func split() -> (Ball, Ball)? {
         
         if let nextBall = ballSize.nextBall {
-            let ball1 = Ball.init(ballSize: nextBall,
-                                  positionX: position.x, gravity: acceleration.dy, color: self.color)
-            let ball2 = Ball.init(ballSize: nextBall,
-                                  positionX: position.x, gravity: acceleration.dy, color: self.color)
+            let ball1 = Ball.init(ballSize: nextBall, position: self.position, gravity: acceleration.dy, color: self.color)
+            let ball2 = Ball.init(ballSize: nextBall, position: self.position, gravity: acceleration.dy, color: self.color)
             ball1.velocity = CGVector(dx: -self.velocity.dx,
                                       dy: max(Ball.YSPLIT, self.velocity.dy + Ball.YSPLIT))
             ball2.velocity = CGVector(dx: self.velocity.dx,
