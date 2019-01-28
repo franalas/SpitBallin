@@ -64,18 +64,20 @@ enum BallSize: Int {
     
     /// Color of the ball
     var color: UIColor {
-            
-            switch self {
-            case .one:
-                return .white
-            case .two:
-                return .red
-            case .three:
-                return .blue
-            case .four:
-                return .purple
-            case .five:
-                return .yellow
+        
+        let turquoise = UIColor(red: 64/255, green: 224/255, blue: 208/255, alpha: 1)
+        
+        switch self {
+        case .one:
+            return .magenta
+        case .two:
+            return .red
+        case .three:
+            return turquoise
+        case .four:
+            return .purple
+        case .five:
+            return .yellow
         }
     }
     

@@ -44,9 +44,10 @@ class Ball: DynamicCircularObject {
         self.ballSize = ballSize
         self.color = color ?? ballSize.color
         let sprite = SKShapeNode(circleOfRadius: ballSize.radius)
-        sprite.fillColor = color ?? ballSize.color
+        sprite.fillColor = self.color
         sprite.strokeColor = .clear
         sprite.position = position
+        sprite.zPosition = -CGFloat(ballSize.rawValue)
         
         if right {
             super.init(sprite: sprite, radius: ballSize.radius, position: position,
@@ -108,7 +109,6 @@ class Ball: DynamicCircularObject {
     /**
      Removes self and returns 2 Balls or just removes self
      - Returns: 2 Balls
-     
      */
     func split() -> (Ball, Ball)? {
         
