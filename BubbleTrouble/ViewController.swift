@@ -31,17 +31,3 @@ class ViewController: UIViewController {
     */
 
 }
-
-extension ViewController: GameServiceDelegate {
-    func receivedRotationalDelta(manager: GameService, delta: Double) {
-        (UIApplication.shared.delegate! as! AppDelegate).send(message: "\(delta)")
-    }
-    
-    func receivedTap(manager: GameService) {
-        (UIApplication.shared.delegate! as! AppDelegate).send(message: "tap")
-    }
-    
-    
-    
-    
-}

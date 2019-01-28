@@ -53,6 +53,20 @@ class GameService: NSObject {
         
     }
     
+    func send(message: String) {
+        
+        NSLog("%@", "sendRotationalDelta: \(message) to \(session.connectedPeers.count) peers")
+        if session.connectedPeers.count > 0 {
+            do {
+                try self.session.send("\(message)".data(using: .utf8)!, toPeers: session.connectedPeers, with: .unreliable)
+            }
+            catch let error {
+                NSLog("%@", "Error for sending: \(error)")
+            }
+        }
+        
+    }
+    
     func send(rotationalDelta: Double) {
         
         NSLog("%@", "sendRotationalDelta: \(rotationalDelta) to \(session.connectedPeers.count) peers")
