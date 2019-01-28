@@ -87,9 +87,9 @@ extension ExtensionDelegate: WCSessionDelegate {
         
         let str = message["message"]! as! String
         if str == "tap" {
-            interfaceController?.tapAction(self)
+            interfaceController?.game.shoot()
         } else {
-            interfaceController?.crownDidRotate(nil, rotationalDelta: Double(str)!)
+            interfaceController?.game.movePlayer(Double(str)!)
         }
         
     }

@@ -21,7 +21,7 @@ class InterfaceController: WKInterfaceController {
         crownSequencer.delegate = self
         
         self.game = Game(size: CGSize(width: 1, height: 1), person: .liam)
-//        self.game.present(inInterface: self.skInterface)
+        self.game.present(inInterface: self.skInterface)
         self.game.paused = false
         
         (WKExtension.shared().delegate! as! ExtensionDelegate).interfaceController = self

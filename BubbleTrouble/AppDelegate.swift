@@ -11,8 +11,6 @@ import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var gameService: GameService?
 
     var window: UIWindow?
 
@@ -46,12 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func send(message: String) {
-        
-        session?.sendMessage(["message":message], replyHandler: nil, errorHandler: nil)
-        
-    }
-
 }
 
 extension AppDelegate: WCSessionDelegate {
@@ -74,7 +66,7 @@ extension AppDelegate: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         
-        gameService?.send(message: message["message"]! as! String)
+        session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         
     }
     
