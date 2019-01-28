@@ -58,7 +58,7 @@ class GameService: NSObject {
         NSLog("%@", "sendRotationalDelta: \(rotationalDelta) to \(session.connectedPeers.count) peers")
         if session.connectedPeers.count > 0 {
             do {
-                try self.session.send("rotation \(rotationalDelta)".data(using: .utf8)!, toPeers: session.connectedPeers, with: .unreliable)
+                try self.session.send("\(rotationalDelta)".data(using: .utf8)!, toPeers: session.connectedPeers, with: .unreliable)
             }
             catch let error {
                 NSLog("%@", "Error for sending: \(error)")
@@ -136,6 +136,13 @@ extension GameService: MCSessionDelegate {
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
         NSLog("%@", "didReceiveData: \(data)")
+        
+        let str = String(data: data, encoding: .utf8)!
+        if str == "tap" {
+            self.delegate?.receivedTap(manager: self)
+        } else {
+            self.delegate?.receivedRotationalDelta(manager: self, delta: Double(str)!)
+        }
         
     }
     
