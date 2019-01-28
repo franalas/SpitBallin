@@ -33,7 +33,7 @@ class Ball: DynamicCircularObject {
      - ballSize: Represents all characteristics of the ball
      - color: Represents color of the Ball
      - radius: Represents the radius of the object relative to scene
-     - position: Represents the (x,y) position of object relative to scene
+     - positionX: Represents the X-position of object relative to scene
      - right: Decides wether the Ball initially moves right, left if false
      - speed: How fast the ball moves left and right
      - gravity: The acceleration of gravity that acts on the ball
@@ -43,9 +43,11 @@ class Ball: DynamicCircularObject {
         
         self.ballSize = ballSize
         self.color = color ?? ballSize.color
+        
         let sprite = SKShapeNode(circleOfRadius: ballSize.radius)
         sprite.fillColor = self.color
         sprite.strokeColor = .clear
+        
         let position = CGPoint(x: positionX, y: ballSize.bounceHeight)
         sprite.position = position
         sprite.zPosition = -CGFloat(ballSize.rawValue)
