@@ -43,7 +43,7 @@ enum LevelNumber: Int {
         switch self {
             
         case .one:
-             return [Ball(ballSize: .one, position: CGPoint(x: 0.5, y: BallSize.one.bounceHeight))]
+             return [Ball(ballSize: .two, position: CGPoint(x: 0.5, y: BallSize.two.bounceHeight))]
         case .two:
             return [Ball(ballSize: .three, position: CGPoint(x: 0.5, y: BallSize.three.bounceHeight))]
         case .three:
