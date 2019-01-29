@@ -45,7 +45,7 @@ class Game {
     private(set) var currentLevel: LevelNumber
     
     /// The maximum number of shots allowed on the screen at a time
-    private static let MAXSHOTS = 3
+    private static let MAXSHOTS = 1
     
     /**
      Initializes a game with a given scene size and starting character
@@ -60,8 +60,7 @@ class Game {
         self.scene.scaleMode = .aspectFit
         
         self.pauseIndicator = SKSpriteNode(texture: SKTexture(imageNamed: "pause"), size: CGSize(width: 0.1, height: 0.1))
-        self.pauseIndicator.anchorPoint = CGPoint(x: 1, y: 1)
-        self.pauseIndicator.position = CGPoint(x: 1, y: 1)
+        self.pauseIndicator.position = CGPoint(x: 0.9, y: 0.9)
         self.scene.addChild(self.pauseIndicator)
         
         self.character = person
@@ -129,6 +128,7 @@ class Game {
         
     }
     
+    #if os(watchOS)
     /**
      Presents the game in a `WKInterfaceSKScene`
      - Parameters:
@@ -140,6 +140,23 @@ class Game {
         inInterface.preferredFramesPerSecond = 30
         
     }
+    #endif
+    
+    #if os(iOS)
+    /**
+     Presents the game in a `SKView`
+     - Parameters:
+        - inView: the `SKView` that the game should be presented in
+     */
+    func present(inView: SKView) {
+        
+        inView.presentScene(self.scene)
+        if #available(iOS 10.0, *) {
+            inView.preferredFramesPerSecond = 30
+        }
+        
+    }
+    #endif
     
     /// Resets the game back to its initial state
     func restart() {
