@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:BubbleTrouble.xcodeproj">
+      location = "group:../Game">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
