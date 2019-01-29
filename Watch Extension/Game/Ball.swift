@@ -29,6 +29,7 @@ class Ball: DynamicCircularObject {
     
     /**
      Initializes a Ball, child of DynamicCircularObject. Represents the bouncing balls in game.
+     This initialized is used when a ball is split
      - Parameters:
         - ballSize: Represents all characteristics of the ball
         - color: Represents color of the Ball
@@ -62,7 +63,7 @@ class Ball: DynamicCircularObject {
     }
     
     /**
-     Initializes a Ball, child of DynamicCircularObject. Represents the bouncing balls in game.
+     Initializes a Ball, child of DynamicCircularObject. Used to initialize a ball at the beggining of a level
      - Parameters:
         - ballSize: Represents all characteristics of the ball
         - positionX: Represents the X-position of object relative to scene

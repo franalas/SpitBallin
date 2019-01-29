@@ -37,6 +37,9 @@ enum LevelNumber: Int {
     /// Level eight
     case eight
     
+    /// Level nine
+    case nine
+    
     /// The next level after the current one
     var nextLevel: LevelNumber {
         if let nextLevel = LevelNumber(rawValue: self.rawValue + 1) { return nextLevel }
@@ -49,9 +52,9 @@ enum LevelNumber: Int {
         switch self {
             
         case .one:
-             return [Ball(ballSize: .two, positionX: 0.5)]
+            return [Ball(ballSize: .two)]
         case .two:
-            return [Ball(ballSize: .three, positionX: 0.5)]
+            return [Ball(ballSize: .three)]
         case .three:
             return [Ball(ballSize: .one, positionX: 0.1),
                     Ball(ballSize: .one, positionX: 0.2),
@@ -64,15 +67,19 @@ enum LevelNumber: Int {
                     Ball(ballSize: .two, positionX: 0.7)]
         case .five:
             return [Ball(ballSize: .two, positionX: 0.2),
-                    Ball(ballSize: .two, positionX: 0.5),
+                    Ball(ballSize: .two),
                     Ball(ballSize: .three, positionX: 0.7)]
         case .six:
-            return [Ball(ballSize: .four, positionX: 0.5)]
+            return [Ball(ballSize: .four)]
         case .seven:
             return [Ball(ballSize: .four, positionX: 0.2),
                     Ball(ballSize: .two, positionX: 0.8, right: false)]
         case .eight:
-            return [Ball(ballSize: .five, positionX: 0.2)]
+            return [Ball(ballSize: .five)]
+        case .nine:
+            return [Ball(ballSize: .five, positionX: 0.2),
+                    Ball(ballSize: .five, positionX: 0.7, right: false)]
+            
         }
         
     }
