@@ -13,13 +13,13 @@ import SpriteKit
 class Ball: DynamicCircularObject {
     
     /// Represents initial velocity of any Ball
-    private static let SPEED: CGFloat = 0.2
+    static let SPEED: CGFloat = 0.2
     
     /// Represents initial gravity of any Ball
-    private static let GRAVITY: CGFloat = -0.2
+    static let GRAVITY: CGFloat = -0.2
     
     /// Represents velocity added to any Ball activated by split
-    private static let YSPLIT: CGFloat = 0.15
+    static let YSPLIT: CGFloat = 0.15
     
     /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
     let ballSize: BallSize
@@ -70,7 +70,8 @@ class Ball: DynamicCircularObject {
         - speed: How fast the ball moves left and right
         - gravity: The acceleration of gravity that acts on the ball
      */
-    convenience init(ballSize: BallSize, positionX: CGFloat = 0.5, right: Bool = true, speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY, color: UIColor? = nil) {
+    convenience init(ballSize: BallSize, positionX: CGFloat = 0.5, right: Bool = true,
+                     speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY, color: UIColor? = nil) {
         
         self.init(ballSize: ballSize, position: CGPoint(x: positionX, y: ballSize.bounceHeight), right: right, speed: speed, gravity: gravity, color: color)
         

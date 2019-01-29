@@ -11,6 +11,9 @@ import Foundation
 import SpriteKit
 
 class InterfaceController: WKInterfaceController {
+    
+    /// How much the digital crown rotational delta is multiplier by to determine amount of player movement
+    static let CROWN_MULTIPLIER = 0.5
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
     var game: Game!
@@ -83,7 +86,7 @@ extension InterfaceController: WKCrownDelegate {
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        game.movePlayer(rotationalDelta)
+        game.movePlayer(distance: rotationalDelta * InterfaceController.CROWN_MULTIPLIER)
         
     }
     

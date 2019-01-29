@@ -13,13 +13,13 @@ import SpriteKit
 class Bullet: DynamicCircularObject {
     
     /// The default initial speed
-    private static let SPEED: CGFloat = 2
+    static let SPEED: CGFloat = 2
     
     /// The default radius
-    private static let RADIUS: CGFloat = 0.1
+    static let RADIUS: CGFloat = 0.1
     
     /// The image file name of the sprite
-    private static let SPRITE_IMAGE = "spit"
+    static let SPRITE_IMAGE = "spit"
     
     override var velocity: CGVector {
         didSet {

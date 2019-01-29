@@ -23,16 +23,22 @@ class Lives {
     
     /// Represents each individual life sprite
     private var sprites: [SKSpriteNode]
+    
     /// Parent to sprites, represents what is seen in scene
     private var sprite: SKNode
+    
     /// Represents the texture the sprite contains
     private var spriteTexture: SKTexture
+    
     /// Height of sprite
-    private static let HEIGHT: CGFloat = 0.1
+    static let HEIGHT: CGFloat = 0.1
+    
     /// Space in between life sprites
-    private static let SPACE: CGFloat = 0.05
+    static let SPACE: CGFloat = 0.05
+    
     /// Max number of lives a player can have
-    private static let MAXLIVES: Int = 7
+    static let MAXLIVES: Int = 7
+    
     /// Amount of lives a player begins with
     static let STARTINGLIVES: Int = 3
     

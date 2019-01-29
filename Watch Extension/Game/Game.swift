@@ -14,9 +14,6 @@ import WatchKit
  /// Stores game state, handles game logic, and receives controls
 class Game {
     
-    /// How much the digital crown rotational delta is multiplier by to determine amount of player movement
-    private static let CROWN_MULTIPLIER: CGFloat = 0.5
-    
     /// Pauses the game when set to `true`; defaults to `true`
     var paused: Bool = true
     
@@ -111,12 +108,12 @@ class Game {
     /**
      Moves a player right or left a certain distance
      - Parameters:
-        - value: A measurement of how far to move the player.
+        - distance: How far to move the player
      This value is scaled to a value, and the player's x position changes by that much
      */
-    func movePlayer(_ value: Double) {
+    func movePlayer(distance: Double) {
         
-        if !paused { player.xPosition += CGFloat(value) * Game.CROWN_MULTIPLIER }
+        if !paused { player.xPosition += CGFloat(distance) }
         
     }
     
