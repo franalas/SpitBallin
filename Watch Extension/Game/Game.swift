@@ -15,7 +15,11 @@ import WatchKit
 class Game {
     
     /// Pauses the game when set to `true`; defaults to `true`
-    var paused: Bool = true
+    var paused: Bool = true {
+        didSet {
+            pauseIndicator.isHidden = !paused
+        }
+    }
     
     /// The character of the player
     var character: Person {
@@ -34,6 +38,9 @@ class Game {
     /// All bullets in the scene
     private var balls: [Ball]
     
+    /// Indicates whether or not the game is paused
+    private var pauseIndicator: SKSpriteNode
+    
     /// The current level of the game
     private(set) var currentLevel: LevelNumber
     
@@ -51,6 +58,11 @@ class Game {
         self.scene = GameScene(size: size)
         self.scene.backgroundColor = .black
         self.scene.scaleMode = .aspectFit
+        
+        self.pauseIndicator = SKSpriteNode(texture: SKTexture(imageNamed: "pause"), size: CGSize(width: 0.1, height: 0.1))
+        self.pauseIndicator.anchorPoint = CGPoint(x: 1, y: 1)
+        self.pauseIndicator.position = CGPoint(x: 1, y: 1)
+        self.scene.addChild(self.pauseIndicator)
         
         self.character = person
         self.player = Player(person: self.character, frame: self.scene.frame)
