@@ -23,8 +23,9 @@ class Bullet: DynamicCircularObject {
     
     override var velocity: CGVector {
         didSet {
-            if velocity.dy < 0 { self.sprite.zRotation = 0 }
-            else { self.sprite.zRotation = CGFloat.pi }
+            let angle = atan(velocity.dy / velocity.dx) + CGFloat.pi / 2
+            if velocity.dx >= 0 { self.sprite.zRotation = angle }
+            else { self.sprite.zRotation = angle + CGFloat.pi }
         }
     }
     
@@ -64,5 +65,3 @@ class Bullet: DynamicCircularObject {
     }
     
 }
-
-// -s^2 / 2d = a
