@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23A0A08AB9ACC8B199667A82 /* Pods_SpitBallin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E98092D19C7E68C3ADF3F2 /* Pods_SpitBallin.framework */; };
+		81A42B42327D89DA4B4F937E /* Pods_SpitBallin_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A1DA362E001A23D23D574D /* Pods_SpitBallin_WatchKit_Extension.framework */; };
 		981F6A1E220140CA00D23E8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981F6A1D220140CA00D23E8D /* ViewController.swift */; };
 		981F6A2022014D0A00D23E8D /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981F6A1F22014D0A00D23E8D /* Level.swift */; };
 		981F6A2122014F0500D23E8D /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981F6A1F22014D0A00D23E8D /* Level.swift */; };
@@ -71,6 +73,7 @@
 		98B76F0A22015E48001BBACC /* fran_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0622015E48001BBACC /* fran_left.png */; };
 		98B76F0B22015E48001BBACC /* fran_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0722015E48001BBACC /* fran_right.png */; };
 		98B76F0C22015E48001BBACC /* liam_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0822015E48001BBACC /* liam_right.png */; };
+		EB799BCB8D5A9FCEA17AE749 /* Pods_SpitBallin_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4781D8804405C999DBBFED /* Pods_SpitBallin_WatchKit_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +119,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A623B39FA65C91E2D4C975B /* Pods-SpitBallin WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpitBallin WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpitBallin WatchKit Extension/Pods-SpitBallin WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		39B696ACDD1D97FA2A75A5EA /* Pods-SpitBallin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpitBallin.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpitBallin/Pods-SpitBallin.release.xcconfig"; sourceTree = "<group>"; };
+		6E4781D8804405C999DBBFED /* Pods_SpitBallin_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpitBallin_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		981F6A1D220140CA00D23E8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		981F6A1F22014D0A00D23E8D /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		981F6A222201528100D23E8D /* LevelNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelNumber.swift; sourceTree = "<group>"; };
@@ -163,13 +169,28 @@
 		98B76F0622015E48001BBACC /* fran_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_left.png; sourceTree = "<group>"; };
 		98B76F0722015E48001BBACC /* fran_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_right.png; sourceTree = "<group>"; };
 		98B76F0822015E48001BBACC /* liam_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_right.png; sourceTree = "<group>"; };
+		A1A1DA362E001A23D23D574D /* Pods_SpitBallin_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpitBallin_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5E7F55AB9ED153090AFF54D /* Pods-SpitBallin WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpitBallin WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpitBallin WatchKit Extension/Pods-SpitBallin WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		D2E98092D19C7E68C3ADF3F2 /* Pods_SpitBallin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpitBallin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3034DE05D7DCB4128048158 /* Pods-SpitBallin WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpitBallin WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpitBallin WatchKit App/Pods-SpitBallin WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		EF16553CBBF889F4CB3A6904 /* Pods-SpitBallin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpitBallin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpitBallin/Pods-SpitBallin.debug.xcconfig"; sourceTree = "<group>"; };
+		F3281EC2036E0DA36258B4CB /* Pods-SpitBallin WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpitBallin WatchKit App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpitBallin WatchKit App/Pods-SpitBallin WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37C594661F56BDF0E8E93DDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB799BCB8D5A9FCEA17AE749 /* Pods_SpitBallin_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		982901DA22010F6E00D2E98C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23A0A08AB9ACC8B199667A82 /* Pods_SpitBallin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,12 +198,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A42B42327D89DA4B4F937E /* Pods_SpitBallin_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A6A0C1CFAC0965782BF3FCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2E98092D19C7E68C3ADF3F2 /* Pods_SpitBallin.framework */,
+				6E4781D8804405C999DBBFED /* Pods_SpitBallin_WatchKit_App.framework */,
+				A1A1DA362E001A23D23D574D /* Pods_SpitBallin_WatchKit_Extension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		982901D422010F6E00D2E98C = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +223,8 @@
 				982901F322010F6F00D2E98C /* SpitBallin WatchKit App */,
 				9829020222010F7000D2E98C /* SpitBallin WatchKit Extension */,
 				982901DE22010F6E00D2E98C /* Products */,
+				BE64DEE0935E7985F2AD5447 /* Pods */,
+				7A6A0C1CFAC0965782BF3FCA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,6 +326,19 @@
 			path = "Button Images";
 			sourceTree = "<group>";
 		};
+		BE64DEE0935E7985F2AD5447 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EF16553CBBF889F4CB3A6904 /* Pods-SpitBallin.debug.xcconfig */,
+				39B696ACDD1D97FA2A75A5EA /* Pods-SpitBallin.release.xcconfig */,
+				F3281EC2036E0DA36258B4CB /* Pods-SpitBallin WatchKit App.debug.xcconfig */,
+				D3034DE05D7DCB4128048158 /* Pods-SpitBallin WatchKit App.release.xcconfig */,
+				2A623B39FA65C91E2D4C975B /* Pods-SpitBallin WatchKit Extension.debug.xcconfig */,
+				A5E7F55AB9ED153090AFF54D /* Pods-SpitBallin WatchKit Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,10 +346,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9829021722010F7100D2E98C /* Build configuration list for PBXNativeTarget "SpitBallin" */;
 			buildPhases = (
+				5DEFE698E36F0F0E15785E91 /* [CP] Check Pods Manifest.lock */,
 				982901D922010F6E00D2E98C /* Sources */,
 				982901DA22010F6E00D2E98C /* Frameworks */,
 				982901DB22010F6E00D2E98C /* Resources */,
 				9829021622010F7100D2E98C /* Embed Watch Content */,
+				E42D8B6693CA04A64A1BD0E2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -318,8 +367,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9829021322010F7100D2E98C /* Build configuration list for PBXNativeTarget "SpitBallin WatchKit App" */;
 			buildPhases = (
+				169AE39A80A5D4BE89EDA453 /* [CP] Check Pods Manifest.lock */,
 				982901ED22010F6F00D2E98C /* Resources */,
 				9829021222010F7100D2E98C /* Embed App Extensions */,
+				37C594661F56BDF0E8E93DDB /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,6 +386,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9829020F22010F7100D2E98C /* Build configuration list for PBXNativeTarget "SpitBallin WatchKit Extension" */;
 			buildPhases = (
+				38BF71A65DFF56ECA7F71498 /* [CP] Check Pods Manifest.lock */,
 				982901FA22010F7000D2E98C /* Sources */,
 				982901FB22010F7000D2E98C /* Frameworks */,
 				982901FC22010F7000D2E98C /* Resources */,
@@ -440,6 +492,89 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		169AE39A80A5D4BE89EDA453 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpitBallin WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38BF71A65DFF56ECA7F71498 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpitBallin WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DEFE698E36F0F0E15785E91 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpitBallin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E42D8B6693CA04A64A1BD0E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpitBallin/Pods-SpitBallin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${PODS_ROOT}/SnapSDK/SCSDKBitmojiKit.framework",
+				"${PODS_ROOT}/SnapSDK/SCSDKCoreKit.framework",
+				"${PODS_ROOT}/SnapSDK/SCSDKLoginKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSDKBitmojiKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSDKLoginKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpitBallin/Pods-SpitBallin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		982901D922010F6E00D2E98C /* Sources */ = {
@@ -651,16 +786,13 @@
 		};
 		9829021022010F7100D2E98C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A623B39FA65C91E2D4C975B /* Pods-SpitBallin WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXV7G77RCJ;
 				INFOPLIST_FILE = "SpitBallin WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Stevera.SpitBallin.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -673,16 +805,13 @@
 		};
 		9829021122010F7100D2E98C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5E7F55AB9ED153090AFF54D /* Pods-SpitBallin WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXV7G77RCJ;
 				INFOPLIST_FILE = "SpitBallin WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Stevera.SpitBallin.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -695,6 +824,7 @@
 		};
 		9829021422010F7100D2E98C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3281EC2036E0DA36258B4CB /* Pods-SpitBallin WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -714,6 +844,7 @@
 		};
 		9829021522010F7100D2E98C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3034DE05D7DCB4128048158 /* Pods-SpitBallin WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -733,16 +864,14 @@
 		};
 		9829021822010F7100D2E98C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF16553CBBF889F4CB3A6904 /* Pods-SpitBallin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXV7G77RCJ;
 				INFOPLIST_FILE = SpitBallin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Stevera.SpitBallin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -752,16 +881,14 @@
 		};
 		9829021922010F7100D2E98C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39B696ACDD1D97FA2A75A5EA /* Pods-SpitBallin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXV7G77RCJ;
 				INFOPLIST_FILE = SpitBallin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Stevera.SpitBallin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
