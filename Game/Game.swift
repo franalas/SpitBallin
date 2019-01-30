@@ -27,7 +27,7 @@ class Game {
     }
     
     /// The speed at which the player moves left/right
-    var movementSpeed = CGFloat(10)
+    var movementSpeed = CGFloat(5)
     
     /// If true, the player will move left on game ticks
     var movingLeft = false
@@ -57,7 +57,7 @@ class Game {
     private var currentLevel: Level
     
     /// The maximum number of shots allowed on the screen at a time
-    private static let MAXSHOTS = 5
+    private static let MAXSHOTS = 2
     
     /**
      Initializes a game with a given scene size and starting character

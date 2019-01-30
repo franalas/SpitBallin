@@ -41,6 +41,9 @@ enum LevelNumber: Int, Level {
     /// Level nine
     case nine
     
+    /// Impossible level
+    case literallyImpossible
+    
     var nextLevel: Level {
         if let nextLevel = LevelNumber(rawValue: self.rawValue + 1) { return nextLevel }
         else { return LevelNumber.one }
@@ -86,6 +89,20 @@ enum LevelNumber: Int, Level {
             return [Ball(ballSize: .five, positionX: 0.2 * gameSize.width, gameSize: gameSize, speed: speed),
                     Ball(ballSize: .five, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false,
                         speed: speed)]
+        case .literallyImpossible:
+            return [Ball(ballSize: .five, positionX: 0.1 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .five, positionX: 0.2 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed),
+                    Ball(ballSize: .five, positionX: 0.3 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .five, positionX: 0.4 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed),
+                    Ball(ballSize: .five, positionX: 0.5 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .five, positionX: 0.6 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed),
+                    Ball(ballSize: .five, positionX: 0.7 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .five, positionX: 0.8 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed),
+                    Ball(ballSize: .five, positionX: 0.7 * gameSize.width, gameSize: gameSize, speed: speed)]
             
         }
         
