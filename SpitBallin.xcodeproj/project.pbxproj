@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981759FC220250B000B01994 /* ball_pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 981759FB220250B000B01994 /* ball_pop.wav */; };
+		981759FE220252C500B01994 /* spit_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 981759FD220252C500B01994 /* spit_sound.wav */; };
 		981F6A1E220140CA00D23E8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981F6A1D220140CA00D23E8D /* ViewController.swift */; };
 		981F6A2022014D0A00D23E8D /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981F6A1F22014D0A00D23E8D /* Level.swift */; };
 		981F6A2122014F0500D23E8D /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981F6A1F22014D0A00D23E8D /* Level.swift */; };
@@ -71,8 +73,6 @@
 		98B76F0A22015E48001BBACC /* fran_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0622015E48001BBACC /* fran_left.png */; };
 		98B76F0B22015E48001BBACC /* fran_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0722015E48001BBACC /* fran_right.png */; };
 		98B76F0C22015E48001BBACC /* liam_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0822015E48001BBACC /* liam_right.png */; };
-		CDD975CE220242960011CED6 /* spit_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CDD975CD220242960011CED6 /* spit_sound.wav */; };
-		CDD975D22202453E0011CED6 /* ball_pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = CDD975D12202453E0011CED6 /* ball_pop.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +118,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		981759FB220250B000B01994 /* ball_pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ball_pop.wav; sourceTree = "<group>"; };
+		981759FD220252C500B01994 /* spit_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spit_sound.wav; sourceTree = "<group>"; };
 		981F6A1D220140CA00D23E8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		981F6A1F22014D0A00D23E8D /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		981F6A222201528100D23E8D /* LevelNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelNumber.swift; sourceTree = "<group>"; };
@@ -165,8 +167,6 @@
 		98B76F0622015E48001BBACC /* fran_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_left.png; sourceTree = "<group>"; };
 		98B76F0722015E48001BBACC /* fran_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_right.png; sourceTree = "<group>"; };
 		98B76F0822015E48001BBACC /* liam_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_right.png; sourceTree = "<group>"; };
-		CDD975CD220242960011CED6 /* spit_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spit_sound.wav; sourceTree = "<group>"; };
-		CDD975D12202453E0011CED6 /* ball_pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ball_pop.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,8 +300,8 @@
 		CDD975CA220242210011CED6 /* Sound Effects */ = {
 			isa = PBXGroup;
 			children = (
-				CDD975D12202453E0011CED6 /* ball_pop.caf */,
-				CDD975CD220242960011CED6 /* spit_sound.wav */,
+				981759FD220252C500B01994 /* spit_sound.wav */,
+				981759FB220250B000B01994 /* ball_pop.wav */,
 			);
 			path = "Sound Effects";
 			sourceTree = "<group>";
@@ -411,6 +411,7 @@
 				982901EB22010F6F00D2E98C /* LaunchScreen.storyboard in Resources */,
 				98B76F0C22015E48001BBACC /* liam_right.png in Resources */,
 				98B76F0922015E48001BBACC /* liam_left.png in Resources */,
+				981759FC220250B000B01994 /* ball_pop.wav in Resources */,
 				98B76F0B22015E48001BBACC /* fran_right.png in Resources */,
 				986E5D612201106600575669 /* water_bottle.png in Resources */,
 				986E5D672201106600575669 /* pause.png in Resources */,
@@ -420,10 +421,9 @@
 				98B76F0A22015E48001BBACC /* fran_left.png in Resources */,
 				986E5D652201106600575669 /* liam_shoot.png in Resources */,
 				986E5D692201106600575669 /* fran_shut.png in Resources */,
-				CDD975CE220242960011CED6 /* spit_sound.wav in Resources */,
 				982901E822010F6F00D2E98C /* Assets.xcassets in Resources */,
+				981759FE220252C500B01994 /* spit_sound.wav in Resources */,
 				986E5D632201106600575669 /* fran_shoot.png in Resources */,
-				CDD975D22202453E0011CED6 /* ball_pop.caf in Resources */,
 				982901E622010F6E00D2E98C /* Main.storyboard in Resources */,
 				986E5D6F2201106600575669 /* spit.png in Resources */,
 			);

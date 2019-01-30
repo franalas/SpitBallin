@@ -65,6 +65,12 @@ class Game {
     /// The maximum number of shots allowed on the screen at a time
     private static let MAXSHOTS = 1
     
+    /// The sound to play when a ball splits
+    private let popSound = SKAction.playSoundFileNamed("ball_pop.wav", waitForCompletion: false)
+    
+    /// The sound to play when the player shoots
+    private let shootSound = SKAction.playSoundFileNamed("spit_sound.wav", waitForCompletion: false)
+    
     /**
      Initializes a game with a given scene size and starting character
      - Parameters:
@@ -134,6 +140,7 @@ class Game {
             self.bullets.append(bullet)
             self.player.currentlyShut = self.bullets.count >= Game.MAXSHOTS
             self.player.animateShot()
+            self.scene.run(shootSound)
             
         }
         
@@ -325,7 +332,6 @@ class Game {
             self.scene.addChild(nextB.sprite)
         }
         
-        let popSound = SKAction.playSoundFileNamed("ball_pop.caf", waitForCompletion: false)
         self.scene.run(popSound)
         
         balls[i].sprite.removeFromParent()
