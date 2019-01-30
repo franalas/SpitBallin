@@ -30,17 +30,17 @@ class Lives {
     /// Represents the texture the sprite contains
     private var spriteTexture: SKTexture
     
-    /// Height of sprite
-    static let HEIGHT: CGFloat = 0.1
+    /// Height of sprite, as a percentage of the game scene's height
+    static let HEIGHT_MULTIPLIER: CGFloat = 0.1
     
-    /// Space in between life sprites
-    static let SPACE: CGFloat = 0.05
+    /// Space in between life sprites, as a percentage of the game scene's width
+    static let SPACE_MULTIPLIER: CGFloat = 0.05
     
     /// Max number of lives a player can have
-    static let MAXLIVES: Int = 7
+    static let MAX_LIVES: Int = 7
     
     /// Amount of lives a player begins with
-    static let STARTINGLIVES: Int = 3
+    static let STARTING_LIVES: Int = 3
     
     /**
      Initializes Lives with given scene and values
@@ -50,11 +50,11 @@ class Lives {
         - maxLives: Max number of lives a player can have
         - height: Height of a sprite
      */
-    init(frame: CGRect, startingLives: Int = Lives.STARTINGLIVES, maxLives: Int = Lives.MAXLIVES,
-         height: CGFloat = Lives.HEIGHT) {
+    init(frame: CGRect, startingLives: Int = Lives.STARTING_LIVES, maxLives: Int = Lives.MAX_LIVES) {
         
         let spriteTexture = SKTexture(imageNamed: "water_bottle")
         self.spriteTexture = spriteTexture
+        let height = Lives.HEIGHT_MULTIPLIER * frame.size.height
         let width = height * spriteTexture.size().width / spriteTexture.size().height
         self.sprites = []
         self.sprite = SKNode()
@@ -65,7 +65,7 @@ class Lives {
             let waterSprite = SKSpriteNode(texture: self.spriteTexture,
                                            size: CGSize(width: width, height: height))
             self.sprites.append(waterSprite)
-            waterSprite.position = CGPoint(x: (CGFloat(i) + 0.5)*width + (CGFloat(i) + 0.5)*Lives.SPACE,
+            waterSprite.position = CGPoint(x: (CGFloat(i) + 0.5) * (width + Lives.SPACE_MULTIPLIER * frame.size.width),
                                            y: -waterSprite.size.height / 2)
             if i > startingLives - 1 {
                 waterSprite.isHidden = true

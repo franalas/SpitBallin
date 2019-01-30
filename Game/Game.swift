@@ -86,7 +86,7 @@ class Game {
         - level: Decides what level game is set up to
         - lives: Decides how many lives the player has
      */
-    private func setup(level: LevelNumber = .one, withLives lives: Int = Lives.STARTINGLIVES) {
+    private func setup(level: LevelNumber = .one, withLives lives: Int = Lives.STARTING_LIVES) {
         
         self.player.xPosition = self.scene.frame.midX
         self.player.lives = lives
@@ -107,7 +107,7 @@ class Game {
         
         if !paused && self.bullets.count < Game.MAXSHOTS {
             
-            let bullet = Bullet(gameSize: self.scene.size ,position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
+            let bullet = Bullet(gameSize: self.scene.size, position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
             self.scene.addChild(bullet.sprite)
             self.bullets.append(bullet)
             self.player.currentlyShut = self.bullets.count >= Game.MAXSHOTS

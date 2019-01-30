@@ -13,10 +13,10 @@ import SpriteKit
 class Bullet: DynamicCircularObject {
     
     /// The default initial speed
-    static let SPEEDMULTIPLIER: CGFloat = 2
+    static let SPEED_MULTIPLIER: CGFloat = 2
     
     /// The default radius
-    static let RADIUSMULTIPLIER: CGFloat = 0.05
+    static let RADIUS_MULTIPLIER: CGFloat = 0.05
     
     /// The image file name of the sprite
     static let SPRITE_IMAGE = "spit"
@@ -36,17 +36,18 @@ class Bullet: DynamicCircularObject {
         - speed: The height of the screen
         - speed: The initial upwards velocity of `self`
     */
-    init(gameSize: CGSize, position: CGPoint, distanceToTop: CGFloat, speed: CGFloat = Bullet.SPEEDMULTIPLIER) {
+    init(gameSize: CGSize, position: CGPoint, distanceToTop: CGFloat, speed: CGFloat? = nil) {
         
         let spitTexture = SKTexture(imageNamed: Bullet.SPRITE_IMAGE)
-        let height = Bullet.RADIUSMULTIPLIER * 2 * gameSize.height
+        let height = Bullet.RADIUS_MULTIPLIER * 2 * gameSize.height
         let width = height * spitTexture.size().width / spitTexture.size().height
         let sprite = SKSpriteNode(texture: spitTexture, size: CGSize(width: width, height: height))
-        let radius = Bullet.RADIUSMULTIPLIER * min(gameSize.width, gameSize.height)
+        let radius = Bullet.RADIUS_MULTIPLIER * min(gameSize.width, gameSize.height)
         
-        let gravity = -speed*speed / (2 * (distanceToTop - radius))
+        let rSpeed = speed ?? (Bullet.SPEED_MULTIPLIER * gameSize.height)
+        let gravity = -rSpeed*rSpeed / (2 * (distanceToTop - radius))
         super.init(sprite: sprite, radius: radius, position: position,
-                   velocity: CGVector(dx: 0, dy: speed), acceleration: CGVector(dx: 0, dy: gravity))
+                   velocity: CGVector(dx: 0, dy: rSpeed), acceleration: CGVector(dx: 0, dy: gravity))
         
     }
     

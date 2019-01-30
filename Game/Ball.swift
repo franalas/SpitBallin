@@ -62,9 +62,6 @@ class Ball: DynamicCircularObject {
                    velocity: CGVector(dx: CGFloat(right ? 1 : -1) * (speed ?? (Ball.SPEED_MULTIPIER * gameSize.width)), dy: 0),
                    acceleration: CGVector(dx: 0, dy: gravity ?? (Ball.GRAVITY_MULTIPLIER * gameSize.height)))
         
-        print(self.acceleration)
-        print(self.velocity)
-        
     }
     
     /**
