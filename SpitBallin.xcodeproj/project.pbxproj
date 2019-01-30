@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981F6A1E220140CA00D23E8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981F6A1D220140CA00D23E8D /* ViewController.swift */; };
 		982901E122010F6E00D2E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982901E022010F6E00D2E98C /* AppDelegate.swift */; };
 		982901E622010F6E00D2E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 982901E422010F6E00D2E98C /* Main.storyboard */; };
 		982901E822010F6F00D2E98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 982901E722010F6F00D2E98C /* Assets.xcassets */; };
@@ -104,6 +105,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		981F6A1D220140CA00D23E8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		982901DD22010F6E00D2E98C /* SpitBallin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpitBallin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		982901E022010F6E00D2E98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		982901E522010F6E00D2E98C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				982901E722010F6F00D2E98C /* Assets.xcassets */,
 				982901E922010F6F00D2E98C /* LaunchScreen.storyboard */,
 				982901EC22010F6F00D2E98C /* Info.plist */,
+				981F6A1D220140CA00D23E8D /* ViewController.swift */,
 			);
 			path = SpitBallin;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				982901E122010F6E00D2E98C /* AppDelegate.swift in Sources */,
 				986E5D432201104D00575669 /* Lives.swift in Sources */,
 				986E5D472201104D00575669 /* DynamicCircularObject.swift in Sources */,
+				981F6A1E220140CA00D23E8D /* ViewController.swift in Sources */,
 				986E5D4B2201104D00575669 /* Person.swift in Sources */,
 				986E5D4F2201104D00575669 /* CircularObject.swift in Sources */,
 				986E5D452201104D00575669 /* BallSize.swift in Sources */,
