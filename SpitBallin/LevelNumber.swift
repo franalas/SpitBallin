@@ -48,36 +48,44 @@ enum LevelNumber: Int, Level {
     
     func makeLevel(gameSize: CGSize) -> [Ball] {
         
+        let speed = 0.1 * gameSize.width
+        
         switch self {
             
         case .one:
-            return [Ball(ballSize: .two, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
+            return [Ball(ballSize: .two, positionX: 0.5 * gameSize.width, gameSize: gameSize, speed: speed)]
         case .two:
-            return [Ball(ballSize: .three, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
+            return [Ball(ballSize: .three, positionX: 0.5 * gameSize.width, gameSize: gameSize, speed: speed)]
         case .three:
-            return [Ball(ballSize: .one, positionX: 0.1 * gameSize.width, gameSize: gameSize),
-                    Ball(ballSize: .one, positionX: 0.2 * gameSize.width, gameSize: gameSize),
-                    Ball(ballSize: .one, positionX: 0.3 * gameSize.width, gameSize: gameSize),
-                    Ball(ballSize: .one, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false),
-                    Ball(ballSize: .one, positionX: 0.8 * gameSize.width, gameSize: gameSize, right: false),
-                    Ball(ballSize: .one, positionX: 0.9 * gameSize.width, gameSize: gameSize, right: false)]
+            return [Ball(ballSize: .one, positionX: 0.1 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .one, positionX: 0.2 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .one, positionX: 0.3 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .one, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed),
+                    Ball(ballSize: .one, positionX: 0.8 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed),
+                    Ball(ballSize: .one, positionX: 0.9 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed)]
         case .four:
-            return [Ball(ballSize: .three, positionX: 0.3 * gameSize.width, gameSize: gameSize, right: false),
-                    Ball(ballSize: .two, positionX: 0.7 * gameSize.width, gameSize: gameSize)]
+            return [Ball(ballSize: .three, positionX: 0.3 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed),
+                    Ball(ballSize: .two, positionX: 0.7 * gameSize.width, gameSize: gameSize, speed: speed)]
         case .five:
-            return [Ball(ballSize: .two, positionX: 0.2 * gameSize.width, gameSize: gameSize),
-                    Ball(ballSize: .two, positionX: 0.5 * gameSize.width, gameSize: gameSize),
-                    Ball(ballSize: .three, positionX: 0.7 * gameSize.width, gameSize: gameSize)]
+            return [Ball(ballSize: .two, positionX: 0.2 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .two, positionX: 0.5 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .three, positionX: 0.7 * gameSize.width, gameSize: gameSize, speed: speed)]
         case .six:
-            return [Ball(ballSize: .four, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
+            return [Ball(ballSize: .four, positionX: 0.5 * gameSize.width, gameSize: gameSize, speed: speed)]
         case .seven:
-            return [Ball(ballSize: .four, positionX: 0.2 * gameSize.width, gameSize: gameSize),
-                    Ball(ballSize: .two, positionX: 0.8 * gameSize.width, gameSize: gameSize, right: false)]
+            return [Ball(ballSize: .four, positionX: 0.2 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .two, positionX: 0.8 * gameSize.width, gameSize: gameSize, right: false,
+                         speed: speed)]
         case .eight:
-            return [Ball(ballSize: .five, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
+            return [Ball(ballSize: .five, positionX: 0.5 * gameSize.width, gameSize: gameSize, speed: speed)]
         case .nine:
-            return [Ball(ballSize: .five, positionX: 0.2 * gameSize.width, gameSize: gameSize),
-                    Ball(ballSize: .five, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false)]
+            return [Ball(ballSize: .five, positionX: 0.2 * gameSize.width, gameSize: gameSize, speed: speed),
+                    Ball(ballSize: .five, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false,
+                        speed: speed)]
             
         }
         
