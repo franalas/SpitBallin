@@ -13,7 +13,6 @@ import SpriteKit
 //typealias Level = [Ball]
 enum LevelNumber: Int, Level {
     
-    
     /// Level one
     case one = 1
     
@@ -80,6 +79,16 @@ enum LevelNumber: Int, Level {
                     Ball(ballSize: .five, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false)]
             
         }
+        
+    }
+    
+    func spawnBalls(ballScore: Int, gameSize: CGSize) -> [Ball] {
+        
+        if self == .nine {
+            
+            return []
+            
+        } else { return [] }
         
     }
     

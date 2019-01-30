@@ -57,7 +57,7 @@ class Game {
     private var currentLevel: Level
     
     /// The maximum number of shots allowed on the screen at a time
-    private static let MAXSHOTS = 2
+    private static let MAXSHOTS = 1
     
     /**
      Initializes a game with a given scene size and starting character
@@ -283,6 +283,14 @@ class Game {
         }
         balls[i].sprite.removeFromParent()
         balls.remove(at: i)
+        
+        var ballScore = 0
+        for ball in balls { ballScore += ball.ballSize.rawValue }
+        let newBalls = currentLevel.spawnBalls(ballScore: ballScore, gameSize: scene.size)
+        for ball in newBalls {
+            scene.addChild(ball.sprite)
+        }
+        self.balls += newBalls
         
         if self.balls.count == 0 { loadNextLevel() }
         

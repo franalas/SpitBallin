@@ -13,7 +13,6 @@ import SpriteKit
 //typealias Level = [Ball]
 enum LevelNumber: Int, Level {
     
-    
     /// Level one
     case one = 1
     
@@ -106,6 +105,10 @@ enum LevelNumber: Int, Level {
             
         }
         
+    }
+    
+    func spawnBalls(ballScore: Int, gameSize: CGSize) -> [Ball] {
+        return []
     }
     
 }

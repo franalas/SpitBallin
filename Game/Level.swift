@@ -22,4 +22,11 @@ protocol Level {
     /// - Returns: The balls that go in the level
     func makeLevel(gameSize: CGSize) -> [Ball]
     
+    /// Possibly spawns more balls
+    ///
+    /// - Parameter ballScore: The count of balls remaining, weighted on their size
+    /// - Parameter gameSize: The size of the game scene
+    /// - Returns: The balls to be spawned
+    func spawnBalls(ballScore: Int, gameSize: CGSize) -> [Ball]
+    
 }
