@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         
         game = Game(size: self.skView.bounds.size, person: .liam)
         game.present(inView: self.skView)
