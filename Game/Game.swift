@@ -324,6 +324,10 @@ class Game {
             self.scene.addChild(nextA.sprite)
             self.scene.addChild(nextB.sprite)
         }
+        
+        let popSound = SKAction.playSoundFileNamed("ball_pop.caf", waitForCompletion: false)
+        self.scene.run(popSound)
+        
         balls[i].sprite.removeFromParent()
         balls.remove(at: i)
         
