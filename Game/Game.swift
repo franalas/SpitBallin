@@ -96,7 +96,7 @@ class Game {
         
         for ball in balls { ball.sprite.removeFromParent() }
         self.currentLevel = level
-        self.balls = currentLevel.makeLevel()
+        self.balls = currentLevel.makeLevel(gameSize: self.scene.size)
         for ball in balls { self.scene.addChild(ball.sprite) }
         
     }

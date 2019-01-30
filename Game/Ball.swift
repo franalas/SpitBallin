@@ -12,17 +12,20 @@ import SpriteKit
 /// Represents a Ball, purpose is to bounce around screen and interact with Player and Bullet
 class Ball: DynamicCircularObject {
     
-    /// Represents initial velocity of any Ball
-    static let SPEED: CGFloat = 0.2
+    /// Represents initial velocity of any Ball, as a percentage of the game scene's width
+    static let SPEED_MULTIPIER: CGFloat = 0.2
     
-    /// Represents initial gravity of any Ball
-    static let GRAVITY: CGFloat = -0.2
+    /// Represents initial gravity of any Ball, as a percentage of the game scene's height
+    static let GRAVITY_MULTIPLIER: CGFloat = -0.2
     
-    /// Represents velocity added to any Ball activated by split
+    /// Represents velocity added to any Ball activated by split, as a percentage of the game scene's height
     static let YSPLIT: CGFloat = 0.15
     
     /// Represents different characteristics of the Ball: size, speed it bounces off floor, and what ball comes next
     let ballSize: BallSize
+    
+    /// The size of the game scene
+    private let gameSize: CGSize
     
     /// Represent the color of the Ball
     var color: UIColor
@@ -32,6 +35,7 @@ class Ball: DynamicCircularObject {
      This initialized is used when a ball is split
      - Parameters:
         - ballSize: Represents all characteristics of the ball
+        - gameSize: The size of the game scene
         - color: Represents color of the Ball
         - radius: Represents the radius of the object relative to scene
         - position: Represents the (x, y) position of object relative to scene
@@ -39,26 +43,27 @@ class Ball: DynamicCircularObject {
         - speed: How fast the ball moves left and right
         - gravity: The acceleration of gravity that acts on the ball
      */
-    init(ballSize: BallSize, position: CGPoint, right: Bool = true,
-         speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY, color: UIColor? = nil) {
+    init(ballSize: BallSize, position: CGPoint, gameSize: CGSize, right: Bool = true,
+         speed: CGFloat? = nil, gravity: CGFloat? = nil, color: UIColor? = nil) {
         
         self.ballSize = ballSize
         self.color = color ?? ballSize.color
         
-        let sprite = SKShapeNode(circleOfRadius: ballSize.radius)
+        self.gameSize = gameSize
+        
+        let sprite = SKShapeNode(circleOfRadius: ballSize.getRadius(gameSize: gameSize))
         sprite.fillColor = self.color
         sprite.strokeColor = .clear
         
         sprite.position = position
         sprite.zPosition = -CGFloat(ballSize.rawValue)
         
-        if right {
-            super.init(sprite: sprite, radius: ballSize.radius, position: position,
-                       velocity: CGVector(dx: speed, dy: 0), acceleration: CGVector(dx: 0, dy: gravity))
-        } else {
-            super.init(sprite: sprite, radius: ballSize.radius, position: position,
-                       velocity: CGVector(dx: -speed, dy: 0), acceleration: CGVector(dx: 0, dy: gravity))
-        }
+        super.init(sprite: sprite, radius: ballSize.getRadius(gameSize: gameSize), position: position,
+                   velocity: CGVector(dx: CGFloat(right ? 1 : -1) * (speed ?? (Ball.SPEED_MULTIPIER * gameSize.width)), dy: 0),
+                   acceleration: CGVector(dx: 0, dy: gravity ?? (Ball.GRAVITY_MULTIPLIER * gameSize.height)))
+        
+        print(self.acceleration)
+        print(self.velocity)
         
     }
     
@@ -71,10 +76,12 @@ class Ball: DynamicCircularObject {
         - speed: How fast the ball moves left and right
         - gravity: The acceleration of gravity that acts on the ball
      */
-    convenience init(ballSize: BallSize, positionX: CGFloat = 0.5, right: Bool = true,
-                     speed: CGFloat = Ball.SPEED, gravity: CGFloat = Ball.GRAVITY, color: UIColor? = nil) {
+    convenience init(ballSize: BallSize, positionX: CGFloat, gameSize: CGSize, right: Bool = true,
+                     speed: CGFloat? = nil, gravity: CGFloat? = nil, color: UIColor? = nil) {
         
-        self.init(ballSize: ballSize, position: CGPoint(x: positionX, y: ballSize.bounceHeight), right: right, speed: speed, gravity: gravity, color: color)
+        self.init(ballSize: ballSize, position: CGPoint(x: positionX, y: ballSize.getBounceHeight(gameSize: gameSize)), gameSize: gameSize,
+                  right: right, speed: speed ?? (Ball.SPEED_MULTIPIER * gameSize.width),
+                  gravity: gravity ?? (Ball.GRAVITY_MULTIPLIER * gameSize.height), color: color)
         
     }
     
@@ -100,7 +107,7 @@ class Ball: DynamicCircularObject {
         
         if floorCollision(rect: rect) {
             
-            self.velocity.dy = sqrt(ballSize.bounceHeight * -2 * self.acceleration.dy)
+            self.velocity.dy = sqrt(ballSize.getBounceHeight(gameSize: gameSize) * -2 * self.acceleration.dy)
             
         }
         
@@ -132,12 +139,12 @@ class Ball: DynamicCircularObject {
     func split() -> (Ball, Ball)? {
         
         if let nextBall = ballSize.nextBall {
-            let ball1 = Ball.init(ballSize: nextBall, position: self.position, gravity: acceleration.dy, color: self.color)
-            let ball2 = Ball.init(ballSize: nextBall, position: self.position, gravity: acceleration.dy, color: self.color)
+            let ball1 = Ball.init(ballSize: nextBall, position: self.position, gameSize: gameSize, gravity: acceleration.dy, color: self.color)
+            let ball2 = Ball.init(ballSize: nextBall, position: self.position, gameSize: gameSize, gravity: acceleration.dy, color: self.color)
             ball1.velocity = CGVector(dx: -self.velocity.dx,
-                                      dy: max(Ball.YSPLIT, self.velocity.dy))
+                                      dy: max(Ball.YSPLIT * gameSize.height, self.velocity.dy))
             ball2.velocity = CGVector(dx: self.velocity.dx,
-                                      dy: max(Ball.YSPLIT, self.velocity.dy))
+                                      dy: max(Ball.YSPLIT * gameSize.height, self.velocity.dy))
             return (ball1, ball2)
         }
         return nil
