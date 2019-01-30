@@ -301,6 +301,8 @@ class Game {
         let (newBalls, drop) = currentLevel.handleSplit(ballSize: balls[i].ballSize, ballScore: ballScore,
                                                         position: balls[i].position, gameSize: self.scene.size)
         
+        self.player.score += balls[i].ballSize.rawValue
+        
         for ball in newBalls {
             self.scene.addChild(ball.sprite)
         }

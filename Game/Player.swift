@@ -57,6 +57,9 @@ class Player: CircularObject {
         }
     }
     
+    /// Tracks the player's score
+    var score: Int
+    
     /// The texture of the sprite when not shooting
     private var standardTexture: SKTexture
     
@@ -97,6 +100,7 @@ class Player: CircularObject {
         
         self.lifeImplementation = Lives(frame: frame)
         
+        self.score = 0
         
         let width = frame.height * Player.HEIGHT_MULTIPLIER * standardTexture.size().width / standardTexture.size().height
         let height = frame.height * Player.HEIGHT_MULTIPLIER
