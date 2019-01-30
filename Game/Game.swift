@@ -57,7 +57,7 @@ class Game {
     private var currentLevel: Level
     
     /// The maximum number of shots allowed on the screen at a time
-    private static let MAXSHOTS = 1
+    private static let MAXSHOTS = 5
     
     /**
      Initializes a game with a given scene size and starting character
@@ -212,7 +212,7 @@ class Game {
         var ballI = balls.count - 1
         while ballI >= 0 { //check if ball collides with player or any bullets
             
-            if ballI < 0 || ballI >= balls.count { break }
+            guard ballI >= 0 && ballI < balls.count else { break }
             balls[ballI].bounceFloor(rect: frame)
             balls[ballI].bounceWall(rect: frame)
             
@@ -225,7 +225,7 @@ class Game {
                 var bulletI = bullets.count - 1
                 while bulletI >= 0 {
                     
-                    if bulletI < 0 || bulletI >= bullets.count || ballI < 0 || ballI >= balls.count { break }
+                    guard bulletI >= 0 && bulletI < bullets.count && ballI >= 0 && ballI < balls.count else { break }
                     if DynamicCircularObject.checkCollision(balls[ballI], bullets[bulletI]) {
                         
                         self.split(ballAtIndex: ballI)
