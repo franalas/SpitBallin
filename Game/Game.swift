@@ -26,6 +26,15 @@ class Game {
         didSet { player.character = character }
     }
     
+    /// The speed at which the player moves left/right
+    var movementSpeed = CGFloat(10)
+    
+    /// If true, the player will move left on game ticks
+    var movingLeft = false
+    
+    /// If true, the player will move right on game ticks
+    var movingRight = false
+    
     /// The SKScene that the game is in
     private var scene: GameScene
     
@@ -127,9 +136,9 @@ class Game {
         - distance: How far to move the player
      This value is scaled to a value, and the player's x position changes by that much
      */
-    func movePlayer(distance: Double) {
+    func movePlayer(distance: CGFloat) {
         
-        if !paused { player.xPosition += CGFloat(distance) }
+        if !paused { player.xPosition += distance }
         
     }
     
@@ -188,6 +197,9 @@ class Game {
             
             checkCollisions()
             tickObjects(timeInterval)
+            
+            if movingRight { movePlayer(distance: movementSpeed) }
+            if movingLeft { movePlayer(distance: -movementSpeed) }
             
         }
         

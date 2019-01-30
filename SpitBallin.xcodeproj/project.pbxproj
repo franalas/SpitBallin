@@ -62,6 +62,11 @@
 		986E5D6E2201106600575669 /* liam_shut.png in Resources */ = {isa = PBXBuildFile; fileRef = 986E5D5D2201106600575669 /* liam_shut.png */; };
 		986E5D6F2201106600575669 /* spit.png in Resources */ = {isa = PBXBuildFile; fileRef = 986E5D5E2201106600575669 /* spit.png */; };
 		986E5D702201106600575669 /* spit.png in Resources */ = {isa = PBXBuildFile; fileRef = 986E5D5E2201106600575669 /* spit.png */; };
+		98B76F04220159ED001BBACC /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76F03220159ED001BBACC /* GameView.swift */; };
+		98B76F0922015E48001BBACC /* liam_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0522015E47001BBACC /* liam_left.png */; };
+		98B76F0A22015E48001BBACC /* fran_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0622015E48001BBACC /* fran_left.png */; };
+		98B76F0B22015E48001BBACC /* fran_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0722015E48001BBACC /* fran_right.png */; };
+		98B76F0C22015E48001BBACC /* liam_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0822015E48001BBACC /* liam_right.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +152,11 @@
 		986E5D5C2201106600575669 /* fran_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_normal.png; sourceTree = "<group>"; };
 		986E5D5D2201106600575669 /* liam_shut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_shut.png; sourceTree = "<group>"; };
 		986E5D5E2201106600575669 /* spit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spit.png; sourceTree = "<group>"; };
+		98B76F03220159ED001BBACC /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		98B76F0522015E47001BBACC /* liam_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_left.png; sourceTree = "<group>"; };
+		98B76F0622015E48001BBACC /* fran_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_left.png; sourceTree = "<group>"; };
+		98B76F0722015E48001BBACC /* fran_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_right.png; sourceTree = "<group>"; };
+		98B76F0822015E48001BBACC /* liam_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_right.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +201,7 @@
 		982901DF22010F6E00D2E98C /* SpitBallin */ = {
 			isa = PBXGroup;
 			children = (
+				98B76F0D22015E55001BBACC /* Button Images */,
 				982901E022010F6E00D2E98C /* AppDelegate.swift */,
 				982901E422010F6E00D2E98C /* Main.storyboard */,
 				982901E722010F6F00D2E98C /* Assets.xcassets */,
@@ -198,6 +209,7 @@
 				982901EC22010F6F00D2E98C /* Info.plist */,
 				981F6A1D220140CA00D23E8D /* ViewController.swift */,
 				981F6A222201528100D23E8D /* LevelNumber.swift */,
+				98B76F03220159ED001BBACC /* GameView.swift */,
 			);
 			path = SpitBallin;
 			sourceTree = "<group>";
@@ -259,6 +271,17 @@
 				986E5D572201106500575669 /* water_bottle.png */,
 			);
 			path = Sprites;
+			sourceTree = "<group>";
+		};
+		98B76F0D22015E55001BBACC /* Button Images */ = {
+			isa = PBXGroup;
+			children = (
+				98B76F0622015E48001BBACC /* fran_left.png */,
+				98B76F0722015E48001BBACC /* fran_right.png */,
+				98B76F0522015E47001BBACC /* liam_left.png */,
+				98B76F0822015E48001BBACC /* liam_right.png */,
+			);
+			path = "Button Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,11 +387,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				982901EB22010F6F00D2E98C /* LaunchScreen.storyboard in Resources */,
+				98B76F0C22015E48001BBACC /* liam_right.png in Resources */,
+				98B76F0922015E48001BBACC /* liam_left.png in Resources */,
+				98B76F0B22015E48001BBACC /* fran_right.png in Resources */,
 				986E5D612201106600575669 /* water_bottle.png in Resources */,
 				986E5D672201106600575669 /* pause.png in Resources */,
 				986E5D6B2201106600575669 /* fran_normal.png in Resources */,
 				986E5D6D2201106600575669 /* liam_shut.png in Resources */,
 				986E5D5F2201106600575669 /* liam_normal.png in Resources */,
+				98B76F0A22015E48001BBACC /* fran_left.png in Resources */,
 				986E5D652201106600575669 /* liam_shoot.png in Resources */,
 				986E5D692201106600575669 /* fran_shut.png in Resources */,
 				982901E822010F6F00D2E98C /* Assets.xcassets in Resources */,
@@ -415,6 +442,7 @@
 				986E5D4D2201104D00575669 /* GameScene.swift in Sources */,
 				986E5D412201104D00575669 /* Player.swift in Sources */,
 				981F6A232201528100D23E8D /* LevelNumber.swift in Sources */,
+				98B76F04220159ED001BBACC /* GameView.swift in Sources */,
 				986E5D532201104D00575669 /* Game.swift in Sources */,
 				982901E122010F6E00D2E98C /* AppDelegate.swift in Sources */,
 				986E5D432201104D00575669 /* Lives.swift in Sources */,

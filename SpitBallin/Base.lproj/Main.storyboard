@@ -13,20 +13,22 @@
         <!--View Controller-->
         <scene sceneID="nz4-h8-H47">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B54-xm-ASW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="00N-30-PSs" customClass="ViewController" customModule="SpitBallin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zFN-Hl-O7w">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8C-wL-aDi" customClass="SKView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8C-wL-aDi" customClass="GameView" customModule="SpitBallin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-Jl-cJK">
-                                        <rect key="frame" x="631" y="0.0" width="36" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-Jl-cJK">
+                                        <rect key="frame" x="567" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6zB-Jl-cJK" secondAttribute="height" id="F9W-S6-x6l"/>
+                                            <constraint firstAttribute="height" constant="100" id="mct-0a-pZ4"/>
                                         </constraints>
-                                        <state key="normal" title="Right"/>
+                                        <state key="normal" title="Right" image="liam_right.png"/>
                                         <connections>
                                             <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDragInside" id="H2H-Tg-7sf"/>
                                             <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDownRepeat" id="ehX-lC-TNR"/>
@@ -39,12 +41,12 @@
                                             <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchCancel" id="lRW-Ex-49G"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-ec-YAQ">
-                                        <rect key="frame" x="631" y="36" width="36" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-ec-YAQ">
+                                        <rect key="frame" x="567" y="100" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="B5B-ec-YAQ" secondAttribute="height" id="WVK-mz-9PU"/>
                                         </constraints>
-                                        <state key="normal" title="Left"/>
+                                        <state key="normal" title="Left" image="liam_left.png"/>
                                         <connections>
                                             <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDown" id="L9U-6l-iQy"/>
                                             <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDownRepeat" id="Qfh-VZ-yCv"/>
@@ -77,23 +79,20 @@
                             <constraint firstItem="L8C-wL-aDi" firstAttribute="top" secondItem="kah-S4-ikx" secondAttribute="top" id="xZM-VJ-D0a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kah-S4-ikx"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="eA5-y5-lZm" appends="YES" id="lGN-Rq-WSX"/>
-                        </connections>
                     </view>
                     <size key="freeformSize" width="667" height="375"/>
                     <connections>
-                        <outlet property="skView" destination="L8C-wL-aDi" id="oOw-EK-pUN"/>
+                        <outlet property="gameView" destination="L8C-wL-aDi" id="bpl-Rj-cNx"/>
+                        <outlet property="leftButton" destination="B5B-ec-YAQ" id="jHN-In-DgI"/>
+                        <outlet property="rightButton" destination="6zB-Jl-cJK" id="awd-Up-8zk"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B54-xm-ASW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="eA5-y5-lZm">
-                    <connections>
-                        <action selector="tap:" destination="00N-30-PSs" id="dau-A8-duH"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="144.80000000000001" y="-7.6461769115442282"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="liam_left.png" width="319" height="319"/>
+        <image name="liam_right.png" width="319" height="319"/>
+    </resources>
 </document>
