@@ -15,74 +15,64 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B54-xm-ASW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="00N-30-PSs" customClass="ViewController" customModule="SpitBallin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zFN-Hl-O7w">
+                    <view key="view" contentMode="scaleToFill" id="zFN-Hl-O7w" customClass="GameView" customModule="SpitBallin" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8C-wL-aDi" customClass="GameView" customModule="SpitBallin" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-Jl-cJK">
-                                        <rect key="frame" x="567" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="6zB-Jl-cJK" secondAttribute="height" id="F9W-S6-x6l"/>
-                                            <constraint firstAttribute="height" constant="100" id="mct-0a-pZ4"/>
-                                        </constraints>
-                                        <state key="normal" title="Right" image="liam_right.png"/>
-                                        <connections>
-                                            <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDragInside" id="H2H-Tg-7sf"/>
-                                            <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDownRepeat" id="ehX-lC-TNR"/>
-                                            <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDown" id="gkH-rm-yvb"/>
-                                            <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDragEnter" id="vR0-HL-sgA"/>
-                                            <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchDragExit" id="AO0-Y3-XBV"/>
-                                            <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchUpOutside" id="SHW-QS-W5s"/>
-                                            <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchDragOutside" id="SaA-WP-IdT"/>
-                                            <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchUpInside" id="gDL-z4-2rP"/>
-                                            <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchCancel" id="lRW-Ex-49G"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-ec-YAQ">
-                                        <rect key="frame" x="567" y="100" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="B5B-ec-YAQ" secondAttribute="height" id="WVK-mz-9PU"/>
-                                        </constraints>
-                                        <state key="normal" title="Left" image="liam_left.png"/>
-                                        <connections>
-                                            <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDown" id="L9U-6l-iQy"/>
-                                            <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDownRepeat" id="Qfh-VZ-yCv"/>
-                                            <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDragInside" id="Zho-0L-gUR"/>
-                                            <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDragEnter" id="wOi-LX-yrv"/>
-                                            <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchUpInside" id="4dC-eW-sfw"/>
-                                            <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchDragExit" id="7xU-t1-i8s"/>
-                                            <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchDragOutside" id="Ck3-ZK-a4g"/>
-                                            <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchCancel" id="WIN-4Z-4Ep"/>
-                                            <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchUpOutside" id="rGh-p5-9cb"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-Jl-cJK">
+                                <rect key="frame" x="567" y="0.0" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstItem="6zB-Jl-cJK" firstAttribute="top" secondItem="L8C-wL-aDi" secondAttribute="top" id="IoO-GF-klV"/>
-                                    <constraint firstAttribute="trailing" secondItem="B5B-ec-YAQ" secondAttribute="trailing" id="VHd-3X-hQ0"/>
-                                    <constraint firstItem="B5B-ec-YAQ" firstAttribute="height" secondItem="6zB-Jl-cJK" secondAttribute="height" id="dOx-kV-kBN"/>
-                                    <constraint firstAttribute="trailing" secondItem="6zB-Jl-cJK" secondAttribute="trailing" id="uwg-Nk-6ls"/>
-                                    <constraint firstItem="B5B-ec-YAQ" firstAttribute="top" secondItem="6zB-Jl-cJK" secondAttribute="bottom" id="y26-jE-CWo"/>
+                                    <constraint firstAttribute="width" secondItem="6zB-Jl-cJK" secondAttribute="height" id="F9W-S6-x6l"/>
+                                    <constraint firstAttribute="height" constant="100" id="mct-0a-pZ4"/>
                                 </constraints>
-                            </view>
+                                <state key="normal" title="Right" image="liam_right.png"/>
+                                <connections>
+                                    <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDragInside" id="H2H-Tg-7sf"/>
+                                    <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDownRepeat" id="ehX-lC-TNR"/>
+                                    <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDown" id="gkH-rm-yvb"/>
+                                    <action selector="beganRight:" destination="00N-30-PSs" eventType="touchDragEnter" id="vR0-HL-sgA"/>
+                                    <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchDragExit" id="AO0-Y3-XBV"/>
+                                    <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchUpOutside" id="SHW-QS-W5s"/>
+                                    <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchDragOutside" id="SaA-WP-IdT"/>
+                                    <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchUpInside" id="gDL-z4-2rP"/>
+                                    <action selector="stoppedRight:" destination="00N-30-PSs" eventType="touchCancel" id="lRW-Ex-49G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-ec-YAQ">
+                                <rect key="frame" x="567" y="100" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="B5B-ec-YAQ" secondAttribute="height" id="WVK-mz-9PU"/>
+                                </constraints>
+                                <state key="normal" title="Left" image="liam_left.png"/>
+                                <connections>
+                                    <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDown" id="L9U-6l-iQy"/>
+                                    <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDownRepeat" id="Qfh-VZ-yCv"/>
+                                    <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDragInside" id="Zho-0L-gUR"/>
+                                    <action selector="beganLeft:" destination="00N-30-PSs" eventType="touchDragEnter" id="wOi-LX-yrv"/>
+                                    <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchUpInside" id="4dC-eW-sfw"/>
+                                    <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchDragExit" id="7xU-t1-i8s"/>
+                                    <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchDragOutside" id="Ck3-ZK-a4g"/>
+                                    <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchCancel" id="WIN-4Z-4Ep"/>
+                                    <action selector="stoppedLeft:" destination="00N-30-PSs" eventType="touchUpOutside" id="rGh-p5-9cb"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="L8C-wL-aDi" firstAttribute="leading" secondItem="kah-S4-ikx" secondAttribute="leading" id="14W-my-gFI"/>
-                            <constraint firstItem="kah-S4-ikx" firstAttribute="trailing" secondItem="L8C-wL-aDi" secondAttribute="trailing" id="fBj-9X-Zbj"/>
-                            <constraint firstItem="kah-S4-ikx" firstAttribute="bottom" secondItem="L8C-wL-aDi" secondAttribute="bottom" id="iGy-1D-JoD"/>
-                            <constraint firstItem="L8C-wL-aDi" firstAttribute="top" secondItem="kah-S4-ikx" secondAttribute="top" id="xZM-VJ-D0a"/>
+                            <constraint firstItem="kah-S4-ikx" firstAttribute="trailing" secondItem="6zB-Jl-cJK" secondAttribute="trailing" id="I3m-Lk-EPn"/>
+                            <constraint firstItem="B5B-ec-YAQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kah-S4-ikx" secondAttribute="leading" constant="567" id="Oee-Da-rYg"/>
+                            <constraint firstItem="B5B-ec-YAQ" firstAttribute="top" secondItem="6zB-Jl-cJK" secondAttribute="bottom" id="VGm-ya-YoO"/>
+                            <constraint firstItem="B5B-ec-YAQ" firstAttribute="height" secondItem="6zB-Jl-cJK" secondAttribute="height" id="bWH-cN-MhO"/>
+                            <constraint firstItem="6zB-Jl-cJK" firstAttribute="top" secondItem="kah-S4-ikx" secondAttribute="top" id="ejz-OI-2UL"/>
+                            <constraint firstItem="kah-S4-ikx" firstAttribute="trailing" secondItem="B5B-ec-YAQ" secondAttribute="trailing" id="hA0-b5-g5X"/>
+                            <constraint firstItem="6zB-Jl-cJK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kah-S4-ikx" secondAttribute="leading" id="x4A-PB-8PF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kah-S4-ikx"/>
                     </view>
                     <size key="freeformSize" width="667" height="375"/>
                     <connections>
-                        <outlet property="gameView" destination="L8C-wL-aDi" id="bpl-Rj-cNx"/>
+                        <outlet property="gameView" destination="zFN-Hl-O7w" id="jVY-6f-T6Q"/>
                         <outlet property="leftButton" destination="B5B-ec-YAQ" id="jHN-In-DgI"/>
                         <outlet property="rightButton" destination="6zB-Jl-cJK" id="awd-Up-8zk"/>
                     </connections>
