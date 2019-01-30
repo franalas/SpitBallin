@@ -26,7 +26,8 @@ class ViewController: UIViewController {
     var character = Person.liam {
         didSet {
             game.character = character
-            // change character images here
+            rightButton.setImage(UIImage(named: character.rightImage()), for: .normal)
+            leftButton.setImage(UIImage(named: character.leftImage()), for: .normal)
         }
     }
     
@@ -41,17 +42,23 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        rightButton.setImage(UIImage(named: character.rightImage()), for: .normal)
+        leftButton.setImage(UIImage(named: character.leftImage()), for: .normal)
 
         // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {
         
-        game = Game(size: self.gameView.bounds.size, person: .liam, firstLevel: LevelNumber.one)
-        game.present(inView: self.gameView)
-        game.paused = false
-        gameView.game = game
+        if game == nil {
+            game = Game(size: self.gameView.bounds.size, person: .liam, firstLevel: LevelNumber.one)
+            game.present(inView: self.gameView)
+            game.paused = false
+            gameView.game = game
+        }
         
     }
     
@@ -98,6 +105,5 @@ class ViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

@@ -58,4 +58,34 @@ enum Person {
         
     }
     
+    /**
+     Gets the path to the image of each character to indicate leftward movement
+     - Returns: The file name, as a String
+     */
+    func leftImage() -> String {
+        
+        switch self {
+        case .liam:
+            return "liam_left"
+        case .fran:
+            return "fran_left"
+        }
+        
+    }
+    
+    /**
+     Gets the path to the image of each character to indicate rightward movement
+     - Returns: The file name, as a String
+     */
+    func rightImage() -> String {
+        
+        switch self {
+        case .liam:
+            return "liam_right"
+        case .fran:
+            return "fran_right"
+        }
+        
+    }
+    
 }
