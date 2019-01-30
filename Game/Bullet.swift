@@ -12,10 +12,10 @@ import SpriteKit
 /// Represents a shot fired from the Player. Interacts with Ball
 class Bullet: DynamicCircularObject {
     
-    /// The default initial speed
+    /// The default initial speed relative to the screen size
     static let SPEEDMULTIPLIER: CGFloat = 2
     
-    /// The default radius
+    /// The default radius relative to the screen size
     static let RADIUSMULTIPLIER: CGFloat = 0.05
     
     /// The image file name of the sprite

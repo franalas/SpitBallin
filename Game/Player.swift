@@ -11,8 +11,8 @@ import SpriteKit
 
 class Player: CircularObject {
     
-    /// How tall the player is by default
-    static let HEIGHT: CGFloat = 0.225
+    /// How tall the player is by default relative to the screen size
+    static let HEIGHTMULTIPLIER: CGFloat = 0.225
     
     /// How long the shoot animation lasts
     static let SHOT_LENGTH = 0.5
@@ -86,7 +86,7 @@ class Player: CircularObject {
         - frame: The bounds of the screen
         - lives: Lives associated with Player
     */
-    init(person: Person, frame: CGRect, height: CGFloat = Player.HEIGHT) {
+    init(person: Person, frame: CGRect) {
         
         self.character = person
         
@@ -97,8 +97,9 @@ class Player: CircularObject {
         
         self.lifeImplementation = Lives(frame: frame)
         
-        let width = height * standardTexture.size().width / standardTexture.size().height
         
+        let width = frame.height * Player.HEIGHTMULTIPLIER * standardTexture.size().width / standardTexture.size().height
+        let height = frame.height * Player.HEIGHTMULTIPLIER
         let sprite = SKSpriteNode(texture: self.standardTexture, size: CGSize(width: width, height: height))
         self.sprite = sprite
         
