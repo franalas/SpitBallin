@@ -35,6 +35,9 @@ class Game {
     /// If true, the player will move right on game ticks
     var movingRight = false
     
+    /// The player's score
+    var score: Int { return player.score }
+    
     /// The SKScene that the game is in
     private var scene: GameScene
     
