@@ -106,7 +106,7 @@ class Game {
         
         if !paused && self.bullets.count < Game.MAXSHOTS {
             
-            let bullet = Bullet(position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
+            let bullet = Bullet(gameSize: self.scene.size ,position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
             self.scene.addChild(bullet.sprite)
             self.bullets.append(bullet)
             self.player.currentlyShut = self.bullets.count >= Game.MAXSHOTS
