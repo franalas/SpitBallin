@@ -59,8 +59,9 @@ class Game {
         self.scene.backgroundColor = .black
         self.scene.scaleMode = .aspectFit
         
-        self.pauseIndicator = SKSpriteNode(texture: SKTexture(imageNamed: "pause"), size: CGSize(width: 0.1, height: 0.1))
-        self.pauseIndicator.position = CGPoint(x: 0.9, y: 0.9)
+        let minDimension = min(size.width, size.height)
+        self.pauseIndicator = SKSpriteNode(texture: SKTexture(imageNamed: "pause"), size: CGSize(width: 0.1 * minDimension, height: 0.1 * minDimension))
+        self.pauseIndicator.position = CGPoint(x: 0.9 * size.width, y: 0.9 * size.height)
         self.scene.addChild(self.pauseIndicator)
         
         self.character = person
