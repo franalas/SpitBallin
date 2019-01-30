@@ -46,39 +46,43 @@ enum LevelNumber: Int {
         else { return .one }
     }
     
-    /// Creates level for each case
-    func makeLevel() -> Level {
+    
+    /// Creates the level
+    ///
+    /// - Parameter gameSize: The size of the game scene
+    /// - Returns: The level
+    func makeLevel(gameSize: CGSize) -> Level {
         
         switch self {
             
         case .one:
-            return [Ball(ballSize: .two)]
+            return [Ball(ballSize: .two, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
         case .two:
-            return [Ball(ballSize: .three)]
+            return [Ball(ballSize: .three, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
         case .three:
-            return [Ball(ballSize: .one, positionX: 0.1),
-                    Ball(ballSize: .one, positionX: 0.2),
-                    Ball(ballSize: .one, positionX: 0.3),
-                    Ball(ballSize: .one, positionX: 0.7, right: false),
-                    Ball(ballSize: .one, positionX: 0.8, right: false),
-                    Ball(ballSize: .one, positionX: 0.9, right: false)]
+            return [Ball(ballSize: .one, positionX: 0.1 * gameSize.width, gameSize: gameSize),
+                    Ball(ballSize: .one, positionX: 0.2 * gameSize.width, gameSize: gameSize),
+                    Ball(ballSize: .one, positionX: 0.3 * gameSize.width, gameSize: gameSize),
+                    Ball(ballSize: .one, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false),
+                    Ball(ballSize: .one, positionX: 0.8 * gameSize.width, gameSize: gameSize, right: false),
+                    Ball(ballSize: .one, positionX: 0.9 * gameSize.width, gameSize: gameSize, right: false)]
         case .four:
-            return [Ball(ballSize: .three, positionX: 0.3, right: false),
-                    Ball(ballSize: .two, positionX: 0.7)]
+            return [Ball(ballSize: .three, positionX: 0.3 * gameSize.width, gameSize: gameSize, right: false),
+                    Ball(ballSize: .two, positionX: 0.7 * gameSize.width, gameSize: gameSize)]
         case .five:
-            return [Ball(ballSize: .two, positionX: 0.2),
-                    Ball(ballSize: .two),
-                    Ball(ballSize: .three, positionX: 0.7)]
+            return [Ball(ballSize: .two, positionX: 0.2 * gameSize.width, gameSize: gameSize),
+                    Ball(ballSize: .two, positionX: 0.5 * gameSize.width, gameSize: gameSize),
+                    Ball(ballSize: .three, positionX: 0.7 * gameSize.width, gameSize: gameSize)]
         case .six:
-            return [Ball(ballSize: .four)]
+            return [Ball(ballSize: .four, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
         case .seven:
-            return [Ball(ballSize: .four, positionX: 0.2),
-                    Ball(ballSize: .two, positionX: 0.8, right: false)]
+            return [Ball(ballSize: .four, positionX: 0.2 * gameSize.width, gameSize: gameSize),
+                    Ball(ballSize: .two, positionX: 0.8 * gameSize.width, gameSize: gameSize, right: false)]
         case .eight:
-            return [Ball(ballSize: .five)]
+            return [Ball(ballSize: .five, positionX: 0.5 * gameSize.width, gameSize: gameSize)]
         case .nine:
-            return [Ball(ballSize: .five, positionX: 0.2),
-                    Ball(ballSize: .five, positionX: 0.7, right: false)]
+            return [Ball(ballSize: .five, positionX: 0.2 * gameSize.width, gameSize: gameSize),
+                    Ball(ballSize: .five, positionX: 0.7 * gameSize.width, gameSize: gameSize, right: false)]
             
         }
         

@@ -27,41 +27,6 @@ enum BallSize: Int {
     /// Splits into two fives
     case five = 5
     
-    /// The y velocity at which the ball bounces off the floor
-    var bounceHeight: CGFloat {
-        
-        switch self {
-        case .one:
-            return 0.3
-        case .two:
-            return 0.4
-        case .three:
-            return 0.5
-        case .four:
-            return 0.6
-        case .five:
-            return 0.7
-        }
-        
-    }
-    
-    /// The radius of the ball
-    var radius: CGFloat {
-        
-        switch self {
-        case .one:
-            return 0.03
-        case .two:
-            return 0.06
-        case .three:
-            return 0.09
-        case .four:
-            return 0.12
-        case .five:
-            return 0.15
-        }
-    }
-    
     /// Color of the ball
     var color: UIColor {
         
@@ -86,6 +51,50 @@ enum BallSize: Int {
         
         if self == .one { return nil }
         else { return BallSize(rawValue: self.rawValue - 1)! }
+        
+    }
+    
+    
+    /// Gets the radius of the ball for the given game size
+    ///
+    /// - Parameter gameSize: The size of the game scene
+    /// - Returns: The radius of the ball
+    func getRadius(gameSize: CGSize) -> CGFloat {
+        
+        switch self {
+        case .one:
+            return 0.03 * min(gameSize.width, gameSize.height)
+        case .two:
+            return 0.06 * min(gameSize.width, gameSize.height)
+        case .three:
+            return 0.09 * min(gameSize.width, gameSize.height)
+        case .four:
+            return 0.12 * min(gameSize.width, gameSize.height)
+        case .five:
+            return 0.15 * min(gameSize.width, gameSize.height)
+        }
+        
+    }
+    
+    
+    /// Gets the height to which the ball bounces after colliding with the ground
+    ///
+    /// - Parameter gameSize: The size of the game scene
+    /// - Returns: The height to which the ball bounces
+    func getBounceHeight(gameSize: CGSize) -> CGFloat {
+        
+        switch self {
+        case .one:
+            return 0.3 * gameSize.height
+        case .two:
+            return 0.4 * gameSize.height
+        case .three:
+            return 0.5 * gameSize.height
+        case .four:
+            return 0.6 * gameSize.height
+        case .five:
+            return 0.7 * gameSize.height
+        }
         
     }
     
