@@ -11,9 +11,17 @@ import SpriteKit
 
 class ViewController: UIViewController {
 
+    /// The `SKView` containing the game scene
     @IBOutlet var skView: SKView!
     
+    /// The game object which is being presented
     var game: Game!
+    
+    /// If true, the player is currently moving left
+    var movingLeft = false
+    
+    /// If true, the player is currently moving right
+    var movingRight = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +31,46 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        game = Game(size: self.skView.bounds.size, person: .liam)
+        game = Game(size: self.skView.bounds.size, person: .liam, firstLevel: LevelNumber.one)
         game.present(inView: self.skView)
         game.paused = false
         
     }
     
+    @IBAction
+    func beganLeft(_ sender: Any) {
+        
+        
+        
+    }
+    
+    @IBAction
+    func beganRight(_ sender: Any) {
+        
+        
+        
+    }
+    
+    @IBAction
+    func stoppedLeft(_ sender: Any) {
+        
+        
+        
+    }
+    
+    @IBAction
+    func stoppedRight(_ sender: Any) {
+        
+        
+        
+    }
+    
+    @IBAction
+    func tap(_ sender: Any) {
+        
+        
+        
+    }
 
     /*
     // MARK: - Navigation

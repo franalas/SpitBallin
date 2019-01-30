@@ -1,9 +1,9 @@
 //
 //  LevelNumber.swift
-//  Watch Extension
+//  SpitBallin
 //
-//  Created by Liam Stevenson on 1/25/19.
-//  Copyright © 2019 William Stevenson. All rights reserved.
+//  Created by Liam Stevenson on 1/29/19.
+//  Copyright © 2019 Stevera. All rights reserved.
 //
 
 import Foundation
