@@ -41,8 +41,11 @@ class Game {
     /// Indicates whether or not the game is paused
     private var pauseIndicator: SKSpriteNode
     
+    /// The first level of the game
+    private var firstLevel: Level
+    
     /// The current level of the game
-    private(set) var currentLevel: LevelNumber
+    private var currentLevel: Level
     
     /// The maximum number of shots allowed on the screen at a time
     private static let MAXSHOTS = 1
@@ -53,7 +56,7 @@ class Game {
      - size: the size of the game scene
      - person: the player's starting character
      */
-    init(size: CGSize, person: Person) {
+    init(size: CGSize, person: Person, firstLevel: Level) {
         
         self.scene = GameScene(size: size)
         self.scene.backgroundColor = .black
@@ -72,7 +75,8 @@ class Game {
         self.bullets = []
         self.balls = []
         
-        self.currentLevel = .one
+        self.firstLevel = firstLevel
+        self.currentLevel = firstLevel
         
         self.scene.game = self
         
@@ -86,7 +90,7 @@ class Game {
         - level: Decides what level game is set up to
         - lives: Decides how many lives the player has
      */
-    private func setup(level: LevelNumber = .one, withLives lives: Int = Lives.STARTING_LIVES) {
+    private func setup(level: Level? = nil, withLives lives: Int = Lives.STARTING_LIVES) {
         
         self.player.xPosition = self.scene.frame.midX
         self.player.lives = lives
@@ -96,7 +100,7 @@ class Game {
         self.bullets = []
         
         for ball in balls { ball.sprite.removeFromParent() }
-        self.currentLevel = level
+        self.currentLevel = level ?? firstLevel
         self.balls = currentLevel.makeLevel(gameSize: self.scene.size)
         for ball in balls { self.scene.addChild(ball.sprite) }
         

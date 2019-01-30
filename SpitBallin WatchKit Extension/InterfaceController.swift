@@ -23,7 +23,7 @@ class InterfaceController: WKInterfaceController {
         
         crownSequencer.delegate = self
         
-        self.game = Game(size: CGSize(width: 1, height: 1), person: .liam)
+        self.game = Game(size: WKInterfaceDevice.current().screenBounds.size, person: .liam, firstLevel: LevelNumber.one)
         self.game.present(inInterface: self.skInterface)
         self.game.paused = false
         
@@ -86,7 +86,7 @@ extension InterfaceController: WKCrownDelegate {
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        game.movePlayer(distance: rotationalDelta * InterfaceController.CROWN_MULTIPLIER)
+        game.movePlayer(distance: rotationalDelta * InterfaceController.CROWN_MULTIPLIER * Double(WKInterfaceDevice.current().screenBounds.width))
         
     }
     

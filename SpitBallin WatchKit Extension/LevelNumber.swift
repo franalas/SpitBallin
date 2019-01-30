@@ -10,8 +10,9 @@ import Foundation
 import SpriteKit
 
 /// Represents the levels of the game
-typealias Level = [Ball]
-enum LevelNumber: Int {
+//typealias Level = [Ball]
+enum LevelNumber: Int, Level {
+    
     
     /// Level one
     case one = 1
@@ -41,9 +42,9 @@ enum LevelNumber: Int {
     case nine
     
     /// The next level after the current one
-    var nextLevel: LevelNumber {
+    var nextLevel: Level {
         if let nextLevel = LevelNumber(rawValue: self.rawValue + 1) { return nextLevel }
-        else { return .one }
+        else { return LevelNumber.one }
     }
     
     
@@ -51,7 +52,7 @@ enum LevelNumber: Int {
     ///
     /// - Parameter gameSize: The size of the game scene
     /// - Returns: The level
-    func makeLevel(gameSize: CGSize) -> Level {
+    func makeLevel(gameSize: CGSize) -> [Ball] {
         
         switch self {
             
