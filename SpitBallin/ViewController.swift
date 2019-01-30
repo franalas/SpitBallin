@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         
         if game == nil {
-            game = Game(size: self.gameView.bounds.size, person: .liam, firstLevel: LevelNumber.one)
+            game = Game(size: self.gameView.bounds.size, person: .fran, firstLevel: LevelNumber.one)
             game.present(inView: self.gameView)
             game.paused = false
             gameView.game = game
