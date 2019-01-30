@@ -23,6 +23,10 @@
 		9829020622010F7000D2E98C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9829020522010F7000D2E98C /* ExtensionDelegate.swift */; };
 		9829020822010F7000D2E98C /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9829020722010F7000D2E98C /* NotificationController.swift */; };
 		9829020A22010F7100D2E98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9829020922010F7100D2E98C /* Assets.xcassets */; };
+		982F0173220214CD00B4538D /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982F0172220214CD00B4538D /* Drop.swift */; };
+		982F01752202151300B4538D /* DropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982F01742202151300B4538D /* DropType.swift */; };
+		982F017622021A0B00B4538D /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982F0172220214CD00B4538D /* Drop.swift */; };
+		982F017722021A0E00B4538D /* DropType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982F01742202151300B4538D /* DropType.swift */; };
 		986E5D402201104D00575669 /* LevelNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986E5D342201104D00575669 /* LevelNumber.swift */; };
 		986E5D412201104D00575669 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986E5D352201104D00575669 /* Player.swift */; };
 		986E5D422201104D00575669 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986E5D352201104D00575669 /* Player.swift */; };
@@ -132,6 +136,8 @@
 		9829020922010F7100D2E98C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9829020B22010F7100D2E98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9829020C22010F7100D2E98C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		982F0172220214CD00B4538D /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
+		982F01742202151300B4538D /* DropType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropType.swift; sourceTree = "<group>"; };
 		986E5D342201104D00575669 /* LevelNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelNumber.swift; sourceTree = "<group>"; };
 		986E5D352201104D00575669 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		986E5D362201104D00575669 /* Lives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lives.swift; sourceTree = "<group>"; };
@@ -253,6 +259,8 @@
 				986E5D3A2201104D00575669 /* Person.swift */,
 				986E5D352201104D00575669 /* Player.swift */,
 				981F6A1F22014D0A00D23E8D /* Level.swift */,
+				982F0172220214CD00B4538D /* Drop.swift */,
+				982F01742202151300B4538D /* DropType.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -439,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				986E5D512201104D00575669 /* Ball.swift in Sources */,
+				982F01752202151300B4538D /* DropType.swift in Sources */,
 				986E5D4D2201104D00575669 /* GameScene.swift in Sources */,
 				986E5D412201104D00575669 /* Player.swift in Sources */,
 				981F6A232201528100D23E8D /* LevelNumber.swift in Sources */,
@@ -448,6 +457,7 @@
 				986E5D432201104D00575669 /* Lives.swift in Sources */,
 				986E5D472201104D00575669 /* DynamicCircularObject.swift in Sources */,
 				981F6A2022014D0A00D23E8D /* Level.swift in Sources */,
+				982F0173220214CD00B4538D /* Drop.swift in Sources */,
 				981F6A1E220140CA00D23E8D /* ViewController.swift in Sources */,
 				986E5D4B2201104D00575669 /* Person.swift in Sources */,
 				986E5D4F2201104D00575669 /* CircularObject.swift in Sources */,
@@ -461,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				986E5D522201104D00575669 /* Ball.swift in Sources */,
+				982F017722021A0E00B4538D /* DropType.swift in Sources */,
 				986E5D4C2201104D00575669 /* Person.swift in Sources */,
 				9829020822010F7000D2E98C /* NotificationController.swift in Sources */,
 				981F6A2122014F0500D23E8D /* Level.swift in Sources */,
@@ -470,6 +481,7 @@
 				986E5D4E2201104D00575669 /* GameScene.swift in Sources */,
 				9829020622010F7000D2E98C /* ExtensionDelegate.swift in Sources */,
 				986E5D502201104D00575669 /* CircularObject.swift in Sources */,
+				982F017622021A0B00B4538D /* Drop.swift in Sources */,
 				986E5D542201104D00575669 /* Game.swift in Sources */,
 				986E5D422201104D00575669 /* Player.swift in Sources */,
 				9829020422010F7000D2E98C /* InterfaceController.swift in Sources */,

@@ -22,11 +22,15 @@ protocol Level {
     /// - Returns: The balls that go in the level
     func makeLevel(gameSize: CGSize) -> [Ball]
     
-    /// Possibly spawns more balls
+    
+    /// Handles a split event, possibly spawning balls and a drop
     ///
-    /// - Parameter ballScore: The count of balls remaining, weighted on their size
-    /// - Parameter gameSize: The size of the game scene
-    /// - Returns: The balls to be spawned
-    func spawnBalls(ballScore: Int, gameSize: CGSize) -> [Ball]
+    /// - Parameters:
+    ///   - ballSize: The `BallSize` of the split `Ball`
+    ///   - ballScore: The count of balls remaining, weighted on their size
+    ///   - position: The position where the split occured
+    ///   - gameSize: The size of the game scene
+    /// - Returns: The balls and drop to be added
+    func handleSplit(ballSize: BallSize, ballScore: Int, position: CGPoint, gameSize: CGSize) -> (balls: [Ball], drop: Drop?)
     
 }

@@ -47,6 +47,9 @@ class Game {
     /// All bullets in the scene
     private var balls: [Ball]
     
+    /// All drops in the scene
+    private var drops: [Drop]
+    
     /// Indicates whether or not the game is paused
     private var pauseIndicator: SKSpriteNode
     
@@ -83,6 +86,7 @@ class Game {
         
         self.bullets = []
         self.balls = []
+        self.drops = []
         
         self.firstLevel = firstLevel
         self.currentLevel = firstLevel
@@ -107,6 +111,8 @@ class Game {
         
         for bullet in bullets { bullet.sprite.removeFromParent() }
         self.bullets = []
+        for drop in drops { drop.sprite.removeFromParent() }
+        self.drops = []
         
         for ball in balls { ball.sprite.removeFromParent() }
         self.currentLevel = level ?? firstLevel
@@ -254,6 +260,19 @@ class Game {
             
         }
         
+        var dropI = drops.count - 1
+        while dropI >= 0 { //check if any bullets hit the floor
+            
+            if drops[dropI].floorCollision(rect: frame) {
+                
+                drops[dropI].dropType.performAction(inGame: self)
+                remove(dropAtIndex: dropI)
+                
+            }
+            dropI -= 1
+            
+        }
+        
     }
     
     /**
@@ -263,8 +282,10 @@ class Game {
      */
     private func tickObjects(_ timeInterval: TimeInterval) {
         
-        for ball in balls { ball.tick(time: CGFloat(timeInterval)) }
-        for bullet in bullets { bullet.tick(time: CGFloat(timeInterval)) }
+        let t = CGFloat(timeInterval)
+        for ball in balls { ball.tick(time: t) }
+        for bullet in bullets { bullet.tick(time: t) }
+        for drop in drops { drop.tick(time: t) }
         
     }
     
@@ -275,6 +296,23 @@ class Game {
      */
     private func split(ballAtIndex i: Int) {
         
+        var ballScore = 0
+        for ball in balls { ballScore += ball.ballSize.rawValue }
+        let (newBalls, drop) = currentLevel.handleSplit(ballSize: balls[i].ballSize, ballScore: ballScore,
+                                                        position: balls[i].position, gameSize: self.scene.size)
+        
+        for ball in newBalls {
+            self.scene.addChild(ball.sprite)
+        }
+        self.balls += newBalls
+        
+        if let drop = drop {
+            
+            self.drops.append(drop)
+            self.scene.addChild(drop.sprite)
+            
+        }
+        
         if let (nextA, nextB) = balls[i].split() {
             self.balls.append(nextA)
             self.balls.append(nextB)
@@ -283,14 +321,6 @@ class Game {
         }
         balls[i].sprite.removeFromParent()
         balls.remove(at: i)
-        
-        var ballScore = 0
-        for ball in balls { ballScore += ball.ballSize.rawValue }
-        let newBalls = currentLevel.spawnBalls(ballScore: ballScore, gameSize: scene.size)
-        for ball in newBalls {
-            scene.addChild(ball.sprite)
-        }
-        self.balls += newBalls
         
         if self.balls.count == 0 { loadNextLevel() }
         
@@ -308,6 +338,19 @@ class Game {
         self.bullets.remove(at: i)
         
         if self.bullets.count < Game.MAXSHOTS { self.player.currentlyShut = false }
+        
+    }
+    
+    /**
+     Removes the drop at the given index from game
+     - Parameters:
+        - i: the index in `drops` of the drop to be removed
+     */
+    private func remove(dropAtIndex i: Int) {
+        
+        guard i >= 0 && i < self.drops.count else { return }
+        self.drops[i].sprite.removeFromParent()
+        self.drops.remove(at: i)
         
     }
     

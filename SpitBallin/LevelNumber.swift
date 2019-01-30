@@ -107,8 +107,10 @@ enum LevelNumber: Int, Level {
         
     }
     
-    func spawnBalls(ballScore: Int, gameSize: CGSize) -> [Ball] {
-        return []
+    func handleSplit(ballSize: BallSize, ballScore: Int, position: CGPoint, gameSize: CGSize) -> (balls: [Ball], drop: Drop?) {
+        
+        return (balls: [], drop: nil)
+        
     }
     
 }

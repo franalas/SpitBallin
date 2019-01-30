@@ -82,13 +82,9 @@ enum LevelNumber: Int, Level {
         
     }
     
-    func spawnBalls(ballScore: Int, gameSize: CGSize) -> [Ball] {
+    func handleSplit(ballSize: BallSize, ballScore: Int, position: CGPoint, gameSize: CGSize) -> (balls: [Ball], drop: Drop?) {
         
-        if self == .nine {
-            
-            return []
-            
-        } else { return [] }
+        return (balls: [], drop: nil)
         
     }
     
