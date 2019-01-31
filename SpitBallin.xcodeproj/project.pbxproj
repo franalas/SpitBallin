@@ -73,6 +73,9 @@
 		98B76F0A22015E48001BBACC /* fran_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0622015E48001BBACC /* fran_left.png */; };
 		98B76F0B22015E48001BBACC /* fran_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0722015E48001BBACC /* fran_right.png */; };
 		98B76F0C22015E48001BBACC /* liam_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B76F0822015E48001BBACC /* liam_right.png */; };
+		98E03B5D2202A38C00AEF67F /* gum.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E03B5C2202A38C00AEF67F /* gum.png */; };
+		98E03B5F2202A3D300AEF67F /* sports_bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E03B5E2202A3D300AEF67F /* sports_bottle.png */; };
+		98E03B612202A52700AEF67F /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E03B602202A52700AEF67F /* bubble.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +170,9 @@
 		98B76F0622015E48001BBACC /* fran_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_left.png; sourceTree = "<group>"; };
 		98B76F0722015E48001BBACC /* fran_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fran_right.png; sourceTree = "<group>"; };
 		98B76F0822015E48001BBACC /* liam_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liam_right.png; sourceTree = "<group>"; };
+		98E03B5C2202A38C00AEF67F /* gum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gum.png; sourceTree = "<group>"; };
+		98E03B5E2202A3D300AEF67F /* sports_bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports_bottle.png; sourceTree = "<group>"; };
+		98E03B602202A52700AEF67F /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +288,9 @@
 				986E5D5A2201106600575669 /* pause.png */,
 				986E5D5E2201106600575669 /* spit.png */,
 				986E5D572201106500575669 /* water_bottle.png */,
+				98E03B5C2202A38C00AEF67F /* gum.png */,
+				98E03B5E2202A3D300AEF67F /* sports_bottle.png */,
+				98E03B602202A52700AEF67F /* bubble.png */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -409,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				982901EB22010F6F00D2E98C /* LaunchScreen.storyboard in Resources */,
+				98E03B612202A52700AEF67F /* bubble.png in Resources */,
 				98B76F0C22015E48001BBACC /* liam_right.png in Resources */,
 				98B76F0922015E48001BBACC /* liam_left.png in Resources */,
 				981759FC220250B000B01994 /* ball_pop.wav in Resources */,
@@ -418,9 +428,11 @@
 				986E5D6B2201106600575669 /* fran_normal.png in Resources */,
 				986E5D6D2201106600575669 /* liam_shut.png in Resources */,
 				986E5D5F2201106600575669 /* liam_normal.png in Resources */,
+				98E03B5F2202A3D300AEF67F /* sports_bottle.png in Resources */,
 				98B76F0A22015E48001BBACC /* fran_left.png in Resources */,
 				986E5D652201106600575669 /* liam_shoot.png in Resources */,
 				986E5D692201106600575669 /* fran_shut.png in Resources */,
+				98E03B5D2202A38C00AEF67F /* gum.png in Resources */,
 				982901E822010F6F00D2E98C /* Assets.xcassets in Resources */,
 				981759FE220252C500B01994 /* spit_sound.wav in Resources */,
 				986E5D632201106600575669 /* fran_shoot.png in Resources */,
