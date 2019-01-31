@@ -19,6 +19,9 @@ enum DropType {
     /// Puts a machine gun on the ground that sprays a quick burst of shots
     case machineGun
     
+    /// Gives the player a shield that lasts one hit
+    case shield
+    
     /// Gets name of the image for the drop
     ///
     /// - Returns: The name of the image
@@ -30,7 +33,9 @@ enum DropType {
         case .shot:
             return "spit"
         case .machineGun:
-            return ""
+            return "sports_bottle"
+        case .shield:
+            return "gum"
         }
         
     }
@@ -46,6 +51,8 @@ enum DropType {
         case .shot:
             break
         case .machineGun:
+            break
+        case .shield:
             break
         }
         
