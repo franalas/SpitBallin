@@ -17,15 +17,21 @@ class Player: CircularObject {
     /// How long the shoot animation lasts
     static let SHOT_LENGTH = 0.5
     
+    /// How long the bubble growing animation lasts
+    static let BUBBLE_GROW_LENGTH = 1.0
+    
+    /// How long the bubble popping animation lasts
+    static let BUBBLE_POP_LENGTH = 1.0
+    
     /// Keeps track of how many lives a Player has
-    var lifeImplementation: Lives
+    private let lifeBar: Lives
     
     /// Represents how many lives the a Player has left
     var lives: Int {
         
-        get { return lifeImplementation.numberRemaining }
+        get { return lifeBar.numberRemaining }
         
-        set { lifeImplementation.numberRemaining = newValue }
+        set { lifeBar.numberRemaining = newValue }
         
     }
     
@@ -33,8 +39,31 @@ class Player: CircularObject {
     var radius: CGFloat
     var position: CGPoint { return self.sprite.position }
     
-    /// Returns the position of the mouth
-    var mouth: CGPoint { return CGPoint(x: self.xPosition, y: position.y + radius/2) }
+    /// If true, the player currently has a shield
+    var hasShield: Bool { return shieldState != .none }
+    
+    /// Holds which shield state player is currently in
+    private var shieldState = ShieldState.none
+    
+    /// Represents various states of the shield growing and popping
+    private enum ShieldState {
+        case none, growing, shield, popping
+    }
+    
+    /// The sprite that represents the shield around the player
+    private let shieldSprite: SKSpriteNode
+    
+    /// The radius of the shield sprite
+    private let shieldRadius: CGFloat
+    
+    /// The alpha value for the shield
+    static let SHIELD_ALPHA: CGFloat = 0.5
+    
+    /// The position of the player's mouth relative to the scene
+    var mouth: CGPoint { return self.sprite.parent!.convert(mouthRelativeToPlayer, from: self.sprite) }
+    
+    /// The position of the player's mouth relative to the player sprite
+    private let mouthRelativeToPlayer: CGPoint
     
     /// The x-position of `self` in the scene
     var xPosition: CGFloat {
@@ -98,7 +127,7 @@ class Player: CircularObject {
         self.shutTexture = SKTexture(imageNamed: person.shutImage())
         currentlyShut = false
         
-        self.lifeImplementation = Lives(frame: frame)
+        self.lifeBar = Lives(frame: frame)
         
         self.score = 0
         
@@ -111,8 +140,16 @@ class Player: CircularObject {
         
         self.sprite.position = CGPoint(x: frame.midX, y: frame.minY + sprite.size.height / 2)
         
+        self.mouthRelativeToPlayer = CGPoint(x: 0, y: -sprite.size.height / 4)
+        
         self.minX = frame.minX + radius
         self.maxX = frame.maxX - radius
+        
+        let shieldTexture = SKTexture(imageNamed: "bubble")
+        self.shieldRadius = height / 2
+        self.shieldSprite = SKSpriteNode(texture: shieldTexture, size: CGSize(width: 2*shieldRadius, height: 2*shieldRadius))
+        self.shieldSprite.alpha = 0
+        self.sprite.addChild(self.shieldSprite)
         
     }
     
@@ -135,8 +172,74 @@ class Player: CircularObject {
      */
     func addLivesToScene(toScene scene: SKScene) {
         
-        lifeImplementation.addLivesToScene(toScene: scene)
+        lifeBar.addLivesToScene(toScene: scene)
         
     }
+    
+    /**
+     Makes the player animate growing a shield around them if the player does not already have a shield
+    */
+    func growShield() {
+        
+        guard !self.hasShield else { return }
+        self.shieldState = .growing
+        
+        self.shieldSprite.size = CGSize.zero
+        self.shieldSprite.alpha = Player.SHIELD_ALPHA
+        self.shieldSprite.position = mouthRelativeToPlayer
+        
+        self.shieldSprite.run(
+            .sequence([
+                .group([
+                    .resize(toWidth: 2*shieldRadius, duration: Player.BUBBLE_GROW_LENGTH),
+                    .resize(toHeight: 2*shieldRadius, duration: Player.BUBBLE_GROW_LENGTH),
+                    .move(to: CGPoint.zero, duration: Player.BUBBLE_GROW_LENGTH)
+                    ]),
+                .run {
+                    self.shieldState = .shield
+                }]), withKey: "growing")
+        
+    }
+    
+    /**
+     Makes the player animate losing their shield them if they do not already have a shield
+    */
+    func destroyShield() {
+        
+        switch self.shieldState {
+        case .none, .popping:
+            break
+        case .growing:
+            self.shieldSprite.removeAction(forKey: "growing")
+            self.shieldSprite.size = CGSize(width: 2*shieldRadius,
+                                            height: 2*shieldRadius)
+            fallthrough
+        case .shield:
+            self.shieldState = .popping
+            self.shieldSprite.run(
+                .sequence([
+                    .fadeOut(withDuration: Player.BUBBLE_POP_LENGTH / 5),
+                    .fadeAlpha(to: Player.SHIELD_ALPHA, duration: Player.BUBBLE_POP_LENGTH / 5),
+                    .fadeOut(withDuration: Player.BUBBLE_POP_LENGTH / 5),
+                    .fadeAlpha(to: Player.SHIELD_ALPHA, duration: Player.BUBBLE_POP_LENGTH / 5),
+                    .fadeOut(withDuration: Player.BUBBLE_POP_LENGTH / 5),
+                    .run {
+                        self.shieldState = .none
+                    }]), withKey: "popping")
+        }
+        
+    }
+    
+    /// Takes away the player's shield immediately without animation
+    func resetShield() {
+        
+        self.shieldSprite.removeAction(forKey: "growing")
+        self.shieldSprite.removeAction(forKey: "popping")
+        
+        self.shieldSprite.alpha = 0
+        self.shieldState = .none
+        
+    }
+    
 }
 

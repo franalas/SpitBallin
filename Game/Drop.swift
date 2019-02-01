@@ -15,7 +15,7 @@ class Drop: DynamicCircularObject {
     static let GRAVITY_MULTIPLIER: CGFloat = -0.2
     
     /// Represents the default size of a drop, as a percentage of the game scene's minimum dimension
-    static let SIZE_MULTIPLIER: CGFloat = 0.1
+    static let SIZE_MULTIPLIER: CGFloat = 0.08
     
     let dropType: DropType
     
@@ -33,6 +33,7 @@ class Drop: DynamicCircularObject {
         let texture = SKTexture(imageNamed: dropType.getImage())
         let width = height * texture.size().width / texture.size().height
         let sprite = SKSpriteNode(texture: texture, size: CGSize(width: width, height: height))
+        sprite.zPosition = -100
         super.init(sprite: sprite, radius: height / 2, position: position,
                    velocity: CGVector.zero, acceleration: CGVector(dx: 0, dy: gravity))
         

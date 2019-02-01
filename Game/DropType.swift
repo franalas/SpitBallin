@@ -53,7 +53,7 @@ enum DropType {
         case .machineGun:
             break
         case .shield:
-            break
+            game.giveShield()
         }
         
     }

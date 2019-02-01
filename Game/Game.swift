@@ -120,6 +120,7 @@ class Game {
         self.player.xPosition = self.scene.frame.midX
         self.player.lives = lives
         self.player.currentlyShut = false
+        self.player.resetShield()
         self.bonusShots = 0
         
         for bullet in bullets { bullet.sprite.removeFromParent() }
@@ -380,7 +381,11 @@ class Game {
      */
     private func handleDeath(fromBall: Ball) {
         
-        if(player.lives <= 1) {
+        if player.hasShield {
+            
+            player.destroyShield()
+            
+        } else if player.lives <= 1 {
             
             self.restart()
             
@@ -407,6 +412,14 @@ class Game {
     func addShot() {
         
         bonusShots += 1
+        self.player.currentlyShut = false
+        
+    }
+    
+    /// Gives the player a shield that protects them from the next hit
+    func giveShield() {
+        
+        player.growShield()
         
     }
     
