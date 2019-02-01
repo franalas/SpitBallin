@@ -47,9 +47,9 @@ enum DropType {
         
         switch self {
         case .life:
-            break
+            game.addLife()
         case .shot:
-            break
+            game.addShot()
         case .machineGun:
             break
         case .shield:

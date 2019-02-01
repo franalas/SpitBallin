@@ -62,8 +62,11 @@ class Game {
     /// The current level of the game
     private var currentLevel: Level
     
-    /// The maximum number of shots allowed on the screen at a time
+    /// The maximum number of shots allowed on the screen at a time by default
     private static let MAXSHOTS = 1
+    
+    /// This number plus MAXSHOTS is how many shots the player is allowed to have on screen at a time; reset after each level and death
+    private var bonusShots = 0
     
     /// The sound to play when a ball splits
     private let popSound = SKAction.playSoundFileNamed("ball_pop.wav", waitForCompletion: false)
@@ -117,6 +120,7 @@ class Game {
         self.player.xPosition = self.scene.frame.midX
         self.player.lives = lives
         self.player.currentlyShut = false
+        self.bonusShots = 0
         
         for bullet in bullets { bullet.sprite.removeFromParent() }
         self.bullets = []
@@ -133,7 +137,7 @@ class Game {
     /// Shoots a bullet out of the player
     func shoot() {
         
-        if !paused && self.bullets.count < Game.MAXSHOTS {
+        if !paused && self.bullets.count < Game.MAXSHOTS + bonusShots {
             
             let bullet = Bullet(gameSize: self.scene.size, position: player.mouth, distanceToTop: self.scene.size.height - self.player.mouth.y)
             self.scene.addChild(bullet.sprite)
@@ -386,6 +390,23 @@ class Game {
             self.setup(level: self.currentLevel, withLives: self.player.lives)
             
         }
+        
+    }
+    
+    
+    /// Gives the player another life if they are not already at the maximum
+    func addLife() {
+        
+        if player.lives < Lives.MAX_LIVES {
+            player.lives += 1
+        }
+        
+    }
+    
+    /// Allows the player to shoot one more shot at a time for the remainder of the level
+    func addShot() {
+        
+        bonusShots += 1
         
     }
     
