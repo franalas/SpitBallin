@@ -109,8 +109,7 @@ enum LevelNumber: Int, Level {
     
     func handleSplit(ballSize: BallSize, ballScore: Int, position: CGPoint, gameSize: CGSize) -> (balls: [Ball], drop: Drop?) {
         
-        let drop = Drop(dropType: .shot, position: position, gameSize: gameSize)
-        return (balls: [], drop: drop)
+        return (balls: [], drop: nil)
         
     }
     
