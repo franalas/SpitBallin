@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 enum DropType {
     
@@ -40,21 +41,44 @@ enum DropType {
         
     }
     
-    /// Perform's the action corresponding to the drop
+    /// Perform's the action corresponding to the drop hitting the floor
     ///
     /// - Parameter game: The game that the action is to be performed in
-    func performAction(inGame game: Game) {
+    /// - Returns: `true` iff the drop should be removed from the game
+    func performFloorAction(inGame game: Game, drop: Drop) -> Bool {
+        
+        drop.velocity = CGVector.zero
+        drop.acceleration = CGVector.zero
+        switch self {
+        case .machineGun:
+            break
+        default:
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    
+    /// Perform's the action corresponding to the drop being picked up by the player
+    ///
+    /// - Parameter game: The game that the action is to be performed in
+    /// - Returns: `true` iff the drop should be removed from the game
+    func performPickupAction(inGame game: Game, drop: Drop) -> Bool {
         
         switch self {
         case .life:
             game.addLife()
         case .shot:
             game.addShot()
-        case .machineGun:
-            break
         case .shield:
             game.giveShield()
+        default:
+            return false
         }
+        
+        return true
         
     }
     

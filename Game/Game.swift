@@ -278,9 +278,14 @@ class Game {
         var dropI = drops.count - 1
         while dropI >= 0 { //check if any bullets hit the floor
             
-            if drops[dropI].floorCollision(rect: frame) {
+            if drops[dropI].floorCollision(rect: frame)
+                && drops[dropI].dropType.performFloorAction(inGame: self, drop: drops[dropI]) {
                 
-                drops[dropI].dropType.performAction(inGame: self)
+                remove(dropAtIndex: dropI)
+                
+            } else if DynamicCircularObject.checkCollision(self.player, drops[dropI])
+                && drops[dropI].dropType.performPickupAction(inGame: self, drop: drops[dropI]) {
+                
                 remove(dropAtIndex: dropI)
                 
             }
