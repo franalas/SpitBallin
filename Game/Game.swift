@@ -8,7 +8,9 @@
 
 import Foundation
 import SpriteKit
+#if os(watchOS)
 import WatchKit
+#endif
 
 
  /// Stores game state, handles game logic, and receives controls
